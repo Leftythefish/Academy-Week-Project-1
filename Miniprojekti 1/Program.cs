@@ -6,7 +6,9 @@ namespace Miniprojekti_1
     {
         static void Main(string[] args)
         {
+            // Rian koodi
             Console.WriteLine("Hello!");
+
         }
     }
 }
