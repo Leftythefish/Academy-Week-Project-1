@@ -6,6 +6,8 @@ namespace Miniprojekti_1
     {
         static void Main(string[] args)
         {
+
+            //jyri
             Console.WriteLine("Hello!");
         }
     }
