@@ -6,6 +6,7 @@ namespace Miniprojekti_1
     {
         static void Main(string[] args)
         {
+            //jesse
             Console.WriteLine("Hello!");
         }
     }
