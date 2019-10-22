@@ -19,7 +19,19 @@ namespace Engine
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                if (value.Length > 26)
+                {
+                    Console.SetCursorPosition(3, 4);
+                    Console.WriteLine("Please enter a shorter name!");
+                    Console.SetCursorPosition(0, 29);
+                }
+                else
+                {
+                    name = value;
+                }
+            }
         }
 
         private int cur_health;

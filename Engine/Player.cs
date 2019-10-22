@@ -35,7 +35,6 @@ namespace Engine
         public List<Item> Inventory = new List<Item>();
         public List<Quest> QuestList = new List<Quest>();
 
-
         public Player(string name, int maximum_health) : base(name, maximum_health)
         {
             this.Exp = exp;

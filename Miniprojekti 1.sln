@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console UI", "Miniprojekti 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{0F48AA47-3C83-4E37-BBAA-AC316C8AEA68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectEngine", "UnitTestProjectEngine\UnitTestProjectEngine.csproj", "{A0A5D3A1-6129-4A2B-9313-A5BBFB6F6CC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProjectEngine", "UnitTestProjectEngine\UnitTestProjectEngine.csproj", "{A0A5D3A1-6129-4A2B-9313-A5BBFB6F6CC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
