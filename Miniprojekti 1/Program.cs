@@ -6,8 +6,10 @@ namespace Miniprojekti_1
     {
         static void Main(string[] args)
         {
-            //jesse
-            Console.WriteLine("Hello!");
+            ///<summary>
+            ///--Ria--
+            /// Main UI and it's components, create more classes where necessary
+            ///</summary>
         }
     }
 }
