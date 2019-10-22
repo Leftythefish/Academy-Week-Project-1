@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    class Weapon : Item
+    public class Weapon : Item
     {
         ///<summary>
         ///--Ria--
@@ -14,5 +14,19 @@ namespace Engine
         /// Damage
         ///</summary>
 
+        //Properties
+        private int damage; //Damage is an integer, per hit.
+
+        public int Damage
+        {
+            get { return damage; }
+            set { damage = value; }
+        }
+
+        //Constructors
+        public Weapon(string name, string name_plural, int damage) : base(name, name_plural)
+        {
+            this.Damage = damage;
+        }
     }
 }

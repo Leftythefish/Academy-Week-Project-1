@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    class Location
+    public class Location
     {
         ///<summary>
         ///--Ria--
