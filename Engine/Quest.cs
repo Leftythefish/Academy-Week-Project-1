@@ -30,7 +30,7 @@ namespace Engine
         private string description;
         public string Description
         {
-            get { return description; }   
+            get { return description; }
             set { description = value; }
         }
 
@@ -40,6 +40,15 @@ namespace Engine
             get { return rewardXP; }
             set { rewardXP = value; }
         }
+
+        private Item completionRequirement;
+        public Item CompletionRequirement { get => completionRequirement; set => completionRequirement = value; } //for example the monsters head
+
+        private string completionMessage;
+        public string CompletionMessage { get => completionMessage; set => completionMessage = value; }
+
+        private bool questCompleted;
+        public bool QuestCompleted { get => questCompleted; set => questCompleted = value; }
 
         public List<Item> Reward_Items = new List<Item>();
 

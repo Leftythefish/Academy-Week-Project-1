@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    class Monster : Creature
+    public class Monster : Creature
     {
         ///<summary>
         ///--Ria--
