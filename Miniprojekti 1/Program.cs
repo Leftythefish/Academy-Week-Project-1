@@ -1,4 +1,5 @@
 ﻿using System;
+using Engine;
 
 namespace Miniprojekti_1
 {
@@ -10,6 +11,7 @@ namespace Miniprojekti_1
             ///--Ria--
             /// Main UI and it's components, create more classes where necessary
             ///</summary>
+            Window.CreateMainScreen();
         }
     }
 }
