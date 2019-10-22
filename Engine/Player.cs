@@ -15,7 +15,7 @@ namespace Engine
         /// Items in inventory <List>
         /// Quests in progress <List>
         ///</summary>
-        
+
         private int level; //Player level
 
         public int Level
@@ -32,14 +32,41 @@ namespace Engine
             set { exp = value; }
         }
 
+        private Location currentLocation;
+        public Location CurrentLocation { get => currentLocation; set => currentLocation = value; }
+
         public List<Item> Inventory = new List<Item>();
         public List<Quest> QuestList = new List<Quest>();
+
+        public string Input;
+        public enum MovementDirection
+        {
+            North,
+            East,
+            South,
+            West,
+        }
+
+        public MovementDirection M_Direction;
+
+        public enum Action
+        {
+            LookAround,
+            Fight,
+
+        }
 
 
         public Player(string name, int maximum_health) : base(name, maximum_health)
         {
             this.Exp = exp;
             this.Level = level;
+        }
+
+        internal void UpdatePlayerLevel()
+        {
+            // player level calculator
+            throw new NotImplementedException();
         }
     }
 }
