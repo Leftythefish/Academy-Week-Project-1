@@ -57,7 +57,10 @@ namespace Engine
             Cave4.LocationToSouth = Cave2;
             Cave4.LocationToWest = null;
 
-            Monster Ogre = new Monster("Ogre", 10, ogreReward);
+            Monster Ogre = new Monster("Ogre", 10, ogreReward)
+            {
+                Damage = 10
+            };
 
             Cave4.LocationMonsters.Add(Ogre);
 
