@@ -17,6 +17,53 @@ namespace Engine
         public static string line9;
         public static string line10;
         public Window() { }
+
+        public static void EmptyGameTextFromScreen()
+        {
+            for (int i = 4; i < 14; i++)
+            {
+                Console.SetCursorPosition(3, i);
+                Console.WriteLine("                                                                                                                    ");
+            }
+        }
+        public static void InsertGameTextToScreen()
+        {
+            Console.SetCursorPosition(3, 4);
+            Console.WriteLine(line1);
+            Console.SetCursorPosition(3, 5);
+            Console.WriteLine(line2);
+            Console.SetCursorPosition(3, 6);
+            Console.WriteLine(line3);
+            Console.SetCursorPosition(3, 7);
+            Console.WriteLine(line4);
+            Console.SetCursorPosition(3, 8);
+            Console.WriteLine(line5);
+            Console.SetCursorPosition(3, 9);
+            Console.WriteLine(line6);
+            Console.SetCursorPosition(3, 10);
+            Console.WriteLine(line7);
+            Console.SetCursorPosition(3, 11);
+            Console.WriteLine(line8);
+            Console.SetCursorPosition(3, 12);
+            Console.WriteLine(line9);
+            Console.SetCursorPosition(3, 13);
+            Console.WriteLine(line10);
+            Console.SetCursorPosition(0, 29);
+        }
+
+        public static void EmptyStringData()
+        {
+            line1 = "";
+            line2 = "";
+            line3 = "";
+            line4 = "";
+            line5 = "";
+            line6 = "";
+            line7 = "";
+            line8 = "";
+            line9 = "";
+            line10 = "";
+        }
         public static void CheckWindowSize()
         {
             if (Console.WindowHeight != 30 || Console.WindowWidth != 120)
@@ -181,27 +228,6 @@ namespace Engine
                 Console.WriteLine("|");
             }
             Console.WriteLine("________________________________________________________________________________________________________________________");
-            //Game text:
-            Console.SetCursorPosition(3, 4);
-            Console.WriteLine(line1);
-            Console.SetCursorPosition(3, 5);
-            Console.WriteLine(line2);
-            Console.SetCursorPosition(3, 6);
-            Console.WriteLine(line3);
-            Console.SetCursorPosition(3, 7);
-            Console.WriteLine(line4);
-            Console.SetCursorPosition(3, 8);
-            Console.WriteLine(line5);
-            Console.SetCursorPosition(3, 9);
-            Console.WriteLine(line6);
-            Console.SetCursorPosition(3, 10);
-            Console.WriteLine(line7);
-            Console.SetCursorPosition(3, 11);
-            Console.WriteLine(line8);
-            Console.SetCursorPosition(3, 12);
-            Console.WriteLine(line9);
-            Console.SetCursorPosition(3, 13);
-            Console.WriteLine(line10);
             Console.SetCursorPosition(0, 29);
         }
         public static void UpdateHp(Player p)

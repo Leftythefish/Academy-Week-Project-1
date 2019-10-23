@@ -17,6 +17,7 @@ namespace Miniprojekti_1
             CreatePlayer(p);
             Console.SetCursorPosition(0, 29);
             Window.CreateMainScreen(p);
+            Console.SetCursorPosition(3, 4);
             Console.ReadKey();
             Window.CreateGameOverScreen();
         }
