@@ -40,12 +40,33 @@ namespace Engine
                 case "look around":
                 case "search":
                     p.Act = Player.Action.LookAround;
+                    DoPlayerAction(p);
                     break;
                 default:
                     Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
                     break;
             }
         }
+
+        private static void DoPlayerAction(Player p)
+        {
+            if (p.Act == Player.Action.LookAround)
+            {
+                //show detailed description
+                //give player hidden items
+                foreach (var item in p.CurrentLocation.LocationItems)
+                {
+                Console.WriteLine($"You found a {item.Name}!");
+
+                    foreach (Weapon weapon in p.CurrentLocation.LocationItems)
+                    {
+                     Console.WriteLine($"{item.Name} is a weapon! It has been equipped?"); //add question and possible answer
+                        p.EquippedWeapon = weapon;
+                    }
+                }
+            }
+        }
+
         public static void MoveToLocation(Player p, Location newLocation)
         {
             if (newLocation != null)
@@ -93,8 +114,8 @@ namespace Engine
                                     Console.WriteLine($"Added {item.Name} to inventory");
                                 }
                                 p.Exp += lquest.RewardXP;
+                                // update player level
                                 p.UpdatePlayerLevel();
-                                // update player level?
                             }
                             else
                             {

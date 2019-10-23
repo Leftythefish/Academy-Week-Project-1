@@ -25,6 +25,8 @@ namespace UnitTestProjectEngine
         {
             Weapon x = new Weapon("Axe", "Axes", 10);
             string expected = "Axe Axes 10";
+            Player p = new Player("Joe", 100);
+            p.Inventory.Add(x);
             string result = x.Name + " " + x.Name_Plural + " " + x.Damage;
             Assert.AreEqual(expected, result);
         }
