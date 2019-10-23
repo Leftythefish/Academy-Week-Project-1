@@ -13,5 +13,34 @@ namespace Engine
         /// Name (+name plural)
         /// etc.
         ///</summary>
+        ///
+
+        // Properties 
+
+        private readonly int id;
+        private static int nextId = 10000;
+        public int ID { get { return id; } }
+
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        private string name_plural;
+        public string Name_Plural
+        {
+            get { return name_plural; }
+            set { name_plural = value; }
+        }
+
+        //Constructors
+        public Item(string name, string name_plural)
+        {
+            id = ++nextId;
+            this.Name = name;
+            this.Name_Plural = name_plural;
+        }
     }
 }
