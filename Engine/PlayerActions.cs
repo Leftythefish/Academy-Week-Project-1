@@ -13,33 +13,33 @@ namespace Engine
         // search EVENT TRIGGER --> give item, spawn monster, do nothing
         // fighting --> hit, use potion, run away
 
-        public static void ReadInput(Player player) //deal with movement input, decide location to go to
+        public static void ReadInput(Player p) //deal with movement input, decide location to go to
         {
-            switch (player.Input)
+            switch (p.Input)
             {
                 case "go north":
                 case "n":
-                    player.M_Direction = Player.MovementDirection.North;
-                    MoveToLocation(player, player.CurrentLocation.LocationToNorth);
+                    p.M_Direction = Player.MovementDirection.North;
+                    MoveToLocation(p, p.CurrentLocation.LocationToNorth);
                     break;
                 case "go south":
                 case "s":
-                    player.M_Direction = Player.MovementDirection.South;
-                    MoveToLocation(player, player.CurrentLocation.LocationToSouth);
+                    p.M_Direction = Player.MovementDirection.South;
+                    MoveToLocation(p, p.CurrentLocation.LocationToSouth);
                     break;
                 case "go east":
                 case "e":
-                    player.M_Direction = Player.MovementDirection.East;
-                    MoveToLocation(player, player.CurrentLocation.LocationToEast);
+                    p.M_Direction = Player.MovementDirection.East;
+                    MoveToLocation(p, p.CurrentLocation.LocationToEast);
                     break;
                 case "go west":
                 case "w":
-                    player.M_Direction = Player.MovementDirection.West;
-                    MoveToLocation(player, player.CurrentLocation.LocationToWest);
+                    p.M_Direction = Player.MovementDirection.West;
+                    MoveToLocation(p, p.CurrentLocation.LocationToWest);
                     break;
                 case "look around":
                 case "search":
-                    player.Act = Player.Action.LookAround;
+                    p.Act = Player.Action.LookAround;
 
                     break;
                 default:
@@ -47,12 +47,12 @@ namespace Engine
                     break;
             }
         }
-        public static void MoveToLocation(Player player, Location newLocation)
+        public static void MoveToLocation(Player p, Location newLocation)
         {
             if (newLocation != null)
             {
-                player.CurrentLocation = player.CurrentLocation.LocationToNorth;
-                EnterNewLocation(player);
+                p.CurrentLocation = p.CurrentLocation.LocationToNorth;
+                EnterNewLocation(p);
             }
             else
             {
@@ -130,11 +130,11 @@ namespace Engine
 
         }
 
-        private static void FightMonster(Player player, Monster mon)
+        private static void FightMonster(Player p, Monster mon)
         {
-            int php = player.Cur_Health;
+            int php = p.Cur_Health;
             int mhp = mon.Cur_Health;
-            var p_weapon = player.EquippedWeapon;
+            var p_weapon = p.EquippedWeapon;
             do
             {
                 // player hits monster
@@ -143,7 +143,7 @@ namespace Engine
                 //monster hits player
                 Console.WriteLine($"The {mon.Name} hits you, doing {mon.Damage} damage.");
                 php -= mon.Damage;
-                Window.UpdateHp(player);
+                Window.UpdateHp(p);
             }
             while (php > 0 || mhp > 0);
             // check who died
@@ -160,14 +160,14 @@ namespace Engine
 
         }
 
-        public static void Search(Player player, Location cur_location)
+        public static void Search(Player p, Location cur_location)
         {
             // search for items in location
             foreach (var item in cur_location.LocationItems)
             {
             // show message with items
                 Console.WriteLine($"You find a {item.Name} and add stash it in your bag.");
-                player.Inventory.Add(item);
+                p.Inventory.Add(item);
             }
             // add items to player inventory
 
