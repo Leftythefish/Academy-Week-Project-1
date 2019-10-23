@@ -43,7 +43,12 @@ namespace Engine
                     DoPlayerAction(p);
                     break;
                 default:
-                    Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is.";
+                    Window.line2 = "Were you about to do something?";
+                    Window.line6 = "((hint: given input was not appropriate))";
+                    Window.InsertGameTextToScreen();
                     break;
             }
         }
@@ -56,13 +61,16 @@ namespace Engine
                 //give player hidden items
                 foreach (var item in p.CurrentLocation.LocationItems)
                 {
-                Console.WriteLine($"You found a {item.Name}!");
+                    int counter = 0;
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.lines[counter]= "You found a " + item.Name;
+                    Window.InsertGameTextToScreenArray();
 
-                    foreach (Weapon weapon in p.CurrentLocation.LocationItems)
-                    {
-                     Console.WriteLine($"{item.Name} is a weapon! It has been equipped?"); //add question and possible answer
-                        p.EquippedWeapon = weapon;
-                    }
+                    //foreach (Weapon weapon in p.CurrentLocation.LocationItems)
+                    //{
+                    //    p.EquippedWeapon = weapon;
+                    //}
                 }
             }
         }
@@ -76,7 +84,11 @@ namespace Engine
             }
             else
             {
-                Console.WriteLine("You cannot go that way."); //generate additional answers here? maybe location based?
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                Window.line1 = "You cannot go that way."; //generate additional answers here? maybe location based?
+                Window.InsertGameTextToScreen();
+
                 //and go back to asking for input
             }
         }
@@ -84,8 +96,11 @@ namespace Engine
         {
             var loc = p.CurrentLocation;
             //Display location name and description
-            Console.WriteLine($"You have entered {loc.Name}");
-            Console.WriteLine(loc.Description);
+            Window.EmptyGameTextFromScreen();
+            Window.EmptyStringData();
+            Window.line1 = "You have entered " + loc.Name;
+            Window.line2 = loc.Description;
+            Window.InsertGameTextToScreen();
 
             //check if the location has a quest to offer
             if (loc.LocationQuests != null) // location has a quest
@@ -111,7 +126,10 @@ namespace Engine
                                 foreach (var item in lquest.Reward_Items)
                                 {
                                     p.Inventory.Add(item);
-                                    Console.WriteLine($"Added {item.Name} to inventory");
+                                    Window.EmptyGameTextFromScreen();
+                                    Window.EmptyStringData();
+                                    Window.line1 = "Added " + item.Name + " to inventory.";                                    
+                                    Window.InsertGameTextToScreen();
                                 }
                                 p.Exp += lquest.RewardXP;
                                 // update player level
@@ -128,7 +146,10 @@ namespace Engine
                         //give the player the quest
                         p.QuestList.Add(lquest);
                         //Display message
-                        Console.WriteLine(lquest.Description);
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = lquest.Description;
+                        Window.InsertGameTextToScreen();
                     }
                 }
             }
@@ -187,7 +208,11 @@ namespace Engine
             foreach (var item in cur_location.LocationItems)
             {
                 // show message with items
-                Console.WriteLine($"You find a {item.Name} and add stash it in your bag.");
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                Window.line1 = "You search around for anything valuable.";
+                Window.line2 = "You find a " + item.Name + " and stash it in your bag.";
+                Window.InsertGameTextToScreen();
                 p.Inventory.Add(item);
             }
             // add items to player inventory

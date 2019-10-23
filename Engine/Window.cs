@@ -6,16 +6,8 @@ namespace Engine
 {
     public class Window
     {
-        public static string line1;
-        public static string line2;
-        public static string line3;
-        public static string line4;
-        public static string line5;
-        public static string line6;
-        public static string line7;
-        public static string line8;
-        public static string line9;
-        public static string line10;
+        public static string[] lines = new string [10];
+        public static string line1, line2, line3, line4, line5, line6, line7, line8, line9, line10;
         public Window() { }
 
         public static void EmptyGameTextFromScreen()
@@ -25,6 +17,9 @@ namespace Engine
                 Console.SetCursorPosition(3, i);
                 Console.WriteLine("                                                                                                                    ");
             }
+            Console.SetCursorPosition(0, 29);
+            Console.Write("                                                                                                                        ");
+
         }
         public static void InsertGameTextToScreen()
         {
@@ -51,6 +46,31 @@ namespace Engine
             Console.SetCursorPosition(0, 29);
         }
 
+        public static void InsertGameTextToScreenArray()
+        {
+            Console.SetCursorPosition(3, 4);
+            Console.WriteLine(lines[0]);
+            Console.SetCursorPosition(3, 5);
+            Console.WriteLine(lines[1]);
+            Console.SetCursorPosition(3, 6);
+            Console.WriteLine(lines[2]);
+            Console.SetCursorPosition(3, 7);
+            Console.WriteLine(lines[3]);
+            Console.SetCursorPosition(3, 8);
+            Console.WriteLine(lines[4]);
+            Console.SetCursorPosition(3, 9);
+            Console.WriteLine(lines[5]);
+            Console.SetCursorPosition(3, 10);
+            Console.WriteLine(lines[6]);
+            Console.SetCursorPosition(3, 11);
+            Console.WriteLine(lines[7]);
+            Console.SetCursorPosition(3, 12);
+            Console.WriteLine(lines[8]);
+            Console.SetCursorPosition(3, 13);
+            Console.WriteLine(lines[9]);
+            Console.SetCursorPosition(0, 29);
+        }
+
         public static void EmptyStringData()
         {
             line1 = "";
@@ -64,6 +84,8 @@ namespace Engine
             line9 = "";
             line10 = "";
         }
+
+
         public static void CheckWindowSize()
         {
             if (Console.WindowHeight != 30 || Console.WindowWidth != 120)
