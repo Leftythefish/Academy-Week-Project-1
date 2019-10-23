@@ -35,7 +35,7 @@ namespace Engine
         public Location LocationToEast;
         public Location LocationToWest;
         public Location LocationToSouth;
-     //   public string QuestCompletedDescription; //get settinä?
+        //   public string QuestCompletedDescription; //get settinä?
         //Constructors
         public Location(string name, string description)
         {

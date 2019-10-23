@@ -59,19 +59,27 @@ namespace Engine
             {
                 //show detailed description
                 //give player hidden items
-                    Window.EmptyGameTextFromScreen();
-                    Window.EmptyStringData();
-                    int counter = 0;
-                foreach (var item in p.CurrentLocation.LocationItems)
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                int counter = 2;
+                Window.lines[0] = "You search around for anything that looks like it has any value..";
+                Window.lines[1] = "You found:";
+
+                if (p.CurrentLocation.LocationItems.Count > 0)
                 {
-                    Window.lines[counter]= "You found " + item.Name;
-                    Window.InsertGameTextToScreenArray();
-                    counter = counter + 1;
-                    //foreach (Weapon weapon in p.CurrentLocation.LocationItems)
-                    //{
-                    //    p.EquippedWeapon = weapon;
-                    //}
+                    foreach (var item in p.CurrentLocation.LocationItems)
+                    {
+                        Window.lines[counter] = item.Name;
+                        Window.InsertGameTextToScreenArray();
+                        counter += 1;
+                    }
                 }
+                else
+                {
+                    Window.lines[1] = "You found nothing.";
+                    Window.InsertGameTextToScreenArray();
+                }
+
             }
         }
 
@@ -128,7 +136,7 @@ namespace Engine
                                 foreach (var item in lquest.Reward_Items) // Currently works only if one reward
                                 {
                                     p.Inventory.Add(item);
-                                    Window.line3 = "Added " + item.Name + " to inventory.";                                    
+                                    Window.line3 = "Added " + item.Name + " to inventory.";
                                     Window.InsertGameTextToScreen();
                                 }
                                 p.Exp += lquest.RewardXP;
@@ -185,24 +193,39 @@ namespace Engine
                 {
                     case "attack":
                     case "a":
-                    Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You attack the " + mon.Name + " with your " +p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
+                        Window.InsertGameTextToScreen();
                         mhp -= p_weapon.Damage;
                         break;
                     case "hit":
                     case "h":
-                        Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
+                        Window.InsertGameTextToScreen();
                         mhp -= p_weapon.Damage;
                         break;
                     case "slash":
-                        Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You slash the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
+                        Window.InsertGameTextToScreen();
                         mhp -= p_weapon.Damage;
                         break;
                     default:
-                        Console.WriteLine($"You were too slow. Next round try one of the following commands: 'slash', 'attack' or 'hit'");
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You were too slow. Next round try one of the following commands: 'slash', 'attack' or 'hit'";
+                        Window.InsertGameTextToScreen();
                         break;
                 }   // player hits monster
-                //monster hits player
-                Console.WriteLine($"The {mon.Name} hits you, doing {mon.Damage} damage.");
+                    //monster hits player
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                Window.line1 = "The " + mon.Name + " hits you, doing " + mon.Damage + " damage.";
+                Window.InsertGameTextToScreen();
                 php -= mon.Damage;
                 Window.UpdateHp(p);
             }
@@ -219,20 +242,6 @@ namespace Engine
                 //player.Inventory.Add(mon.RewardItem);
             }
         }
-        public static void Search(Player p, Location cur_location)
-        {
-            // search for items in location
-            foreach (var item in cur_location.LocationItems)
-            {
-                // show message with items
-                Window.EmptyGameTextFromScreen();
-                Window.EmptyStringData();
-                Window.line1 = "You search around for anything valuable.";
-                Window.line2 = "You find a " + item.Name + " and stash it in your bag.";
-                Window.InsertGameTextToScreen();
-                p.Inventory.Add(item);
-            }
-            // add items to player inventory
-        }
+
     }
 }

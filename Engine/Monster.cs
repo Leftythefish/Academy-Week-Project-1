@@ -40,7 +40,7 @@ namespace Engine
         {
             this.Damage = damage;
             this.Exp = exp;
-          this.RewardItem = rewardItem;
+            this.RewardItem = rewardItem;
         }
     }
 }

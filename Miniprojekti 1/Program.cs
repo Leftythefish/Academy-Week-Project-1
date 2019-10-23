@@ -6,7 +6,7 @@ namespace Miniprojekti_1
 {
     public class Program
     {
-        
+
         public static World Cave = new World();
         public static string name;
         static void Main()
@@ -37,10 +37,10 @@ namespace Miniprojekti_1
             Window.EmptyStringData();
             do
             {
-            p.Input = Console.ReadLine();
-            PlayerActions.ReadInput(p);
+                p.Input = Console.ReadLine().ToLower(); ;
+                PlayerActions.ReadInput(p);
             } while (p.Cur_Health > 0);
-            
+
         }
 
         public static Location LocationByName(string name)
