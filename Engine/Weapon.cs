@@ -16,7 +16,6 @@ namespace Engine
 
         //Properties
         private int damage; //Damage is an integer, per hit.
-
         public int Damage
         {
             get { return damage; }

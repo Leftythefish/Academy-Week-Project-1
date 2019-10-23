@@ -16,10 +16,7 @@ namespace Engine
         public static string line8;
         public static string line9;
         public static string line10;
-        public Window()
-        { }
-
-
+        public Window() { }
         public static void CheckWindowSize()
         {
             if (Console.WindowHeight != 30 || Console.WindowWidth != 120)
@@ -27,7 +24,6 @@ namespace Engine
                 Console.SetWindowSize(120, 30);
             }
         }
-
         public static void CreateOpeningScreen()
         {
             CheckWindowSize();
@@ -80,7 +76,6 @@ namespace Engine
             Console.SetCursorPosition(46, 25);
             Console.WriteLine("                                  ");
         }
-        
         public static void CreateGameOverScreen()
         {
             CheckWindowSize();
@@ -133,7 +128,7 @@ namespace Engine
             switch (input.Key)
             {
                 case ConsoleKey.Escape:
-                    
+
                     break;
 
             }
@@ -205,7 +200,6 @@ namespace Engine
             Console.WriteLine(line10);
             Console.SetCursorPosition(0, 29);
         }
-        
         public static void UpdateHp(Player p)
         {
             Console.SetCursorPosition(36, 1);
@@ -213,7 +207,6 @@ namespace Engine
             Console.SetCursorPosition(36, 1);
             Console.WriteLine($"HP: {p.Cur_Health}/{p.Max_Health}");
         }
-
         public static void UpdateExp(Player p)
         {
             Console.SetCursorPosition(90, 1);
@@ -221,7 +214,6 @@ namespace Engine
             Console.SetCursorPosition(90, 1);
             Console.WriteLine($"EXP: {p.Exp}/100");
         }
-
         public static void UpdateLvl(Player p)
         {
             Console.SetCursorPosition(61, 1);

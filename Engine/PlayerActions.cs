@@ -40,7 +40,6 @@ namespace Engine
                 case "look around":
                 case "search":
                     p.Act = Player.Action.LookAround;
-
                     break;
                 default:
                     Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
@@ -112,7 +111,6 @@ namespace Engine
                     }
                 }
             }
-
             //check if the location has a monster to fight
             if (loc.LocationMonsters != null) //here there be monsters
             {
@@ -129,7 +127,6 @@ namespace Engine
             }
 
         }
-
         private static void FightMonster(Player p, Monster mon)
         {
             int php = p.Cur_Health;
@@ -157,20 +154,17 @@ namespace Engine
                 Console.WriteLine($"You collect the mon.RewardItem");
                 //player.Inventory.Add(mon.RewardItem);
             }
-
         }
-
         public static void Search(Player p, Location cur_location)
         {
             // search for items in location
             foreach (var item in cur_location.LocationItems)
             {
-            // show message with items
+                // show message with items
                 Console.WriteLine($"You find a {item.Name} and add stash it in your bag.");
                 p.Inventory.Add(item);
             }
             // add items to player inventory
-
         }
     }
 }

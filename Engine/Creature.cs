@@ -45,9 +45,9 @@ namespace Engine
             this.Cur_Health = maximum_health;
         }
 
-        public Creature() 
+        public Creature()
         {
-        
+
         }
     }
 }
