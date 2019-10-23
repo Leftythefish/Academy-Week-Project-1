@@ -13,42 +13,45 @@ namespace Engine
         // search EVENT TRIGGER --> give item, spawn monster, do nothing
         // fighting --> hit, use potion, run away
 
-
-        public static void ReadInput(Player player) //deal with movement input, decide location to go to
+        public static void ReadInput(Player p) //deal with movement input, decide location to go to
         {
-            switch (player.Input)
+            switch (p.Input)
             {
                 case "go north":
                 case "n":
-                    player.M_Direction = Player.MovementDirection.North;
-                    MoveToLocation(player, player.CurrentLocation.LocationToNorth);
+                    p.M_Direction = Player.MovementDirection.North;
+                    MoveToLocation(p, p.CurrentLocation.LocationToNorth);
                     break;
                 case "go south":
                 case "s":
-                    player.M_Direction = Player.MovementDirection.South;
-                    MoveToLocation(player, player.CurrentLocation.LocationToSouth);
+                    p.M_Direction = Player.MovementDirection.South;
+                    MoveToLocation(p, p.CurrentLocation.LocationToSouth);
                     break;
                 case "go east":
                 case "e":
-                    player.M_Direction = Player.MovementDirection.East;
-                    MoveToLocation(player, player.CurrentLocation.LocationToEast);
+                    p.M_Direction = Player.MovementDirection.East;
+                    MoveToLocation(p, p.CurrentLocation.LocationToEast);
                     break;
                 case "go west":
                 case "w":
-                    player.M_Direction = Player.MovementDirection.West;
-                    MoveToLocation(player, player.CurrentLocation.LocationToWest);
+                    p.M_Direction = Player.MovementDirection.West;
+                    MoveToLocation(p, p.CurrentLocation.LocationToWest);
+                    break;
+                case "look around":
+                case "search":
+                    p.Act = Player.Action.LookAround;
                     break;
                 default:
                     Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
                     break;
             }
         }
-        public static void MoveToLocation(Player player, Location newLocation)
+        public static void MoveToLocation(Player p, Location newLocation)
         {
             if (newLocation != null)
             {
-                player.CurrentLocation = player.CurrentLocation.LocationToNorth;
-                EnterNewLocation(player);
+                p.CurrentLocation = p.CurrentLocation.LocationToNorth;
+                EnterNewLocation(p);
             }
             else
             {
@@ -89,8 +92,8 @@ namespace Engine
                                     p.Inventory.Add(item);
                                     Console.WriteLine($"Added {item.Name} to inventory");
                                 }
-                                p.Exp = p.Exp + lquest.RewardXP;
-                                p.UpdatePlayerLevel(p);
+                                p.Exp += lquest.RewardXP;
+                                p.UpdatePlayerLevel();
                                 // update player level?
                             }
                             else
@@ -108,14 +111,14 @@ namespace Engine
                     }
                 }
             }
-
             //check if the location has a monster to fight
             if (loc.LocationMonsters != null) //here there be monsters
             {
                 foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
                 {
                     //displaymessage
-                    //fightmonster
+                    //fightmonster'
+                    FightMonster(p, mon);
                 }
             }
             else
@@ -124,6 +127,44 @@ namespace Engine
             }
 
         }
-
+        private static void FightMonster(Player p, Monster mon)
+        {
+            int php = p.Cur_Health;
+            int mhp = mon.Cur_Health;
+            var p_weapon = p.EquippedWeapon;
+            do
+            {
+                // player hits monster
+                Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                mhp -= p_weapon.Damage;
+                //monster hits player
+                Console.WriteLine($"The {mon.Name} hits you, doing {mon.Damage} damage.");
+                php -= mon.Damage;
+                Window.UpdateHp(p);
+            }
+            while (php > 0 || mhp > 0);
+            // check who died
+            if (php <= 0)
+            {
+                Console.WriteLine("You died. Game over.");
+            }
+            else
+            {
+                Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
+                Console.WriteLine($"You collect the mon.RewardItem");
+                //player.Inventory.Add(mon.RewardItem);
+            }
+        }
+        public static void Search(Player p, Location cur_location)
+        {
+            // search for items in location
+            foreach (var item in cur_location.LocationItems)
+            {
+                // show message with items
+                Console.WriteLine($"You find a {item.Name} and add stash it in your bag.");
+                p.Inventory.Add(item);
+            }
+            // add items to player inventory
+        }
     }
 }
