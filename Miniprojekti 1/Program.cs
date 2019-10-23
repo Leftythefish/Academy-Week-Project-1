@@ -13,11 +13,11 @@ namespace Miniprojekti_1
             /// Main UI and it's components
             ///</summary>
             Player p = new Player();
+
             Window.CreateOpeningScreen();
             CreatePlayer(p);
             Console.SetCursorPosition(0, 29);
             Window.CreateMainScreen(p);
-            Console.SetCursorPosition(3, 4);
             Console.ReadKey();
             Window.CreateGameOverScreen();
         }
