@@ -61,6 +61,9 @@ namespace Engine
             this.Level = level;
         }
 
+        public Player()
+        { }
+
         internal void UpdatePlayerLevel()
         {
             // player level calculator
