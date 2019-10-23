@@ -73,6 +73,71 @@ namespace Engine
             Console.WriteLine(@"\_______  /\___  /|__|    \___  > |____|__ \__|____/____/\___  >__|   ");
             Console.SetCursorPosition(26, 15);
             Console.WriteLine(@"        \//_____/             \/          \/                 \/       ");
+            Console.SetCursorPosition(46, 25);
+            Console.WriteLine("Press any key to start game.");
+            Console.SetCursorPosition(0, 29);
+            Console.ReadKey();
+            Console.SetCursorPosition(46, 25);
+            Console.WriteLine("                                  ");
+        }
+        
+        public static void CreateGameOverScreen()
+        {
+            CheckWindowSize();
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 1);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 27);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine("|");
+            }
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(119, i);
+                Console.WriteLine("|");
+            }
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(1, i);
+                Console.WriteLine("|");
+            }
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(118, i);
+                Console.WriteLine("|");
+            }
+            Console.SetCursorPosition(28, 10);
+            Console.WriteLine(@"  ________                                                  ");
+            Console.SetCursorPosition(28, 11);
+            Console.WriteLine(@" /  _____/_____    _____   ____     _______  __ ___________ ");
+            Console.SetCursorPosition(28, 12);
+            Console.WriteLine(@"/   \  ___\__  \  /     \_/ __ \   /  _ \  \/ // __ \_  __ \");
+            Console.SetCursorPosition(28, 13);
+            Console.WriteLine(@"\    \_\  \/ __ \|  Y Y  \  ___/  (  <_> )   /\  ___/|  | \/");
+            Console.SetCursorPosition(28, 14);
+            Console.WriteLine(@" \______  (____  /__|_|  /\___  >  \____/ \_/  \___  >__|  )");
+            Console.SetCursorPosition(28, 15);
+            Console.WriteLine(@"        \/     \/      \/     \/                   \/       ");
+            Console.SetCursorPosition(38, 25);
+            Console.WriteLine("Press ENTER to start again or ESC to exit.");
+            Console.SetCursorPosition(0, 29);
+            var input = Console.ReadKey(true);
+            switch (input.Key)
+            {
+                case ConsoleKey.Escape:
+                    
+                    break;
+
+            }
+            Console.ReadLine();
         }
         public static void CreateMainScreen(Player p)
         {
@@ -84,7 +149,7 @@ namespace Engine
             Console.SetCursorPosition(36, 1);
             Console.WriteLine($"HP: {p.Cur_Health}/{p.Max_Health}");
             Console.SetCursorPosition(61, 1);
-            Console.WriteLine("LVL: 1");
+            Console.WriteLine($"LVL: {p.Level}");
             Console.SetCursorPosition(90, 1);
             Console.WriteLine($"EXP: {p.Exp}/100");
             Console.WriteLine("________________________________________________________________________________________________________________________");
@@ -118,8 +183,6 @@ namespace Engine
             }
             Console.WriteLine("________________________________________________________________________________________________________________________");
             //Game text:
-            line1 = "Far away a stream twirled through the ravine, filling me with merriment";
-            line10 = "Behind me a path weaved through the stream, filling me with reflections";
             Console.SetCursorPosition(3, 4);
             Console.WriteLine(line1);
             Console.SetCursorPosition(3, 5);
@@ -141,20 +204,30 @@ namespace Engine
             Console.SetCursorPosition(3, 13);
             Console.WriteLine(line10);
             Console.SetCursorPosition(0, 29);
-            Console.ReadLine();
         }
         
         public static void UpdateHp(Player p)
         {
             Console.SetCursorPosition(36, 1);
-            Console.WriteLine("HP:     ");
+            Console.WriteLine("        ");
             Console.SetCursorPosition(36, 1);
             Console.WriteLine($"HP: {p.Cur_Health}/{p.Max_Health}");
         }
 
-        public static void UpdateExp()
+        public static void UpdateExp(Player p)
         {
+            Console.SetCursorPosition(90, 1);
+            Console.WriteLine("                          ");
+            Console.SetCursorPosition(90, 1);
+            Console.WriteLine($"EXP: {p.Exp}/100");
+        }
 
+        public static void UpdateLvl(Player p)
+        {
+            Console.SetCursorPosition(61, 1);
+            Console.WriteLine("                         ");
+            Console.SetCursorPosition(61, 1);
+            Console.WriteLine($"LVL: {p.Level}");
         }
     }
 }

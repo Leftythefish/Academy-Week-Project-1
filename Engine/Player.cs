@@ -63,8 +63,7 @@ namespace Engine
 
         public Player()
         { }
-
-        internal void UpdatePlayerLevel()
+        internal void UpdatePlayerLevel(Player p)
         {
             // player level calculator
             // check player experience
@@ -72,7 +71,9 @@ namespace Engine
             {
                 this.Level = this.Level++;
                 this.Exp = this.Exp - 100;
+                Window.UpdateLvl(p);
             }
+            // method to update lvl on the screen
             // if player experience is above 100, increase player level, remove 100 points from player exp            
         }
     }
