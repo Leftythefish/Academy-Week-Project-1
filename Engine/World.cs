@@ -18,13 +18,32 @@ namespace Engine
 
         public void CreateWorlds()
         {
+            #region Location
             Location Cave1 = new Location("Dark Cave");
             Location Cave2 = new Location("Dark Cave Tunnels");
             Location Cave3 = new Location("Pleasant Cave Room");
             Location Cave4 = new Location("Ogre Cave");
             Location Cave5 = new Location("Dungeon Entrance");
-            //"You came to a room which splits into multiple tunnels. There is a large door blocking the way to . The pathway to west tunnel seems to be used a lot"
+            #endregion
 
+            #region Items
+            Weapon Axe = new Weapon("Axe", "Axes", 5);
+            Potion HealPot = new Potion("healing potion", "healing potions", 20);
+            Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
+            #endregion
+
+            #region Quests
+            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement);
+            OgreQuest.CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + "to the man. The monster has been slain!";
+            #endregion
+
+            #region Monsters
+            Monster Ogre = new Monster("Ogre", 10, OgreQuestCompleteRequirement);
+            Ogre.Damage = 10;
+            Ogre.MonsterLoot.Add(HealPot);
+            #endregion
+
+            #region LocationSpecifics
             Cave1.LocationToNorth = Cave2;
             Cave1.LocationToEast = null;
             Cave1.LocationToSouth = null;
@@ -50,16 +69,10 @@ namespace Engine
             Cave3.Info.Add(Cave3.Description = "There is a bonfire in the middle of the room creating warmth and light around it.");
             Cave3.Info.Add(Cave3.Description2 = "A small humanoid creature sits in front of the bonfire.");
 
-            //Cave3.Description3 = "He tells you to go slay the nearby Ogre";
-            Weapon Axe = new Weapon("axe", "axes", 5);
-            Potion HealPot = new Potion("healing potion", "healing potions", 20);
             Cave3.LocationItems.Add(HealPot);
             Cave3.LocationItems.Add(Axe);
-            Item ogreReward = new Item("Bloody Ogre head", "Bloody Ogre heads");
-            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, ogreReward);
-            OgreQuest.CompletionMessage = "You return the " + ogreReward.Name + "to the man. The monster has been slain!";
             Cave3.LocationQuests.Add(OgreQuest);
-
+           
             Cave4.LocationToNorth = null;
             Cave4.LocationToEast = null;
             Cave4.LocationToSouth = Cave2;
@@ -67,12 +80,6 @@ namespace Engine
             Cave4.Info.Add(Cave4.Description = "An unpleasant smell welcomes you as you enter the room.");
             Cave4.Info.Add(Cave4.Description2 = "The floor is filled with bones and rusty weapons.");
             Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
-
-            Monster Ogre = new Monster("Ogre", 10, ogreReward)
-            {
-                Damage = 10
-            };
-
             Cave4.LocationMonsters.Add(Ogre);
 
             Cave5.LocationToNorth = null;
@@ -80,12 +87,21 @@ namespace Engine
             Cave5.LocationToSouth = null;
             Cave5.LocationToWest = Cave2;
             Cave5.Description = "Torches on the wall light up the room. You see some cages hanging from the cave roof housing the remains of their last prisoners";
+            #endregion
 
+
+            #region AddToWorld
             WorldList.Add(Cave1);
             WorldList.Add(Cave2);
             WorldList.Add(Cave3);
             WorldList.Add(Cave4);
             WorldList.Add(Cave5);
+            #endregion
+
+
+
+
+
 
 
         }

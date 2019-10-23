@@ -165,7 +165,7 @@ namespace Engine
                 else //monster health below 0
                 {
                     Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
-                    Console.WriteLine($"You collect the {mon.RewardItem}.");
+                    Console.WriteLine($"You collect the {mon.QuestItem}.");
                     return;
                     //player.Inventory.Add(mon.RewardItem);
                 }
