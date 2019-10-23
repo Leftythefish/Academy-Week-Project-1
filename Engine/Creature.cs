@@ -37,7 +37,7 @@ namespace Engine
             get { return max_health; }
             set { max_health = value; }
         }
-               
+
         public Creature(string name, int maximum_health)
         {
             this.Name = name;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine
 {
-    class Monster : Creature
+    public class Monster : Creature
     {
         ///<summary>
         ///--Ria--
@@ -19,25 +19,25 @@ namespace Engine
         /// Reward items **
         ///</summary>
 
-        private int Damage;
+        private int damage;
 
-        public int damage
+        public int Damage
         {
             get { return damage; }
             set { damage = value; }
         }
 
-        private int Exp;
+        private int exp;
 
-        public int exp
+        public int Exp
         {
             get { return exp; }
             set { exp = value; }
         }
 
-        private int Items;
+        private int items;
 
-        public int items
+        public int Items
         {
             get { return items; }
             set { items = value; }

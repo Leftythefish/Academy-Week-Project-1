@@ -29,7 +29,7 @@ namespace Engine
         }
 
         private string name_plural;
-        public string  Name_Plural
+        public string Name_Plural
         {
             get { return name_plural; }
             set { name_plural = value; }

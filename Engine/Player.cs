@@ -15,7 +15,7 @@ namespace Engine
         /// Items in inventory <List>
         /// Quests in progress <List>
         ///</summary>
-        
+
         private int level; //Player level
 
         public int Level
@@ -25,15 +25,35 @@ namespace Engine
         }
 
         private int exp; //Player Experience
-
         public int Exp
         {
             get { return exp; }
             set { exp = value; }
         }
 
+        private Location currentLocation;
+        public Location CurrentLocation { get => currentLocation; set => currentLocation = value; }
+
         public List<Item> Inventory = new List<Item>();
         public List<Quest> QuestList = new List<Quest>();
+
+        public string Input;
+        public enum MovementDirection
+        {
+            North,
+            East,
+            South,
+            West,
+        }
+
+        public MovementDirection M_Direction;
+
+        public enum Action
+        {
+            LookAround,
+            Fight,
+
+        }
 
         public Player(string name, int maximum_health) : base(name, maximum_health)
         {
@@ -41,6 +61,16 @@ namespace Engine
             this.Level = level;
         }
 
-        public Player() : base() { }
+        internal void UpdatePlayerLevel()
+        {
+            // player level calculator
+            // check player experience
+            if (this.Exp > 100)
+            {
+                this.Level = this.Level++;
+                this.Exp = this.Exp - 100;
+            }
+            // if player experience is above 100, increase player level, remove 100 points from player exp            
+        }
     }
 }
