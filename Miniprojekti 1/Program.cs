@@ -42,7 +42,6 @@ namespace Miniprojekti_1
             
         }
 
-
         public static Location LocationByName(string name)
         {
             foreach (Location location in Cave.WorldList)
@@ -54,21 +53,19 @@ namespace Miniprojekti_1
             }
             return null;
         }
-
-        static void CreatePlayer(Player p)
-        {
-            CheckInput();
-            //Player p = new Player(name, 100);
-            p.Name = name;
-            p.Max_Health = 100;
-            p.Cur_Health = 100;
-        }
-        static string CheckInput()
+        public static void CreatePlayer(Player p)
         {
             Console.SetCursorPosition(51, 25);
             Console.WriteLine("Enter your name.");
             Console.SetCursorPosition(0, 29);
             string input = Console.ReadLine();
+            CheckInput(input);
+            p.Name = name;
+            p.Max_Health = 100;
+            p.Cur_Health = 100;
+        }
+        public static string CheckInput(string input)
+        {
             if (input.Length < 26)
             {
                 name = input;
@@ -78,12 +75,16 @@ namespace Miniprojekti_1
             {
                 name = "";
                 Console.SetCursorPosition(45, 26);
-                Console.WriteLine("Please enter a shorter name!");
+                Console.Write("Please enter a shorter name!");
                 Console.SetCursorPosition(0, 29);
-                Console.WriteLine("                                                                                                                        ");
-                CheckInput();
+                Console.Write("                                                                                                                        ");
+                Console.SetCursorPosition(0, 29);
+                string temp = Console.ReadLine();
+                CheckInput(temp);
                 return name;
             }
         }
     }
 }
+
+
