@@ -34,8 +34,12 @@ namespace Engine
         private Location currentLocation;
         public Location CurrentLocation { get => currentLocation; set => currentLocation = value; }
 
+        private Weapon equippedWeapon;
+        public Weapon EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
+
         public List<Item> Inventory = new List<Item>();
         public List<Quest> QuestList = new List<Quest>();
+
 
         public string Input;
         public enum MovementDirection
@@ -48,6 +52,7 @@ namespace Engine
 
         public MovementDirection M_Direction;
 
+        public Action Act;
         public enum Action
         {
             LookAround,
@@ -71,7 +76,8 @@ namespace Engine
             if (this.Exp > 100)
             {
                 this.Level = this.Level++;
-                this.Exp = this.Exp - 100;
+                this.Exp -= 100;
+                Console.WriteLine("Yay, you gained a level!");
             }
             // if player experience is above 100, increase player level, remove 100 points from player exp            
         }
