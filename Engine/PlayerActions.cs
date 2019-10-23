@@ -120,7 +120,7 @@ namespace Engine
                 {
                     //displaymessage
                     //fightmonster'
-                    FightMonster(player, mon);
+                    FightMonster(p, mon);
                 }
             }
             else
