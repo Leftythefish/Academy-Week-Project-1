@@ -92,8 +92,8 @@ namespace Engine
                                     p.Inventory.Add(item);
                                     Console.WriteLine($"Added {item.Name} to inventory");
                                 }
-                                p.Exp = p.Exp + lquest.RewardXP;
-                                p.UpdatePlayerLevel(p);
+                                p.Exp += lquest.RewardXP;
+                                p.UpdatePlayerLevel();
                                 // update player level?
                             }
                             else

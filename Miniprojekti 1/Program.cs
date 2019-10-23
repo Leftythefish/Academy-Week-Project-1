@@ -6,7 +6,7 @@ namespace Miniprojekti_1
     class Program
     {
         public static string name;
-        static void Main(string[] args)
+        static void Main()
         {
             ///<summary>
             ///--Jesse--

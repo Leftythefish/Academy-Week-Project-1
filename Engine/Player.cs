@@ -39,7 +39,7 @@ namespace Engine
             this.Exp = Exp;
             this.Level = Level;
         }
-        internal void UpdatePlayerLevel(Player p)
+        internal void UpdatePlayerLevel()
         {
             // player level calculator
             // check player experience
