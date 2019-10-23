@@ -24,7 +24,7 @@ namespace Engine
         Location Cave2 = new Location("Dark Cave Tunnels", "You came to a room which splits into multiple tunnels. There is a large door with omnious carvings about hellish monsters blocking the way to east. From the north tunnel comes loud growling noises. The pathway to west tunnel seems to be used a lot" );
         Location Cave3 = new Location("Pleasant Cave Room", "There is a bonfire in the middle of the room creating warmth and light around it. Small humanoid creature sits infront of the bonfire. He tells you to go slay nearby Ogre");
         Location Cave4 = new Location("Ogre Cave", "Unpleasant smell welcomes you as you enter the room. The floor is filled with bones and rusty weapons. You see a big and bulky creature in the room");
-        Location Cave5 = new Location("Dungeon Entrance", "Torches on the wall lights up the room. You see some cages hanging from the cave roof housing the remains of their last prisoners");
+        Location Cave5 = new Location("Dungeon Entrance", "Torches on the wall lights up the room. You see some cages hanging from the cave roof housing the remains of their last prisoners.");
             //"You came to a room which splits into multiple tunnels. There is a large door blocking the way to . The pathway to west tunnel seems to be used a lot"
             Weapon Axe = new Weapon("axe", "axes", 5);
             Potion HealPot = new Potion("healing potion", "healing potions", 20);
@@ -57,7 +57,10 @@ namespace Engine
             Cave4.LocationToSouth = Cave2;
             Cave4.LocationToWest = null;
 
-            Monster Ogre = new Monster("Ogre", 10, ogreReward);
+            Monster Ogre = new Monster("Ogre", 10, ogreReward)
+            {
+                Damage = 10
+            };
 
             Cave4.LocationMonsters.Add(Ogre);
 

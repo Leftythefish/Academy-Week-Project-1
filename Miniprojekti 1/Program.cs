@@ -64,6 +64,8 @@ namespace Miniprojekti_1
             p.Name = name;
             p.Max_Health = 100;
             p.Cur_Health = 100;
+            Weapon Fists = new Weapon("Fist", "Fists", 2); // Jyri lisäsi, toivottavasti ei tuhoudu kaikki
+            p.EquippedWeapon = Fists;
         }
         public static string CheckInput(string input)
         {
