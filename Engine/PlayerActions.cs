@@ -13,6 +13,7 @@ namespace Engine
         // search EVENT TRIGGER --> give item, spawn monster, do nothing
         // fighting --> hit, use potion, run away
 
+
         public static void ReadInput(Player player) //deal with movement input, decide location to go to
         {
             switch (player.Input)
@@ -36,11 +37,6 @@ namespace Engine
                 case "w":
                     player.M_Direction = Player.MovementDirection.West;
                     MoveToLocation(player, player.CurrentLocation.LocationToWest);
-                    break;
-                case "look around":
-                case "search":
-                    player.Act = Player.Action.LookAround;
-
                     break;
                 default:
                     Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
@@ -93,7 +89,7 @@ namespace Engine
                                     player.Inventory.Add(item);
                                     Console.WriteLine($"Added {item.Name} to inventory");
                                 }
-                                player.Exp += lquest.RewardXP;
+                                player.Exp = player.Exp + lquest.RewardXP;
                                 player.UpdatePlayerLevel();
                                 // update player level?
                             }
@@ -119,8 +115,7 @@ namespace Engine
                 foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
                 {
                     //displaymessage
-                    //fightmonster'
-                    FightMonster(player, mon);
+                    //fightmonster
                 }
             }
             else
@@ -130,47 +125,5 @@ namespace Engine
 
         }
 
-        private static void FightMonster(Player player, Monster mon)
-        {
-            int php = player.Cur_Health;
-            int mhp = mon.Cur_Health;
-            var p_weapon = player.EquippedWeapon;
-            do
-            {
-                // player hits monster
-                Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
-                mhp -= p_weapon.Damage;
-                //monster hits player
-                Console.WriteLine($"The {mon.Name} hits you, doing {mon.Damage} damage.");
-                php -= mon.Damage;
-                Window.UpdateHp(player);
-            }
-            while (php > 0 || mhp > 0);
-            // check who died
-            if (php <= 0)
-            {
-                Console.WriteLine("You died. Game over.");
-            }
-            else
-            {
-                Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
-                Console.WriteLine($"You collect the mon.RewardItem");
-                //player.Inventory.Add(mon.RewardItem);
-            }
-
-        }
-
-        public static void Search(Player player, Location cur_location)
-        {
-            // search for items in location
-            foreach (var item in cur_location.LocationItems)
-            {
-            // show message with items
-                Console.WriteLine($"You find a {item.Name} and add stash it in your bag.");
-                player.Inventory.Add(item);
-            }
-            // add items to player inventory
-
-        }
     }
 }
