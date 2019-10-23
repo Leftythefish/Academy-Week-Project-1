@@ -16,7 +16,6 @@ namespace Engine
 
         public static void ReadInput(Player player) //deal with movement input, decide location to go to
         {
-
             switch (player.Input)
             {
                 case "go north":
@@ -43,7 +42,6 @@ namespace Engine
                     Console.WriteLine("You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is. Were you about to do something? ((hint: given input was not appropriate))");
                     break;
             }
-
         }
         public static void MoveToLocation(Player player, Location newLocation)
         {
@@ -58,7 +56,6 @@ namespace Engine
                 //and go back to asking for input
             }
         }
-
         public static void EnterNewLocation(Player player)
         {
             var loc = player.CurrentLocation;
@@ -110,7 +107,6 @@ namespace Engine
                         Console.WriteLine(lquest.Description);
                     }
                 }
-
             }
 
             //check if the location has a monster to fight

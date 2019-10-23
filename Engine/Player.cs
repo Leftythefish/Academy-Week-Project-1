@@ -25,7 +25,6 @@ namespace Engine
         }
 
         private int exp; //Player Experience
-
         public int Exp
         {
             get { return exp; }
@@ -56,7 +55,6 @@ namespace Engine
 
         }
 
-
         public Player(string name, int maximum_health) : base(name, maximum_health)
         {
             this.Exp = exp;
@@ -66,7 +64,13 @@ namespace Engine
         internal void UpdatePlayerLevel()
         {
             // player level calculator
-            throw new NotImplementedException();
+            // check player experience
+            if (this.Exp > 100)
+            {
+                this.Level = this.Level++;
+                this.Exp = this.Exp - 100;
+            }
+            // if player experience is above 100, increase player level, remove 100 points from player exp            
         }
     }
 }
