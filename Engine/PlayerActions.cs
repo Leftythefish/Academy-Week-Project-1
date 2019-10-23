@@ -71,7 +71,7 @@ namespace Engine
         {
             if (newLocation != null)
             {
-                p.CurrentLocation = p.CurrentLocation.LocationToNorth;
+                p.CurrentLocation = newLocation;
                 EnterNewLocation(p);
             }
             else
@@ -153,6 +153,11 @@ namespace Engine
             int php = p.Cur_Health;
             int mhp = mon.Cur_Health;
             var p_weapon = p.EquippedWeapon;
+            if (p_weapon == null)
+            {
+                // DO SOMETHING NO WEAPON
+                Window.CreateGameOverScreen();
+            }
             do
             {
                 // player hits monster

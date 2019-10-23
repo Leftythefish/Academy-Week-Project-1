@@ -6,19 +6,17 @@ namespace Engine
 {
     public class World
     {
-        ///<summary>
-        ///--Jyri--
-        /// All data related to the world and what is in it
-        /// Static because we only have one world, which has different locations
-        /// So all locations and their details go here
-        ///</summary>
-        ///
+        public List<Location> WorldList = new List<Location>();
+
+        public Location WorldLocation { get; set; }
+
+        public World() { }
 
         //    public List<Quest> Cave3Quests = new List<Quest>();
-            //public List<Item> Cave3Items = new List<Item>();
-           
-            //public List<Monster> Cave4Monster = new List<Monster>();
-     
+        //public List<Item> Cave3Items = new List<Item>();
+
+        //public List<Monster> Cave4Monster = new List<Monster>();
+
         public void CreateWorlds()
         {
 
@@ -72,9 +70,18 @@ namespace Engine
             Cave5.LocationToEast = null;
             Cave5.LocationToSouth = null;
             Cave5.LocationToWest = Cave2;
-        }
+
+            WorldList.Add(Cave1);
+            WorldList.Add(Cave2);
+            WorldList.Add(Cave3);
+            WorldList.Add(Cave4);
+            WorldList.Add(Cave5);
+
 
         }
+
+
+    }
         
     }
  
