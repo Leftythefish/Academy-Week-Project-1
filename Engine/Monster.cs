@@ -34,21 +34,13 @@ namespace Engine
             get { return exp; }
             set { exp = value; }
         }
+        public Item RewardItem { get; set; }
 
-        private int Items;
-
-        public int items
-        {
-            get { return items; }
-            set { items = value; }
-        }
-
-
-        public Monster(string name, int maximum_health) : base(name, maximum_health)
+        public Monster(string name, int maximum_health, Item rewardItem) : base(name, maximum_health)
         {
             this.Damage = damage;
             this.Exp = exp;
-            this.Items = items;
+          this.RewardItem = rewardItem;
         }
     }
 }
