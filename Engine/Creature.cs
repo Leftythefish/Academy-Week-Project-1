@@ -20,18 +20,7 @@ namespace Engine
         {
             get { return name; }
             set
-            {
-                if (value.Length > 26)
-                {
-                    Console.SetCursorPosition(3, 4);
-                    Console.WriteLine("Please enter a shorter name!");
-                    Console.SetCursorPosition(0, 29);
-                }
-                else
-                {
-                    name = value;
-                }
-            }
+            { name = value; }
         }
 
         private int cur_health;
@@ -54,6 +43,11 @@ namespace Engine
             this.Name = name;
             this.Max_Health = maximum_health;
             this.Cur_Health = maximum_health;
+        }
+
+        public Creature() 
+        {
+        
         }
     }
 }

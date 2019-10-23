@@ -40,5 +40,7 @@ namespace Engine
             this.Exp = exp;
             this.Level = level;
         }
+
+        public Player() : base() { }
     }
 }

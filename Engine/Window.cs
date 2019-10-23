@@ -6,6 +6,16 @@ namespace Engine
 {
     public class Window
     {
+        public static string line1;
+        public static string line2;
+        public static string line3;
+        public static string line4;
+        public static string line5;
+        public static string line6;
+        public static string line7;
+        public static string line8;
+        public static string line9;
+        public static string line10;
         public Window()
         { }
 
@@ -66,6 +76,7 @@ namespace Engine
         }
         public static void CreateMainScreen(Player p)
         {
+            Console.Clear();
             CheckWindowSize();
             Console.WriteLine(" ______________________________________________________________________________________________________________________");
             Console.SetCursorPosition(2, 1);
@@ -107,13 +118,43 @@ namespace Engine
             }
             Console.WriteLine("________________________________________________________________________________________________________________________");
             //Game text:
+            line1 = "Far away a stream twirled through the ravine, filling me with merriment";
+            line10 = "Behind me a path weaved through the stream, filling me with reflections";
             Console.SetCursorPosition(3, 4);
-            Console.WriteLine("Beyond the stone wall a path twined through the brookBeyond the stone wall a path twined through the brook Beyond \n");
+            Console.WriteLine(line1);
             Console.SetCursorPosition(3, 5);
-            Console.WriteLine("Beyond the stone wall a path twined through the brook");
+            Console.WriteLine(line2);
+            Console.SetCursorPosition(3, 6);
+            Console.WriteLine(line3);
+            Console.SetCursorPosition(3, 7);
+            Console.WriteLine(line4);
+            Console.SetCursorPosition(3, 8);
+            Console.WriteLine(line5);
+            Console.SetCursorPosition(3, 9);
+            Console.WriteLine(line6);
+            Console.SetCursorPosition(3, 10);
+            Console.WriteLine(line7);
+            Console.SetCursorPosition(3, 11);
+            Console.WriteLine(line8);
+            Console.SetCursorPosition(3, 12);
+            Console.WriteLine(line9);
+            Console.SetCursorPosition(3, 13);
+            Console.WriteLine(line10);
             Console.SetCursorPosition(0, 29);
             Console.ReadLine();
-            Console.Clear();
+        }
+        
+        public static void UpdateHp(Player p)
+        {
+            Console.SetCursorPosition(36, 1);
+            Console.WriteLine("HP:     ");
+            Console.SetCursorPosition(36, 1);
+            Console.WriteLine($"HP: {p.Cur_Health}/{p.Max_Health}");
+        }
+
+        public static void UpdateExp()
+        {
+
         }
     }
 }
