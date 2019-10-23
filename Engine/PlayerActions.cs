@@ -56,9 +56,9 @@ namespace Engine
                 //and go back to asking for input
             }
         }
-        public static void EnterNewLocation(Player player)
+        public static void EnterNewLocation(Player p)
         {
-            var loc = player.CurrentLocation;
+            var loc = p.CurrentLocation;
             //Display location name and description
             Console.WriteLine($"You have entered {loc.Name}");
             Console.WriteLine(loc.Description);
@@ -69,7 +69,7 @@ namespace Engine
                 foreach (var lquest in loc.LocationQuests)
                 {
                     //does the player already have the quest?
-                    if (player.QuestList.Contains(lquest)) //player has the quest
+                    if (p.QuestList.Contains(lquest)) //player has the quest
                     {
                         if (lquest.QuestCompleted == true) //player has the quest and it is completed
                         {
@@ -77,20 +77,20 @@ namespace Engine
                         }
                         else //player has quest and it is not marked as complete
                         {
-                            if (player.Inventory.Contains(lquest.CompletionRequirement)) //does player inventory contain the required completion item?
+                            if (p.Inventory.Contains(lquest.CompletionRequirement)) //does player inventory contain the required completion item?
                             {
                                 //set quest completion status as complete and remove quest inventory item
                                 lquest.QuestCompleted = true;
-                                player.Inventory.Remove(lquest.CompletionRequirement);
+                                p.Inventory.Remove(lquest.CompletionRequirement);
                                 //display completion message and give rewards
                                 Console.WriteLine(lquest.CompletionMessage);
                                 foreach (var item in lquest.Reward_Items)
                                 {
-                                    player.Inventory.Add(item);
+                                    p.Inventory.Add(item);
                                     Console.WriteLine($"Added {item.Name} to inventory");
                                 }
-                                player.Exp = player.Exp + lquest.RewardXP;
-                                player.UpdatePlayerLevel();
+                                p.Exp = p.Exp + lquest.RewardXP;
+                                p.UpdatePlayerLevel(p);
                                 // update player level?
                             }
                             else
@@ -102,7 +102,7 @@ namespace Engine
                     else //player does not have the quest
                     {
                         //give the player the quest
-                        player.QuestList.Add(lquest);
+                        p.QuestList.Add(lquest);
                         //Display message
                         Console.WriteLine(lquest.Description);
                     }

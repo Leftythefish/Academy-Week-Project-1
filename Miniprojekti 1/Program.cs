@@ -15,15 +15,11 @@ namespace Miniprojekti_1
             /// Main UI and it's components, create more classes where necessary
             ///</summary>
             Window.CreateOpeningScreen();
-            Console.SetCursorPosition(46, 25);
-            Console.WriteLine("Press any key to start game.");
-            Console.SetCursorPosition(0, 29);
-            Console.ReadKey();
-            Console.Clear();
-            Window.CreateOpeningScreen();
             CreatePlayer(p);
             Console.SetCursorPosition(0, 29);
             Window.CreateMainScreen(p);
+            Console.ReadKey();
+            //Window.CreateGameOverScreen();
         }
             static void CreatePlayer(Player p)
             {
@@ -34,7 +30,7 @@ namespace Miniprojekti_1
         }
             static string CheckInput()
             {
-            Console.SetCursorPosition(50, 25);
+            Console.SetCursorPosition(51, 25);
             Console.WriteLine("Enter your name.");
             Console.SetCursorPosition(0, 29);
             string input = Console.ReadLine();

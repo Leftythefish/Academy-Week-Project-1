@@ -31,13 +31,15 @@ namespace Engine
         }
 
         //Methods
-        public static void UsePotion(Player player, Potion potion)
+        public static void UsePotion(Player p, Potion potion)
         {
             // Add potion healing amount to player current health
-            player.Cur_Health += potion.healing_amount;
+            p.Cur_Health += potion.healing_amount;
+            Window.UpdateHp(p);
             // Update player health indicator screen - method for this?
+            // Method added
             // Remove potion from player inventory
-            player.Inventory.Remove(potion);
+            p.Inventory.Remove(potion);
             // Update player inventory indicators? - method for this?
         }
     }
