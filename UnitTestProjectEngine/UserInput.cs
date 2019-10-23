@@ -18,14 +18,5 @@ namespace UnitTestProjectEngine
             string expected = "Joan";
             Assert.AreEqual(expected, name);
         }
-
-        [TestMethod]
-        public void InputTooLong()
-        {
-            string input = "This name is way too long and contains too many characters";
-            string name = Program.CheckInput(input);
-            string expected = "";
-            Assert.AreEqual(expected, name);
-        }
     }
 }
