@@ -59,14 +59,14 @@ namespace Engine
             {
                 //show detailed description
                 //give player hidden items
-                foreach (var item in p.CurrentLocation.LocationItems)
-                {
-                    int counter = 0;
                     Window.EmptyGameTextFromScreen();
                     Window.EmptyStringData();
-                    Window.lines[counter]= "You found a " + item.Name;
+                    int counter = 0;
+                foreach (var item in p.CurrentLocation.LocationItems)
+                {
+                    Window.lines[counter]= "You found " + item.Name;
                     Window.InsertGameTextToScreenArray();
-
+                    counter = counter + 1;
                     //foreach (Weapon weapon in p.CurrentLocation.LocationItems)
                     //{
                     //    p.EquippedWeapon = weapon;
@@ -122,13 +122,13 @@ namespace Engine
                                 lquest.QuestCompleted = true;
                                 p.Inventory.Remove(lquest.CompletionRequirement);
                                 //display completion message and give rewards
-                                Console.WriteLine(lquest.CompletionMessage);
-                                foreach (var item in lquest.Reward_Items)
+                                Window.EmptyGameTextFromScreen();
+                                Window.EmptyStringData();
+                                Window.line1 = lquest.CompletionMessage;
+                                foreach (var item in lquest.Reward_Items) // Currently works only if one reward
                                 {
                                     p.Inventory.Add(item);
-                                    Window.EmptyGameTextFromScreen();
-                                    Window.EmptyStringData();
-                                    Window.line1 = "Added " + item.Name + " to inventory.";                                    
+                                    Window.line3 = "Added " + item.Name + " to inventory.";                                    
                                     Window.InsertGameTextToScreen();
                                 }
                                 p.Exp += lquest.RewardXP;
