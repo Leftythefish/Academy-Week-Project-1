@@ -172,7 +172,7 @@ namespace Engine
             else
             {
                 Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
-                Console.WriteLine($"You collect the mon.RewardItem");
+                Console.WriteLine($"You collect the {mon.RewardItem}");
                 //player.Inventory.Add(mon.RewardItem);
             }
         }

@@ -123,9 +123,76 @@ namespace Engine
             Console.SetCursorPosition(46, 25);
             Console.WriteLine("                                  ");
         }
+
+        public static void CreateGameFinishedScreen(Player p)
+        {
+            CheckWindowSize();
+            Console.Clear();
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 1);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 27);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("________________________________________________________________________________________________________________________");
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine("|");
+            }
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(119, i);
+                Console.WriteLine("|");
+            }
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(1, i);
+                Console.WriteLine("|");
+            }
+
+            for (int i = 2; i <= 27; i++)
+            {
+                Console.SetCursorPosition(118, i);
+                Console.WriteLine("|");
+            }
+            Console.SetCursorPosition(17, 7);
+            Console.WriteLine($"Congratulations {p.Name}! You have");
+            Console.SetCursorPosition(15, 10);
+            Console.WriteLine(@" __   .__.__  .__             .___   __  .__             ________                       ._.");
+            Console.SetCursorPosition(15, 11);
+            Console.WriteLine(@"|  | _|__|  | |  |   ____   __| _/ _/  |_|  |__   ____   \_____  \    ___________   ____| |");
+            Console.SetCursorPosition(15, 12);
+            Console.WriteLine(@"|  |/ /  |  | |  | _/ __ \ / __ |  \   __\  |  \_/ __ \   /   |   \  / ___\_  __ \_/ __ \ |");
+            Console.SetCursorPosition(15, 13);
+            Console.WriteLine(@"|    <|  |  |_|  |_\  ___// /_/ |   |  | |   Y  \  ___/  /    |    \/ /_/  >  | \/\  ___/\|");
+            Console.SetCursorPosition(15, 14);
+            Console.WriteLine(@"|__|_ \__|____/____/\___  >____ |   |__| |___|  /\___  > \_______  /\___  /|__|    \___  >_");
+            Console.SetCursorPosition(15, 15);
+            Console.WriteLine(@"     \/                 \/     \/             \/     \/          \//_____/             \/\/");
+            Console.SetCursorPosition(38, 25);
+            Console.WriteLine("Press any key to play again or ESC to exit.");
+            Console.SetCursorPosition(0, 29);
+            var input = Console.ReadKey(true);
+            switch (input.Key)
+            {
+                case ConsoleKey.Escape:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.Clear();
+                    CreateOpeningScreen();
+                    //this must be replaced with a method that includes the entire game 
+                    break;
+            }
+            Console.ReadLine();
+        }
         public static void CreateGameOverScreen()
         {
             CheckWindowSize();
+            Console.Clear();
             Console.WriteLine("________________________________________________________________________________________________________________________");
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("________________________________________________________________________________________________________________________");
