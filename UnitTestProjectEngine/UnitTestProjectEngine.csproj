@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\Miniprojekti 1\Console UI.csproj" />
   </ItemGroup>
 
 </Project>

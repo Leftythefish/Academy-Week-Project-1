@@ -4,7 +4,7 @@ using Engine;
 
 namespace Miniprojekti_1
 {
-    class Program
+    public class Program
     {
         
         public static World Cave = new World();
@@ -25,7 +25,8 @@ namespace Miniprojekti_1
             Cave.CreateWorlds();
             PlayTheGame(p);
             Console.ReadKey();
-            Window.CreateGameOverScreen();
+            Window.CreateGameFinishedScreen(p);
+            //Window.CreateGameOverScreen();
         }
 
         private static void PlayTheGame(Player p) //--Ria
