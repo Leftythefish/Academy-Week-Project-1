@@ -160,9 +160,26 @@ namespace Engine
             }
             do
             {
-                // player hits monster
-                Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
-                mhp -= p_weapon.Damage;
+                switch (p.Input)
+                {
+                    case "attack":
+                    case "a":
+                    Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        mhp -= p_weapon.Damage;
+                        break;
+                    case "hit":
+                    case "h":
+                        Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        mhp -= p_weapon.Damage;
+                        break;
+                    case "slash":
+                        Console.WriteLine($"You slash the {mon.Name} with your {p_weapon.Name}, doing {p_weapon.Damage} damage.");
+                        mhp -= p_weapon.Damage;
+                        break;
+                    default:
+                        Console.WriteLine($"You were too slow. Next round try one of the following commands: 'slash', 'attack' or 'hit'");
+                        break;
+                }   // player hits monster
                 //monster hits player
                 Console.WriteLine($"The {mon.Name} hits you, doing {mon.Damage} damage.");
                 php -= mon.Damage;
@@ -172,12 +189,12 @@ namespace Engine
             // check who died
             if (php <= 0)
             {
-                Console.WriteLine("You died. Game over.");
+                Window.CreateGameOverScreen();
             }
             else
             {
                 Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
-                Console.WriteLine($"You collect the {mon.RewardItem}");
+                Console.WriteLine($"You collect the {mon.RewardItem}.");
                 //player.Inventory.Add(mon.RewardItem);
             }
         }
