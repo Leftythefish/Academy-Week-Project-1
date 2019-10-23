@@ -19,7 +19,7 @@ namespace Miniprojekti_1
             Console.SetCursorPosition(0, 29);
             Window.CreateMainScreen(p);
             Console.ReadKey();
-            //Window.CreateGameOverScreen();
+            Window.CreateGameOverScreen();
         }
             static void CreatePlayer(Player p)
             {
