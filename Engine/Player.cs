@@ -33,7 +33,6 @@ namespace Engine
             {
                 this.Level = this.Level++;
                 this.Exp -= 100;
-                Console.WriteLine("Yay, you gained a level!");
             }
             // method to update lvl on the screen
             // if player experience is above 100, increase player level, remove 100 points from player exp            

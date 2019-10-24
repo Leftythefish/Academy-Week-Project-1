@@ -183,6 +183,7 @@ namespace Engine
                     if (mon.QuestItem != null) //--Jyri, Ria--
                     {
                         Window.lines[2] = mon.QuestItem.Name;
+                        p.Inventory.Add(mon.QuestItem);
                         int counter = 3;
                         foreach (var item in mon.MonsterLoot)
                         {
@@ -195,7 +196,10 @@ namespace Engine
                     {
                         Window.lines[2] = "absolutely nothing";
                     }
-                   
+                    p.Exp += mon.Exp;
+                    p.UpdatePlayerLevel();
+                    Window.UpdateExp(p);
+                    Window.UpdateLvl(p);
                     Window.InsertGameTextToScreenArray();
                     return;
                 }
@@ -223,7 +227,17 @@ namespace Engine
                         }
                         else //player has quest and it is not marked as complete
                         {
-                            if (p.Inventory.Contains(lquest.CompletionRequirement)) //does player inventory contain the required completion item?
+                            bool playerhasitem = false;
+                            foreach (var item in p.Inventory)
+                            {
+                                if (item.Name == lquest.CompletionRequirement.Name)
+                                {
+                                    playerhasitem = true;
+                                    p.Inventory.Remove(item);
+                                    break;
+                                }
+                            }
+                            if (playerhasitem == true) //does player inventory contain the required completion item?
                             {
                                 //set quest completion status as complete and remove quest inventory item
                                 lquest.QuestCompleted = true;
@@ -236,12 +250,14 @@ namespace Engine
                                 {
                                     p.Inventory.Add(item);
                                     Window.lines[counter] = "Added " + item.Name + " to inventory.";
-                                    Window.InsertGameTextToScreenArray();
                                 }
                                 p.Exp += lquest.RewardXP;
                                 // update player level
                                 p.UpdatePlayerLevel();
-                                p.Inventory.Remove(lquest.CompletionRequirement);
+                                Window.UpdateExp(p);
+                                Window.UpdateLvl(p);
+                                Window.InsertGameTextToScreenArray();
+                               // p.Inventory.Remove(lquest.CompletionRequirement);
                             }
                             else
                             {
@@ -311,31 +327,42 @@ namespace Engine
             }
             else
             {
-                var selection = p.Inventory.Where(it => it.Name.ToLower().Contains(p.Input)).First();
+                try
+                {
 
-                if (selection is Weapon)
-                {
-                    p.EquippedWeapon = (Weapon)selection;
-                    Window.EmptyGameTextFromScreen();
-                    Window.EmptyStringData();
-                    Window.line1 = "You have equipped the " + p.EquippedWeapon.Name;
-                    Window.InsertGameTextToScreen();
+                    var selection = p.Inventory.Where(it => it.Name.ToLower().Contains(p.Input)).First();
+
+                    if (selection is Weapon)
+                    {
+                        p.EquippedWeapon = (Weapon)selection;
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You have equipped the " + p.EquippedWeapon.Name;
+                        Window.InsertGameTextToScreen();
+                    }
+                    else if (selection is Potion)
+                    {
+                        p.Cur_Health += ((Potion)selection).Healing_Amount;
+                        Window.UpdateHp(p);
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You drink the potion, intantly feeling a lot better.";
+                        Window.InsertGameTextToScreen();
+                        p.Inventory.Remove(selection);
+                    }
+                    else
+                    {
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "That is not the type of item you could actually use.";
+                        Window.InsertGameTextToScreen();
+                    }
                 }
-                else if (selection is Potion)
-                {
-                    p.Cur_Health += ((Potion)selection).Healing_Amount;
-                    Window.UpdateHp(p);
-                    Window.EmptyGameTextFromScreen();
-                    Window.EmptyStringData();
-                    Window.line1 = "You drink the potion, intantly feeling a lot better.";
-                    Window.InsertGameTextToScreen();
-                    p.Inventory.Remove(selection);
-                }
-                else
+                catch (Exception)
                 {
                     Window.EmptyGameTextFromScreen();
                     Window.EmptyStringData();
-                    Window.line1 = "That is not the type of item you could actually use.";
+                    Window.line1 = "You tumble around clumsily.";
                     Window.InsertGameTextToScreen();
                 }
             }

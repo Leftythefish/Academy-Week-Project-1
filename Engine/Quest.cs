@@ -52,13 +52,13 @@ namespace Engine
 
         public List<Item> Reward_Items = new List<Item>();
 
-        public Quest(string name, string description, int XP, Item reward)
+        public Quest(string name, string description, int XP, Item requirement)
         {
             id = ++nextId;
             this.Name = name;
             this.Description = description;
             this.RewardXP = XP;
-            Reward_Items.Add(reward);
+            this.CompletionRequirement = requirement;
             // For each item in rewards list add to rewards?
 
         }

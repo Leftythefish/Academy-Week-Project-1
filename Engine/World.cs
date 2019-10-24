@@ -53,7 +53,7 @@ namespace Engine
             Monster Ogre = new Monster("Ogre", 100, OgreQuestCompleteRequirement)
             {
                 Damage = 10
-                
+
             };
             Ogre.MonsterLoot.Add(HealPot);
 
