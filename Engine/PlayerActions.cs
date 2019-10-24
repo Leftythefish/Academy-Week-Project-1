@@ -8,12 +8,10 @@ namespace Engine
 
     public class PlayerActions
     {
-
-        //Player input
-        //move to --> try to move to location, update player location
-        //look around, search --> show description of possible event triggers
-        // search EVENT TRIGGER --> give item, spawn monster, do nothing
-        // fighting --> hit, use potion, run away
+        ///<summary>
+        ///--Ria
+        ///Engine methods for input, movement, fighting etc
+        ///</summary>
 
         public static void ReadInput(Player p) //deal with movement input, decide location to go to
         {
@@ -108,14 +106,28 @@ namespace Engine
                     if (playerhaskey == true) // player has the key
                     {
                         // add description of using the key
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You have the " + keyname + ". " + newLocation.Key.EntranceDescription;
+                        Window.line3 = "Press any key to enter.";
+                        Window.InsertGameTextToScreen();
+                        Console.ReadKey();
+                        if (newLocation.Name.ToLower() == "long stairway")
+                        {
+                            p.CurrentLocation = newLocation;
+                            EnterFinalLocation(p);
+                        }
+                        else
+                        {
                         p.CurrentLocation = newLocation;
                         EnterNewLocation(p);
+                        }
                     }
                     else //player no has the key
                     {
                         Window.EmptyGameTextFromScreen();
                         Window.EmptyStringData();
-                        Window.line1 = "You cannot go that way. The way is blocked."; 
+                        Window.line1 = newLocation.NoEntranceDescription; 
                         Window.InsertGameTextToScreen();
                     }
                 }
@@ -136,7 +148,7 @@ namespace Engine
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
             int counter = 1;
-            Window.line1 = "You walk into the " + loc.Name;
+            Window.lines[0] = "You walk into the " + loc.Name;
             foreach (var desc in loc.Info)
             {
                 Window.lines[counter] = desc;
@@ -156,6 +168,26 @@ namespace Engine
                 Window.InsertGameTextToScreenArray();
             }
         }
+
+        public static void EnterFinalLocation(Player p)
+        {
+            var loc = p.CurrentLocation;
+            //Display location name and description
+            Window.EmptyGameTextFromScreen();
+            Window.EmptyStringData();
+            int counter = 1;
+            Window.lines[0] = "You walk into the " + loc.Name;
+            foreach (var desc in loc.Info)
+            {
+                Window.lines[counter] = desc;
+                counter += 1;
+            }
+            Window.lines[counter] = "Press any key to walk out";
+            Window.InsertGameTextToScreenArray();
+            Console.ReadKey();
+            Window.CreateGameFinishedScreen(p);            
+        }
+
         private static void FightMonster(Player p, Monster mon)
         {//--Ria, Jesse
 
@@ -362,6 +394,7 @@ namespace Engine
             Window.InsertGameTextToScreenArray();
 
             p.Input = Console.ReadLine().ToLower();
+            //pressing enter equips fists... test
 
             if (p.Input == "exit")
             {

@@ -31,7 +31,7 @@ namespace Engine
 
             Location Cave10 = new Location("Misty Steps");
             Location Cave11 = new Location("Room of Dark Magic");
-            Location Cave12 = new Location("Long stairway");
+            Location Cave12 = new Location("long stairway");
             #endregion
 
             #region Items
@@ -41,9 +41,11 @@ namespace Engine
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
             Item RustyKey = new Item("Rusty key", "Rusty keys");
+            RustyKey.EntranceDescription = "You try it on the door. The lock turns heavily and the door opens.";
             RustyKey.Description = "The key is old and heavy. You wonder what it might open.";
             Item WeirdLookingStone = new Item("Weird glowing stone");
             WeirdLookingStone.Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?";
+            WeirdLookingStone.EntranceDescription = "You lift the stone towards the star shaped rock, which fades from existance.";
             #endregion
 
             #region Quests
@@ -79,9 +81,9 @@ namespace Engine
 
             };
 
-            Monster Sorcerer = new Monster("Dark Sorcerer", 250, SorcererQuestCompleteRequirement)
+            Monster Sorcerer = new Monster("Dark Sorcerer", 50, SorcererQuestCompleteRequirement)
             {
-                Damage = 40
+                Damage = 10
             };
 
             #endregion
@@ -137,6 +139,7 @@ namespace Engine
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
             Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
             Cave5.Key = RustyKey;
+            Cave5.NoEntranceDescription = "The way is blockd by a large door. It is locked.";
 
             Cave6.LocationToNorth = Cave7;
             Cave6.LocationToEast = null;
@@ -184,7 +187,7 @@ namespace Engine
 
             Cave10.LocationToNorth = null;
             Cave10.LocationToEast = null;
-            Cave10.LocationToSouth = Cave10;
+            Cave10.LocationToSouth = Cave8;
             Cave10.LocationToWest = Cave11;
             Cave10.Info.Add(Cave10.Description = "Room you entered is filled with thick mist making it hard to see anything");
             Cave10.Info.Add(Cave10.Description2 = "It pains you to keep your eyes open but you are able to see that there is a door leading to west and south");
@@ -211,8 +214,9 @@ namespace Engine
             Cave12.LocationToWest = null;
             Cave12.Info.Add(Cave12.Description = "You enter to a stairwell which seem to continue endlessly upwards");
             Cave12.Info.Add(Cave12.Description2 = "As you climb up you start to see some light.");
-            Cave12.Info.Add(Cave12.Description3 = "Could this be the entrance out of this hellhole...?");
+            Cave12.Info.Add(Cave12.Description3 = "In the distance, you can hear birds chirping.");
             Cave12.Key = WeirdLookingStone;
+            Cave12.NoEntranceDescription = "The star shaped rock is too heavy for you to lift. You can't pass.";
 
             #endregion
 
