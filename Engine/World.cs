@@ -119,7 +119,7 @@ namespace Engine
             Cave4.LocationToWest = null;
             Cave4.Info.Add(Cave4.Description = "An unpleasant smell welcomes you as you enter the room.");
             Cave4.Info.Add(Cave4.Description2 = "The floor is filled with bones and rusty weapons.");
-            Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
+           // Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
             Cave4.LocationMonsters.Add(Ogre);
 
             Cave5.LocationToNorth = null;
