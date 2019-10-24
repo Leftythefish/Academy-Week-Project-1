@@ -40,7 +40,17 @@ namespace Miniprojekti_1
             do
             {
                 p.Input = Console.ReadLine().ToLower();
+                if (!string.IsNullOrEmpty(p.Input))
+                {
                 PlayerActions.ReadInput(p);
+                }
+                else
+                {
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You are standing in the " + p.CurrentLocation.Name;
+                    Window.InsertGameTextToScreen();
+                }
             } while (p.Cur_Health > 0);
 
         }
