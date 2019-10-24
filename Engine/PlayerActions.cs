@@ -104,7 +104,7 @@ namespace Engine
             //Display location name and description
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
-            int counter = 0;
+            int counter = 1;
             Window.line1 = "You walk into the " + loc.Name;
             foreach (var desc in loc.Info)
             {

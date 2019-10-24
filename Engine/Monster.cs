@@ -36,6 +36,11 @@ namespace Engine
         }
         public Item QuestItem { get; set; }
         public List<Item> MonsterLoot = new List<Item>();
+        public Monster(string name, int maximum_health) : base(name, maximum_health)
+        {
+            this.Damage = 10;
+            this.Exp = 50;
+        }
 
         public Monster(string name, int maximum_health, Item QuestItem) : base(name, maximum_health)
         {
@@ -43,6 +48,7 @@ namespace Engine
             this.Exp = 50;
             this.QuestItem = QuestItem;
         }
+
 
         public Monster(string name, int maximum_health, Item QuestItem, int damage) : base(name, maximum_health)
         {
