@@ -87,6 +87,13 @@ namespace Miniprojekti_1
                 return name;
             }
         }
+
+        public static int RandomNumber() 
+        {
+            int rndnumber;
+            Random rnd = new Random();
+            rndnumber = rnd.Next(0, 101);
+            return rndnumber; }
     }
 }
 

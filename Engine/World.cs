@@ -15,7 +15,6 @@ namespace Engine
         public List<Location> WorldList = new List<Location>();
         public Location WorldLocation { get; set; }
         public World() { }
-
         public void CreateWorlds()
         {
             #region Location
@@ -33,13 +32,17 @@ namespace Engine
             #endregion
 
             #region Quests
-            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement);
-            OgreQuest.CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + "to the man. The monster has been slain!";
+            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement)
+            {
+                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + "to the man. The monster has been slain!"
+            };
             #endregion
 
             #region Monsters
-            Monster Ogre = new Monster("Ogre", 10, OgreQuestCompleteRequirement);
-            Ogre.Damage = 10;
+            Monster Ogre = new Monster("Ogre", 10, OgreQuestCompleteRequirement)
+            {
+                Damage = 10
+            };
             Ogre.MonsterLoot.Add(HealPot);
             #endregion
 
@@ -72,7 +75,7 @@ namespace Engine
             Cave3.LocationItems.Add(HealPot);
             Cave3.LocationItems.Add(Axe);
             Cave3.LocationQuests.Add(OgreQuest);
-           
+
             Cave4.LocationToNorth = null;
             Cave4.LocationToEast = null;
             Cave4.LocationToSouth = Cave2;
