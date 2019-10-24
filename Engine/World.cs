@@ -27,9 +27,9 @@ namespace Engine
             Location Cave6 = new Location("Start of Dungeon");
             Location Cave7 = new Location("Magic Prison");
             Location Cave8 = new Location("Painted Room");
-            Location Cave9 = new Location("Breakroom from life");
+            Location Cave9 = new Location("Breakroom From Life");
 
-            Location Cave10 = new Location("");
+            Location Cave10 = new Location("Misty Steps");
             Location Cave11 = new Location("Room of Dark Magic");
             Location Cave12 = new Location("Long stairway");
             #endregion
@@ -40,6 +40,10 @@ namespace Engine
             Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
+            Item RustyKey = new Item("Rusty key", "Rusty keys");
+            RustyKey.Description = "The key is old and heavy. You wonder what it might open.";
+            Item WeirdLookingStone = new Item("Weird glowing stone");
+            WeirdLookingStone.Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?";
             #endregion
 
             #region Quests
@@ -47,11 +51,13 @@ namespace Engine
             {
                 CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monster has been slain!"
             };
+            OgreQuest.Reward_Items.Add(RustyKey);
 
             Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me", 150, SorcererQuestCompleteRequirement)
             {
-                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man. He thanks you for setting him free of his curse and turns to fine dust"
+                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man."
             };
+            SorcererQuest.Reward_Items.Add(WeirdLookingStone);
             #endregion
 
             #region Monsters
@@ -70,7 +76,7 @@ namespace Engine
             Monster Zombie = new Monster("Zombie", 125, HealPot)
             {
                 Damage = 20
-                
+
             };
 
             Monster Sorcerer = new Monster("Dark Sorcerer", 250, SorcererQuestCompleteRequirement)
@@ -119,7 +125,7 @@ namespace Engine
             Cave4.LocationToWest = null;
             Cave4.Info.Add(Cave4.Description = "An unpleasant smell welcomes you as you enter the room.");
             Cave4.Info.Add(Cave4.Description2 = "The floor is filled with bones and rusty weapons.");
-           // Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
+            // Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
             Cave4.LocationMonsters.Add(Ogre);
 
             Cave5.LocationToNorth = null;
@@ -130,6 +136,7 @@ namespace Engine
             Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners");
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
             Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
+            Cave5.Key = RustyKey;
 
             Cave6.LocationToNorth = Cave7;
             Cave6.LocationToEast = null;
@@ -179,13 +186,22 @@ namespace Engine
             Cave10.LocationToEast = null;
             Cave10.LocationToSouth = Cave10;
             Cave10.LocationToWest = Cave11;
-            Cave10.Info.Add(Cave10.Description = "Room filled with mist and misfortune");
+            Cave10.Info.Add(Cave10.Description = "Room you entered is filled with thick mist making it hard to see anything");
+            Cave10.Info.Add(Cave10.Description2 = "It pains you to keep your eyes open but you are able to see that there is a door leading to west and south");
+            Cave10.Info.Add(Cave10.Description3 = "Not being able to see well makes you feel uneasy");
 
             Cave11.LocationToNorth = null;
             Cave11.LocationToEast = Cave10;
             Cave11.LocationToSouth = null;
             Cave11.LocationToWest = Cave12;
-            Cave11.Info.Add(Cave11.Description = "Sorcerer");
+            Cave11.Info.Add(Cave11.Description = "Wooden shelves full of different shaped and sized vials occupy the south and north walls");
+            Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it");
+            Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals");
+            Cave11.Info.Add(Cave11.Description4 = "The path to the west is blockd by a star shaped stone. There's no way to go past it.");
+            //Cave9.Info.Add(Cave11.Description4 = "Suddenly in front of you materializes a humanlike creature dressed in a dark veil");
+            //Cave9.Info.Add(Cave11.Description5 = "It sets out inhuman screech and starts to mutter some words.");
+
+
             Cave11.LocationMonsters.Add(Sorcerer);
 
 
@@ -193,7 +209,10 @@ namespace Engine
             Cave12.LocationToEast = null;
             Cave12.LocationToSouth = null;
             Cave12.LocationToWest = null;
-            Cave12.Info.Add(Cave12.Description = "Stairway to get out of the cave");
+            Cave12.Info.Add(Cave12.Description = "You enter to a stairwell which seem to continue endlessly upwards");
+            Cave12.Info.Add(Cave12.Description2 = "As you climb up you start to see some light.");
+            Cave12.Info.Add(Cave12.Description3 = "Could this be the entrance out of this hellhole...?");
+            Cave12.Key = WeirdLookingStone;
 
             #endregion
 
@@ -210,12 +229,8 @@ namespace Engine
             WorldList.Add(Cave9);
             WorldList.Add(Cave10);
             WorldList.Add(Cave11);
-            //WorldList.Add(Cave8);
+            WorldList.Add(Cave12);
             #endregion
-
-
-
-
 
 
 

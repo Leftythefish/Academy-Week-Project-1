@@ -6,17 +6,6 @@ namespace Engine
 {
     public class Item
     {
-        ///<summary>
-        ///--Ria--
-        /// This is base class for potions and weapons so all properties here will be inherited by them
-        /// ID
-        /// Name (+name plural)
-        /// etc.
-        ///</summary>
-        ///
-
-        // Properties 
-
         private readonly int id;
         private static int nextId = 10000;
         public int ID { get { return id; } }
@@ -35,8 +24,16 @@ namespace Engine
             set { name_plural = value; }
         }
 
+        public string Description { get; set; }
+
         //Constructors
         public Item(string name, string name_plural)
+        {
+            id = ++nextId;
+            this.Name = name;
+            this.Name_Plural = name_plural;
+        }
+        public Item(string name)
         {
             id = ++nextId;
             this.Name = name;

@@ -96,8 +96,29 @@ namespace Engine
         {
             if (newLocation != null)
             {
+                if (newLocation.Key == null)
+                {
                 p.CurrentLocation = newLocation;
                 EnterNewLocation(p);
+                }
+                else
+                {
+                    string keyname = newLocation.Key.Name;
+                    bool playerhaskey = PlayerHasItem(p, keyname);
+                    if (playerhaskey == true) // player has the key
+                    {
+                        // add description of using the key
+                        p.CurrentLocation = newLocation;
+                        EnterNewLocation(p);
+                    }
+                    else //player no has the key
+                    {
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You cannot go that way. The way is blocked."; 
+                        Window.InsertGameTextToScreen();
+                    }
+                }
             }
             else
             {
@@ -132,7 +153,7 @@ namespace Engine
             }
             else
             {
-            Window.InsertGameTextToScreenArray();
+                Window.InsertGameTextToScreenArray();
             }
         }
         private static void FightMonster(Player p, Monster mon)
@@ -199,7 +220,7 @@ namespace Engine
                     }
                     else
                     {
-                        Window.lines[2] = "absolutely nothing";
+                        Window.lines[2] = "Absolutely nothing.";
                     }
                     p.Exp += mon.Exp;
                     p.UpdatePlayerLevel();
@@ -231,38 +252,12 @@ namespace Engine
                             Window.InsertGameTextToScreen();
                         }
                         else //player has quest and it is not marked as complete
-                        {
-                            bool playerhasitem = false;
-                            foreach (var item in p.Inventory)
-                            {
-                                if (item.Name == lquest.CompletionRequirement.Name)
-                                {
-                                    playerhasitem = true;
-                                    p.Inventory.Remove(item);
-                                    break;
-                                }
-                            }
+                        {                         
+                            bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);
+
                             if (playerhasitem == true) //does player inventory contain the required completion item?
                             {
-                                //set quest completion status as complete and remove quest inventory item
-                                lquest.QuestCompleted = true;
-                                //display completion message and give rewards
-                                Window.EmptyGameTextFromScreen();
-                                Window.EmptyStringData();
-                                int counter = 1;
-                                Window.lines[0] = lquest.CompletionMessage;
-                                foreach (var item in lquest.Reward_Items)
-                                {
-                                    p.Inventory.Add(item);
-                                    Window.lines[counter] = "Added " + item.Name + " to inventory.";
-                                }
-                                p.Exp += lquest.RewardXP;
-                                // update player level
-                                p.UpdatePlayerLevel();
-                                Window.UpdateExp(p);
-                                Window.UpdateLvl(p);
-                                Window.InsertGameTextToScreenArray();
-                               // p.Inventory.Remove(lquest.CompletionRequirement);
+                                CompleteQuest(p, lquest);
                             }
                             else
                             {
@@ -280,14 +275,57 @@ namespace Engine
                         //Display message
                         Window.EmptyGameTextFromScreen();
                         Window.EmptyStringData();
-                        Window.line1 = "They have an urgent task for you to do. You realize that the only way to leave is by complying.";
+                        Window.line1 = "If you want to find your way out of here, you need to help me first.";
                         Window.line2 = lquest.Description;
+
+                        bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);                        
+                        if (playerhasitem == true)
+                        {
+                            Window.line3 = "...";
+                            Window.line4 = "...";
+                            Window.line5 = "...";
+                            Window.line7 = "Wait, what do you mean you already did it?";
+                            Window.line9 = "Press any key to show them the proof.";
+                            Window.InsertGameTextToScreen();
+                            Console.ReadKey();
+                            CompleteQuest(p, lquest);
+                        }
+                        else
+                        {
                         Window.InsertGameTextToScreen();
+
+                        }
                     }
                 }
             }
 
         }
+
+        private static void CompleteQuest(Player p, Quest lquest)
+        {
+            //set quest completion status as complete and remove quest inventory item
+            lquest.QuestCompleted = true;
+            //display completion message and give rewards
+            Window.EmptyGameTextFromScreen();
+            Window.EmptyStringData();
+            int counter = 1;
+            Window.lines[0] = lquest.CompletionMessage;
+            foreach (var item in lquest.Reward_Items)
+            {
+                p.Inventory.Add(item);
+                Window.lines[counter] = "Added " + item.Name + " to inventory.";
+                Window.lines[counter + 1] = item.Description;
+                counter += 1;
+            }
+            p.Exp += lquest.RewardXP;
+            // update player level
+            p.UpdatePlayerLevel();
+            Window.UpdateExp(p);
+            Window.UpdateLvl(p);
+            Window.InsertGameTextToScreenArray();
+            // p.Inventory.Remove(lquest.CompletionRequirement);
+        }
+
         public static void PlayerInputHelp() //--Jesse
         {
             Window.EmptyGameTextFromScreen();
@@ -396,5 +434,20 @@ namespace Engine
             int rndnumber = rnd.Next(1, 100);
             return rndnumber;
         }
+        public static bool PlayerHasItem(Player p, string itemname) 
+        {
+            bool playerhasitem = false;
+            foreach (var item in p.Inventory)
+            {
+                if (item.Name == itemname)
+                {
+                    playerhasitem = true;
+                    p.Inventory.Remove(item);
+                    break;
+                }
+            }
+            return playerhasitem;
+        }
+
     }
 }
