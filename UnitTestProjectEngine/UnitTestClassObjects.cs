@@ -49,5 +49,12 @@ namespace UnitTestProjectEngine
             //Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void PlayerMovement_Damagecalculator_ReturnsANumber()
+        { //--method was removed
+            //int basedamage = 10;
+            //int damage = PlayerActions.HitCalculator(basedamage);
+            //System.Console.WriteLine(damage);
+        }
     }
 }

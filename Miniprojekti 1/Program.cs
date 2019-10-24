@@ -62,9 +62,9 @@ namespace Miniprojekti_1
             string input = Console.ReadLine();
             CheckInput(input);
             p.Name = name;
-            p.Max_Health = 100;
-            p.Cur_Health = 100;
-            Weapon Fists = new Weapon("Fist", "Fists", 2); // --Jyri
+            p.Max_Health = 500;
+            p.Cur_Health = 500;
+            Weapon Fists = new Weapon("Fist", "Fists", 10); // --Jyri
             p.EquippedWeapon = Fists;
         }
         public static string CheckInput(string input)
@@ -88,12 +88,7 @@ namespace Miniprojekti_1
             }
         }
 
-        public static int RandomNumber() 
-        {
-            int rndnumber;
-            Random rnd = new Random();
-            rndnumber = rnd.Next(0, 101);
-            return rndnumber; }
+
     }
 }
 

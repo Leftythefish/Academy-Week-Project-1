@@ -113,14 +113,18 @@ namespace Engine
             }
             Window.InsertGameTextToScreenArray();
             //check if the location has a monster to fight
-            if (loc.LocationMonsters != null) //here there be monsters
+            if (loc.LocationMonsters.Count > 0) //here there be monsters
             {
-                foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
-                {
-                    //displaymessage
-                    //fightmonster'
-                    FightMonster(p, mon);
-                }
+                var mon = loc.LocationMonsters[loc.LocationMonsters.Count-1];
+                FightMonster(p, mon);
+                p.CurrentLocation.LocationMonsters.Remove(mon);
+
+                //foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
+                //{
+                //    //displaymessage
+                //    //fightmonster'
+
+                //}
             }
         }
         private static void FightMonster(Player p, Monster mon)
@@ -133,6 +137,7 @@ namespace Engine
 
                 if (mon.Cur_Health > 0)
                 {
+
                     p.Input = Console.ReadLine().ToLower();
                     switch (p.Input)
                     { //create damage variables to change 
@@ -143,9 +148,18 @@ namespace Engine
                         case "slash":
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
-                            Window.line1 = "You slash the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
+                            bool hit = HitCalculator();
+                            if (hit == true)
+                            {
+                            Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p.EquippedWeapon.Damage + " damage.";
                             Window.InsertGameTextToScreen();
-                            mon.Cur_Health -= p_weapon.Damage;
+                            mon.Cur_Health -= p.EquippedWeapon.Damage;
+                            }
+                            else
+                            {
+                                Window.line1 = "You attempt to hit the " + mon.Name + " with your " + p_weapon.Name + ", but it evades your attack.";
+                                Window.InsertGameTextToScreen();
+                            }
                             break;
                         default:
                             Window.EmptyGameTextFromScreen();
@@ -175,7 +189,6 @@ namespace Engine
                         counter += 1;
                     }
                     Window.InsertGameTextToScreenArray();
-                    p.CurrentLocation.LocationMonsters.Remove(mon);
                     return;
                 }
             } while (p.Cur_Health > 0); // player is alive
@@ -259,7 +272,7 @@ namespace Engine
             Window.InsertGameTextToScreen();
         }
 
-        private static void InventoryManagement(Player p) 
+        public static void InventoryManagement(Player p) 
         {
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
@@ -276,6 +289,27 @@ namespace Engine
             // add method for using potion
             // add method for equipping weapon
             // add method for dropping item
+        }
+
+        public static bool HitCalculator() 
+        {            
+            int variable = RandomNumber();
+            bool hit;
+            if (variable < 70)
+            {
+                hit = true;
+            }
+            else
+            {
+                hit = false;
+            }
+            return hit;
+        }
+        public static int RandomNumber()
+        {
+            Random rnd = new Random();
+            int rndnumber = rnd.Next(1, 100);
+            return rndnumber;
         }
     }
 }
