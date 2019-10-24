@@ -28,6 +28,7 @@ namespace Engine
             Location Cave7 = new Location("Magic Prison");
             Location Cave8 = new Location("Painted Room");
             Location Cave9 = new Location("Breakroom from life");
+
             Location Cave10 = new Location("");
             Location Cave11 = new Location("Room of Dark Magic");
             Location Cave12 = new Location("Long stairway");
@@ -72,9 +73,9 @@ namespace Engine
                 
             };
 
-            Monster Sorcerer = new Monster("Dark Sorcerer", 300, SorcererQuestCompleteRequirement)
+            Monster Sorcerer = new Monster("Dark Sorcerer", 250, SorcererQuestCompleteRequirement)
             {
-                Damage = 25
+                Damage = 40
             };
 
             #endregion
@@ -137,8 +138,9 @@ namespace Engine
             Cave6.Info.Add(Cave6.Description = "The temperature seems higher on this level of the cave than what it was before.");
             Cave6.Info.Add(Cave6.Description2 = "The walls of this room are warm to your touch.");
             Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room");
-            Cave6.Info.Add(Cave6.Description4 = "On the ground a pile of bones starts to merge to a creature of somesort.");
-            Cave6.Info.Add(Cave6.Description5 = "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
+            Cave6.Info.Add(Cave6.Description4 = "There is a pile of bones on the ground");
+            //Cave6.Info.Add(Cave6.Description5 = "On the ground a pile of bones starts to merge to a creature of somesort.");
+            //Cave6.Info.Add(Cave6.Description6= "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
             Cave7.LocationToNorth = Cave8;
@@ -168,22 +170,24 @@ namespace Engine
             Cave9.LocationToWest = Cave8;
             Cave9.Info.Add(Cave9.Description = "You see an stone sarcophagus in the room.");
             Cave9.Info.Add(Cave9.Description2 = "The smell of rotting flesh is overwhelming.");
-            Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting outh of the sarcophagus");
-            Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it");
-            Cave4.LocationMonsters.Add(Zombie);
+            //Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting outh of the sarcophagus");
+            //Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it");
+            Cave9.LocationMonsters.Add(Zombie);
 
 
             Cave10.LocationToNorth = null;
             Cave10.LocationToEast = null;
-            Cave10.LocationToSouth = null;
-            Cave10.LocationToWest = null;
+            Cave10.LocationToSouth = Cave10;
+            Cave10.LocationToWest = Cave11;
             Cave10.Info.Add(Cave10.Description = "Room filled with mist and misfortune");
 
             Cave11.LocationToNorth = null;
-            Cave11.LocationToEast = null;
+            Cave11.LocationToEast = Cave10;
             Cave11.LocationToSouth = null;
-            Cave11.LocationToWest = null;
+            Cave11.LocationToWest = Cave12;
             Cave11.Info.Add(Cave11.Description = "Sorcerer");
+            Cave11.LocationMonsters.Add(Sorcerer);
+
 
             Cave12.LocationToNorth = null;
             Cave12.LocationToEast = null;
