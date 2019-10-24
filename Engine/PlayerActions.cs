@@ -245,15 +245,3 @@ namespace Engine
 
     }
 }
-//public static void PlayerInputHelp() //case help or case h
-//{
-//    Console.WriteLine("Help menu. Type what you want to do and press enter:");
-//    Console.WriteLine("Movement:");
-//    Console.WriteLine("\"go north\" or \"n\" = Move to north");
-//    Console.WriteLine("\"go east\" or \"e\" = Move to east");
-//    Console.WriteLine("\"go south\" or \"s\" = Move to south");
-//    Console.WriteLine("\"go west\" or \"w\" = Move to west");
-//    Console.WriteLine("Actions:");
-//    Console.WriteLine("\"look around\" or \"search\" = Take a closer look at your surroundings");
-//    Console.WriteLine("\"help\" or \"h\" = Open Help menu");
-//}
