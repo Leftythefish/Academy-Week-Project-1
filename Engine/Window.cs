@@ -388,6 +388,11 @@ namespace Engine
         public static void InsertOpeningTexts()
         {
             EmptyGameTextFromScreen();
+            line1 = "You slowly drift back to consciousness. You are cold and your head hurts.";
+            line2 = "You look around and realize you are in a cave of some sort.";
+            line3 = "You have your bag with you, but all your equipment is gone.";
+            line4 = "";
+
             line6 = "Type what you want to do and press ENTER:";
             line7 = "";
             line8 = "GO NORTH or N to move north";
@@ -395,11 +400,10 @@ namespace Engine
             line10 = "GO SOUTH or S to move south";
             line11 = "GO WEST or W to move west";
             line12 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
-            line13 = "ATTACK, HIT, A or H to attack";
+            line13 = "ATTACK, or A to attack";
             line14 = "TALK to talk";
-            line15 = "ASK to ask";
-            line16 = "OPEN BAG, BAG or I to manage inventory";
-            line17 = "HELP or H to open Help Menu";
+            line15 = "OPEN BAG, BAG or b to manage inventory";
+            line16 = "HELP or H to open Help Menu";
             InsertGameTextToScreen();
         }
         public static void UpdateHp(Player p)

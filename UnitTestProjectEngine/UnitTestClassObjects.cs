@@ -14,29 +14,29 @@ namespace UnitTestProjectEngine
         [TestMethod]
         public void ClassConstructors_CreatingItemclassobject_willnotcrash()
         {
-            Item x = new Item("Esine", "Esineet");
+            Item x = new Item("Esine");
             string expected = "Esine Esineet";
-            string result = x.Name + " " + x.Name_Plural;
+            string result = x.Name;
             Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void ClassConstructors_CreatingItemWeaponclassobject_willnotcrash()
         {
-            Weapon x = new Weapon("Axe", "Axes", 10);
+            Weapon x = new Weapon("Axe", 10);
             string expected = "Axe Axes 10";
             Player p = new Player("Joe", 100);
             p.Inventory.Add(x);
-            string result = x.Name + " " + x.Name_Plural + " " + x.Damage;
+            string result = x.Name + " " + x.Damage;
             Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void ClassConstructors_CreatingItemPotionclassobject_willnotcrash()
         {
-            Potion x = new Potion("Healing potion", "Healing potions", 20);
+            Potion x = new Potion("Healing potion", 20);
             string expected = "Healing potion Healing potions 20";
-            string result = x.Name + " " + x.Name_Plural + " " + x.Healing_Amount;
+            string result = x.Name + " " + x.Healing_Amount;
             Assert.AreEqual(expected, result);
         }
 

@@ -25,7 +25,7 @@ namespace Engine
 
         //Constructors
 
-        public Potion(string name, string name_plural, int healing_amount) : base(name, name_plural)
+        public Potion(string name, int healing_amount) : base(name)
         {
             this.Healing_Amount = healing_amount; //how much health the potion restores
         }

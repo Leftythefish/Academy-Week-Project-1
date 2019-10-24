@@ -26,15 +26,12 @@ namespace Miniprojekti_1
             //Create the world
             Cave.CreateWorlds();
             PlayTheGame(p);
-            //Console.ReadKey();
-            //Window.CreateGameFinishedScreen(p);
-            //Window.CreateGameOverScreen();
         }
 
         public static void PlayTheGame(Player p) //--Ria
         {
             //set the player in start position
-            var startlocation = LocationByName("dark cave");
+            var startlocation = LocationByName("dark cave.");
             p.CurrentLocation = startlocation;
             Window.EmptyStringData();
             do
@@ -42,7 +39,7 @@ namespace Miniprojekti_1
                 p.Input = Console.ReadLine().ToLower();
                 if (!string.IsNullOrEmpty(p.Input))
                 {
-                PlayerActions.ReadInput(p);
+                    PlayerActions.ReadInput(p);
                 }
                 else
                 {
@@ -79,7 +76,7 @@ namespace Miniprojekti_1
             p.Max_Health = 500;
             p.Cur_Health = 500;
             p.Level = 1;
-            Weapon Fists = new Weapon("Fist", "Fists", 10); // --Jyri
+            Weapon Fists = new Weapon("Fist", 10); // --Jyri
             p.EquippedWeapon = Fists;
             p.Inventory.Add(Fists);
         }

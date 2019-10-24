@@ -50,9 +50,17 @@ namespace Engine
                     TalkToQuestGiver(p);
                     break;
                 case "open bag":
-                case "i":
+                case "b":
                 case "bag":
                     InventoryManagement(p);
+                    break;
+                case "a":
+                case "attack":
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You swing around you aimlessly. Nothing happens.";
+                    Window.line6 = "((hint: there's nothing to fight here, type HELP for command info))";
+                    Window.InsertGameTextToScreen();
                     break;
                 default:
                     Window.EmptyGameTextFromScreen();
@@ -96,8 +104,8 @@ namespace Engine
             {
                 if (newLocation.Key == null)
                 {
-                p.CurrentLocation = newLocation;
-                EnterNewLocation(p);
+                    p.CurrentLocation = newLocation;
+                    EnterNewLocation(p);
                 }
                 else
                 {
@@ -119,15 +127,15 @@ namespace Engine
                         }
                         else
                         {
-                        p.CurrentLocation = newLocation;
-                        EnterNewLocation(p);
+                            p.CurrentLocation = newLocation;
+                            EnterNewLocation(p);
                         }
                     }
                     else //player no has the key
                     {
                         Window.EmptyGameTextFromScreen();
                         Window.EmptyStringData();
-                        Window.line1 = newLocation.NoEntranceDescription; 
+                        Window.line1 = newLocation.NoEntranceDescription;
                         Window.InsertGameTextToScreen();
                     }
                 }
@@ -185,7 +193,7 @@ namespace Engine
             Window.lines[counter] = "Press any key to walk out";
             Window.InsertGameTextToScreenArray();
             Console.ReadKey();
-            Window.CreateGameFinishedScreen(p);            
+            Window.CreateGameFinishedScreen(p);
         }
 
         private static void FightMonster(Player p, Monster mon)
@@ -204,7 +212,7 @@ namespace Engine
                     { //create damage variables to change 
                         case "attack":
                         case "a":
-                            int damage = p.EquippedWeapon.Damage + (p.Level * 5); 
+                            int damage = p.EquippedWeapon.Damage + (p.Level * 5);
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
                             bool hit = HitCalculator();
@@ -285,7 +293,7 @@ namespace Engine
                             Window.InsertGameTextToScreen();
                         }
                         else //player has quest and it is not marked as complete
-                        {                         
+                        {
                             bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);
 
                             if (playerhasitem == true) //does player inventory contain the required completion item?
@@ -311,7 +319,7 @@ namespace Engine
                         Window.line1 = "If you want to find your way out of here, you need to help me first.";
                         Window.line2 = lquest.Description;
 
-                        bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);                        
+                        bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);
                         if (playerhasitem == true)
                         {
                             Window.line3 = "...";
@@ -325,7 +333,7 @@ namespace Engine
                         }
                         else
                         {
-                        Window.InsertGameTextToScreen();
+                            Window.InsertGameTextToScreen();
 
                         }
                     }
@@ -372,9 +380,8 @@ namespace Engine
             Window.line7 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
             Window.line8 = "ATTACK or A to attack";
             Window.line9 = "TALK to talk";
-            Window.line10 = "ASK to ask";
-            Window.line11 = "OPEN BAG, BAG or I to manage inventory";
-            Window.line12 = "HELP or H to open Help Menu";
+            Window.line10 = "OPEN BAG, BAG or b to manage inventory";
+            Window.line11 = "HELP or H to open Help Menu";
             Window.InsertGameTextToScreen();
         }
 
@@ -468,7 +475,7 @@ namespace Engine
             int rndnumber = rnd.Next(1, 100);
             return rndnumber;
         }
-        public static bool PlayerHasItem(Player p, string itemname) 
+        public static bool PlayerHasItem(Player p, string itemname)
         {
             bool playerhasitem = false;
             foreach (var item in p.Inventory)

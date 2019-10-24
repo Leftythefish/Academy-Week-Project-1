@@ -23,7 +23,7 @@ namespace Engine
         }
 
         //Constructors
-        public Weapon(string name, string name_plural, int damage) : base(name, name_plural)
+        public Weapon(string name, int damage) : base(name)
         {
             this.Damage = damage;
         }

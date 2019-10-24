@@ -18,29 +18,29 @@ namespace Engine
         public void CreateWorlds()
         {
             #region Location
-            Location Cave1 = new Location("dark cave");
-            Location Cave2 = new Location("dark cave tunnels");
-            Location Cave3 = new Location("pleasant cave room");
-            Location Cave4 = new Location("ogre cave");
+            Location Cave1 = new Location("dark cave.");
+            Location Cave2 = new Location("dark cave tunnels.");
+            Location Cave3 = new Location("pleasant cave room.");
+            Location Cave4 = new Location("ogre cave.");
 
-            Location Cave5 = new Location("dungeon entrance");
-            Location Cave6 = new Location("bone grave");
-            Location Cave7 = new Location("magic prison");
-            Location Cave8 = new Location("painted room");
-            Location Cave9 = new Location("breakroom from life");
+            Location Cave5 = new Location("dungeon entrance.");
+            Location Cave6 = new Location("bone grave.");
+            Location Cave7 = new Location("magic prison.");
+            Location Cave8 = new Location("painted room.");
+            Location Cave9 = new Location("breakroom from life.");
 
-            Location Cave10 = new Location("mist filled room");
-            Location Cave11 = new Location("room of dark magic");
-            Location Cave12 = new Location("long stairway");
+            Location Cave10 = new Location("mist filled room.");
+            Location Cave11 = new Location("room of dark magic.");
+            Location Cave12 = new Location("long stairway.");
             #endregion
 
             #region Items
-            Weapon Axe = new Weapon("Axe", "Axes", 20);
-            Weapon ShortSword = new Weapon("Short sword", "Short swords", 30);
-            Potion HealPot = new Potion("Healing potion", "Healing potions", 100);
-            Item OgreQuestCompleteRequirement = new Item("bloody ogre head", "bloody ogre heads");
-            Item SorcererQuestCompleteRequirement = new Item("sorcerer's wand", "Sorcerer's wands");
-            Item RustyKey = new Item("rusty key", "rusty keys")
+            Weapon Axe = new Weapon("Axe", 20);
+            Weapon ShortSword = new Weapon("Short sword", 30);
+            Potion HealPot = new Potion("Healing potion", 100);
+            Item OgreQuestCompleteRequirement = new Item("Bloody ogre head");
+            Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand");
+            Item RustyKey = new Item("Rusty key")
             {
                 EntranceDescription = "You try it on the door. The lock turns heavily and the door opens.",
                 Description = "The key is old and heavy. You wonder what it might open."
@@ -61,7 +61,7 @@ namespace Engine
 
             Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me", 150, SorcererQuestCompleteRequirement)
             {
-                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man."
+                CompletionMessage = "You give the " + SorcererQuestCompleteRequirement.Name + " to the old man."
             };
             SorcererQuest.Reward_Items.Add(WeirdLookingStone);
             #endregion
