@@ -32,9 +32,9 @@ namespace Engine
             #region Items
             Weapon Axe = new Weapon("Axe", "Axes", 15);
             Weapon ShortSword = new Weapon("Short sword", "Short Swords", 25);
-            Potion HealPot = new Potion("healing potion", "healing potions", 50);
+            Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
-            Item SorcererQuestCompleteRequirement = new Item("Sorcerers wand", "Sorcerers wands");
+            Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
             #endregion
 
             #region Quests
@@ -107,7 +107,7 @@ namespace Engine
             Cave5.LocationToSouth = null;
             Cave5.LocationToWest = Cave2;
             Cave5.Info.Add(Cave5.Description = "Torches on the wall light up the room.");
-            Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners");
+            Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners.");
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead further down to the cave.");
 
             Cave6.LocationToNorth = null;
@@ -116,9 +116,9 @@ namespace Engine
             Cave6.LocationToWest = Cave5;
             Cave6.Info.Add(Cave6.Description = "The temperature seems higher on this lower level of the cave than what it was before.");
             Cave6.Info.Add(Cave6.Description2 = "The walls of this room are warm to your touch.");
-            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going up on the west side of the room");
-            Cave6.Info.Add(Cave6.Description4 = "On the ground a pile of bones starts to merge to a creature of somesort.");
-            Cave6.Info.Add(Cave6.Description5 = "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
+            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going up on the west side of the room.");
+            Cave6.Info.Add(Cave6.Description4 = "On the ground a pile of bones starts to merge to a creature of some sort.");
+            Cave6.Info.Add(Cave6.Description5 = "The skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
             Cave7.LocationToNorth = Cave8;

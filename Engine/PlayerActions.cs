@@ -295,7 +295,10 @@ namespace Engine
             Window.line6 = "GO WEST or W to move west";
             Window.line7 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
             Window.line8 = "ATTACK or A to attack";
-            Window.line9 = "HELP or H to open Help Menu";
+            Window.line9 = "TALK to talk";
+            Window.line10 = "ASK to ask";
+            Window.line11 = "OPEN BAG, BAG or I to manage inventory";
+            Window.line12 = "HELP or H to open Help Menu";
             Window.InsertGameTextToScreen();
         }
 

@@ -151,19 +151,55 @@ namespace Engine
                 Console.SetCursorPosition(118, i);
                 Console.WriteLine("|");
             }
-            Console.SetCursorPosition(26, 10);
-            Console.WriteLine(@"________                           ____  __.__.__  .__                ");
-            Console.SetCursorPosition(26, 11);
-            Console.WriteLine(@"\_____  \    ___________   ____   |    |/ _|__|  | |  |   ___________ ");
-            Console.SetCursorPosition(26, 12);
-            Console.WriteLine(@" /   |   \  / ___\_  __ \_/ __ \  |      < |  |  | |  | _/ __ \_  __ \");
-            Console.SetCursorPosition(26, 13);
-            Console.WriteLine(@"/    |    \/ /_/  >  | \/\  ___/  |    |  \|  |  |_|  |_\  ___/|  | \/");
-            Console.SetCursorPosition(26, 14);
-            Console.WriteLine(@"\_______  /\___  /|__|    \___  > |____|__ \__|____/____/\___  >__|   ");
-            Console.SetCursorPosition(26, 15);
-            Console.WriteLine(@"        \//_____/             \/          \/                 \/       ");
-            Console.SetCursorPosition(46, 25);
+            Console.SetCursorPosition(15, 3);
+            Console.WriteLine(@"                          __,='`````'=/__                                      ");
+            Console.SetCursorPosition(15, 4);
+            Console.WriteLine(@"                         '//  (o) \(o) \ `'        _,-,                         ");
+            Console.SetCursorPosition(15, 5);
+            Console.WriteLine(@"                         //|     ,_)   (`\     ,-'`_,-\                         ");
+            Console.SetCursorPosition(15, 6);
+            Console.WriteLine(@"                       ,-~~~\  `'==='  /-,      \==````\__                      ");
+            Console.SetCursorPosition(15, 7);
+            Console.WriteLine(@"                      /        `----'     `\     \      \/                      ");
+            Console.SetCursorPosition(15, 8);
+            Console.WriteLine(@" ____  __.__.__  .__ /    __  .__           \ ____\____  \                      ");
+            Console.SetCursorPosition(15, 9);
+            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |__   ____   \_____  \   \                     ");
+            Console.SetCursorPosition(15, 10);
+            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |__   ____   \_____  \   \___________   ____   ");
+            Console.SetCursorPosition(15, 11);
+            Console.WriteLine(@"|      < |  |  | |  |   \   __\  |  \_/ __ \   /   |   \  / ___\_  __ \_/ __ \  ");
+            Console.SetCursorPosition(15, 12);
+            Console.WriteLine(@"|    |  \|  |  |_|  |__  |  | |   Y  \  ___/  /    |    \/ /_/  >  | \/\  ___/  ");
+            Console.SetCursorPosition(15, 13);
+            Console.WriteLine(@"|____|__ \__|____/____/  |__| |___|  /\___  >,\_______  /\___  /|__|    \___  > ");
+            Console.SetCursorPosition(15, 14);
+            Console.WriteLine(@"        \/         (               \/     \/>` _,`   \\//_____/             \/  ");
+            Console.SetCursorPosition(15, 15);
+            Console.WriteLine(@"                  ,`    ,/,              ,>,_,`)      \--`````\                 ");
+            Console.SetCursorPosition(15, 16);
+            Console.WriteLine(@"                  (      `\`---'`  `-,-'`_,<   \       \_,.--'`                 ");
+            Console.SetCursorPosition(15, 17);
+            Console.WriteLine(@"                   `.      `--. _,-'`_,-`  |    \                               ");
+            Console.SetCursorPosition(15, 18);
+            Console.WriteLine(@"                    [`-.___   <`_,-'`------(    /                               ");
+            Console.SetCursorPosition(15, 19);
+            Console.WriteLine(@"                    (`` _,-\   \ --`````````|--`                                ");
+            Console.SetCursorPosition(15, 20);
+            Console.WriteLine(@"                     >-`_,-`\,-` ,          |                                   ");
+            Console.SetCursorPosition(15, 21);
+            Console.WriteLine(@"                   <`_,'     ,  /\          /                                   ");
+            Console.SetCursorPosition(15, 22);
+            Console.WriteLine(@"                    `  \/\,-/ `/  \/`\_/V\_/                                    ");
+            Console.SetCursorPosition(15, 23);
+            Console.WriteLine(@"                       (  ._. )    ( .__. )                                     ");
+            Console.SetCursorPosition(15, 24);
+            Console.WriteLine(@"                       |      |    |      |                                     ");
+            Console.SetCursorPosition(15, 25);
+            Console.WriteLine(@"                        \,---_|    |_---./                                      ");
+            Console.SetCursorPosition(15, 26);
+            Console.WriteLine(@"                        ooOO(_)    (_)OOoo                                      ");
+            Console.SetCursorPosition(70, 20);
             Console.WriteLine("Press any key to start game.");
             Console.SetCursorPosition(0, 29);
             Console.ReadKey();
@@ -206,34 +242,16 @@ namespace Engine
             }
             Console.SetCursorPosition(17, 7);
             Console.WriteLine($"Congratulations {p.Name}! You have");
-            Console.SetCursorPosition(15, 10);
-            Console.WriteLine(@" __   .__.__  .__             .___   __  .__             ________                       ._.");
-            Console.SetCursorPosition(15, 11);
-            Console.WriteLine(@"|  | _|__|  | |  |   ____   __| _/ _/  |_|  |__   ____   \_____  \    ___________   ____| |");
-            Console.SetCursorPosition(15, 12);
-            Console.WriteLine(@"|  |/ /  |  | |  | _/ __ \ / __ |  \   __\  |  \_/ __ \   /   |   \  / ___\_  __ \_/ __ \ |");
-            Console.SetCursorPosition(15, 13);
-            Console.WriteLine(@"|    <|  |  |_|  |_\  ___// /_/ |   |  | |   Y  \  ___/  /    |    \/ /_/  >  | \/\  ___/\|");
-            Console.SetCursorPosition(15, 14);
-            Console.WriteLine(@"|__|_ \__|____/____/\___  >____ |   |__| |___|  /\___  > \_______  /\___  /|__|    \___  >_");
-            Console.SetCursorPosition(15, 15);
-            Console.WriteLine(@"     \/                 \/     \/             \/     \/          \//_____/             \/\/");
-            Console.SetCursorPosition(38, 25);
-            Console.WriteLine("Press any key to play again or ESC to exit.");
+            
+            Console.WriteLine("Press any key to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input.Key)
+            switch (input)
             {
-                case ConsoleKey.Escape:
+                default:
                     Environment.Exit(0);
                     break;
-                default:
-                    Console.Clear();
-                    CreateOpeningScreen();
-                    //this must be replaced with a method that includes the entire game 
-                    break;
             }
-            Console.ReadLine();
         }
         public static void CreateGameOverScreen()
         {
@@ -282,21 +300,15 @@ namespace Engine
             Console.SetCursorPosition(28, 15);
             Console.WriteLine(@"        \/     \/      \/     \/                   \/       ");
             Console.SetCursorPosition(38, 25);
-            Console.WriteLine("Press any key to start again or ESC to exit.");
+            Console.WriteLine("Press any key to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input.Key)
+            switch (input)
             {
-                case ConsoleKey.Escape:
+                default:
                     Environment.Exit(0);
                     break;
-                default:
-                    Console.Clear();
-                    CreateOpeningScreen();
-                    //this must be replaced with a method that includes the entire game 
-                    break;
             }
-            Console.ReadLine();
         }
         public static void CreateMainScreen(Player p)
         {
@@ -347,14 +359,17 @@ namespace Engine
         public static void InsertOpeningTexts()
         {
             EmptyGameTextFromScreen();
-            line9 = "Type what you want to do and press ENTER:";
-            line10 = "";
-            line11 = "GO NORTH or N to move north";
-            line12 = "GO EAST or E to move east";
-            line13 = "GO SOUTH or S to move south";
-            line14 = "GO WEST or W to move west";
-            line15 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
-            line16 = "ATTACK, HIT, A or H to attack";
+            line6 = "Type what you want to do and press ENTER:";
+            line7 = "";
+            line8 = "GO NORTH or N to move north";
+            line9 = "GO EAST or E to move east";
+            line10 = "GO SOUTH or S to move south";
+            line11 = "GO WEST or W to move west";
+            line12 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
+            line13 = "ATTACK, HIT, A or H to attack";
+            line14 = "TALK to talk";
+            line15 = "ASK to ask";
+            line16 = "OPEN BAG, BAG or I to manage inventory";
             line17 = "HELP or H to open Help Menu";
             InsertGameTextToScreen();
         }

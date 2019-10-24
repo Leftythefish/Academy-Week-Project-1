@@ -26,12 +26,12 @@ namespace Miniprojekti_1
             //Create the world
             Cave.CreateWorlds();
             PlayTheGame(p);
-            Console.ReadKey();
-            Window.CreateGameFinishedScreen(p);
+            //Console.ReadKey();
+            //Window.CreateGameFinishedScreen(p);
             //Window.CreateGameOverScreen();
         }
 
-        private static void PlayTheGame(Player p) //--Ria
+        public static void PlayTheGame(Player p) //--Ria
         {
             //set the player in start position
             var startlocation = LocationByName("Dark Cave");
@@ -58,7 +58,7 @@ namespace Miniprojekti_1
         }
         public static void CreatePlayer(Player p)
         {
-            Console.SetCursorPosition(51, 25);
+            Console.SetCursorPosition(65, 25);
             Console.WriteLine("Enter your name.");
             Console.SetCursorPosition(0, 29);
             string input = Console.ReadLine();
