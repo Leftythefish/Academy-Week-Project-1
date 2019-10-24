@@ -45,6 +45,11 @@ namespace Engine
                 case "ask":
                     TalkToQuestGiver(p);
                     break;
+                case "open bag":
+                case "i":
+                case "bag":
+                    InventoryManagement(p);
+                    break;
                 default:
                     Window.EmptyGameTextFromScreen();
                     Window.EmptyStringData();
@@ -55,7 +60,6 @@ namespace Engine
                     break;
             }
         }
-
         private static void Search(Player p)
         {
             //show detailed description
@@ -71,9 +75,9 @@ namespace Engine
                 foreach (var item in p.CurrentLocation.LocationItems)
                 {
                     Window.lines[counter] = item.Name;
-                    Window.InsertGameTextToScreenArray();
                     counter += 1;
                 }
+                    Window.InsertGameTextToScreenArray();
             }
             else
             {
@@ -81,7 +85,6 @@ namespace Engine
                 Window.InsertGameTextToScreenArray();
             }
         }
-
         public static void MoveToLocation(Player p, Location newLocation)
         {
             if (newLocation != null)
@@ -113,23 +116,22 @@ namespace Engine
             }
             Window.InsertGameTextToScreenArray();
             //check if the location has a monster to fight
-            if (loc.LocationMonsters != null) //here there be monsters
+            if (loc.LocationMonsters.Count > 0) //here there be monsters
             {
-                foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
-                {
-                    //displaymessage
-                    //fightmonster'
-                    FightMonster(p, mon);
-                }
-            }
-            else
-            {
-                // Do nothing and end the loop
-            }
+                var mon = loc.LocationMonsters[loc.LocationMonsters.Count-1];
+                FightMonster(p, mon);
+                p.CurrentLocation.LocationMonsters.Remove(mon);
 
+                //foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
+                //{
+                //    //displaymessage
+                //    //fightmonster'
+
+                //}
+            }
         }
         private static void FightMonster(Player p, Monster mon)
-        {//--Ria, edited to work
+        {//--Ria, Jesse
 
             var p_weapon = p.EquippedWeapon;
             do
@@ -138,18 +140,28 @@ namespace Engine
 
                 if (mon.Cur_Health > 0)
                 {
+
                     p.Input = Console.ReadLine().ToLower();
                     switch (p.Input)
-                    {
+                    { //create damage variables to change 
                         case "attack":
                         case "a":
                         case "hit":
                         case "h":
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
-                            Window.line1 = "You slash the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
+                            bool hit = HitCalculator();
+                            if (hit == true)
+                            {
+                            Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p.EquippedWeapon.Damage + " damage.";
                             Window.InsertGameTextToScreen();
-                            mon.Cur_Health -= p_weapon.Damage;
+                            mon.Cur_Health -= p.EquippedWeapon.Damage;
+                            }
+                            else
+                            {
+                                Window.line1 = "You attempt to hit the " + mon.Name + " with your " + p_weapon.Name + ", but it evades your attack.";
+                                Window.InsertGameTextToScreen();
+                            }
                             break;
                         default:
                             Window.EmptyGameTextFromScreen();
@@ -166,17 +178,25 @@ namespace Engine
                 }
                 else //monster health below 0
                 {
-                    Console.WriteLine($"You killed the mean {mon.Name}. Yippee!");
-                    Console.WriteLine($"You collect the {mon.QuestItem}.");
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.lines[0] = "You have managed to kill the " +mon.Name + ".";
+                    Window.lines[1] = "You loot the corpse and find:";
+                    Window.lines[2] = mon.QuestItem.Name;
+                    int counter = 3;
+                    foreach (var item in mon.MonsterLoot)
+                    {
+                        Window.lines[counter] = item.Name;
+                        p.Inventory.Add(item);
+                        counter += 1;
+                    }
+                    Window.InsertGameTextToScreenArray();
                     return;
-                    //player.Inventory.Add(mon.RewardItem);
                 }
             } while (p.Cur_Health > 0); // player is alive
-
             //player health below 0
             Window.CreateGameOverScreen();
         }
-
         private static void TalkToQuestGiver(Player p)
         {
             var loc = p.CurrentLocation;
@@ -254,5 +274,44 @@ namespace Engine
             Window.InsertGameTextToScreen();
         }
 
+        public static void InventoryManagement(Player p) 
+        {
+            Window.EmptyGameTextFromScreen();
+            Window.EmptyStringData();
+            Window.lines[0] = "You have the following items in your inventory";
+            int counter = 1;
+            foreach (var item in p.Inventory)
+            {
+                Window.lines[counter] = item.Name;                
+                counter += 1;
+            }
+            Window.InsertGameTextToScreenArray();
+            // add functino for showing multiple items counter
+            // add function for choosing item by name
+            // add method for using potion
+            // add method for equipping weapon
+            // add method for dropping item
+        }
+
+        public static bool HitCalculator() 
+        {            
+            int variable = RandomNumber();
+            bool hit;
+            if (variable < 70)
+            {
+                hit = true;
+            }
+            else
+            {
+                hit = false;
+            }
+            return hit;
+        }
+        public static int RandomNumber()
+        {
+            Random rnd = new Random();
+            int rndnumber = rnd.Next(1, 100);
+            return rndnumber;
+        }
     }
 }
