@@ -68,6 +68,7 @@ namespace Miniprojekti_1
             p.Cur_Health = 500;
             Weapon Fists = new Weapon("Fist", "Fists", 10); // --Jyri
             p.EquippedWeapon = Fists;
+            p.Inventory.Add(Fists);
         }
         public static string CheckInput(string input)
         {
