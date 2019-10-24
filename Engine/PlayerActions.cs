@@ -73,6 +73,7 @@ namespace Engine
                 {
                     Window.lines[counter] = item.Name;
                     counter += 1;
+                    p.Inventory.Add(item);
                 }
                     Window.InsertGameTextToScreenArray();
             }
@@ -118,13 +119,6 @@ namespace Engine
                 var mon = loc.LocationMonsters[loc.LocationMonsters.Count-1];
                 FightMonster(p, mon);
                 p.CurrentLocation.LocationMonsters.Remove(mon);
-
-                //foreach (var mon in loc.LocationMonsters) //fight all monsters in turn, maybe random generate this to pick one?
-                //{
-                //    //displaymessage
-                //    //fightmonster'
-
-                //}
             }
         }
         private static void FightMonster(Player p, Monster mon)
