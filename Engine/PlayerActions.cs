@@ -121,7 +121,7 @@ namespace Engine
                         Window.line3 = "Press any key to enter.";
                         Window.InsertGameTextToScreen();
                         Console.ReadKey();
-                        if (newLocation.Name.ToLower() == "long stairway")
+                        if (newLocation.Name.ToLower() == "long stairway.")
                         {
                             p.CurrentLocation = newLocation;
                             EnterFinalLocation(p);
@@ -366,6 +366,7 @@ namespace Engine
             p.Exp += lquest.RewardXP;
             // update player level
             p.UpdatePlayerLevel();
+            
             Window.UpdateExp(p);
             Window.UpdateLvl(p);
             Window.InsertGameTextToScreenArray();

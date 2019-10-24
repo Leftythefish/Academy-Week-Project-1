@@ -138,7 +138,7 @@ namespace Engine
             Cave5.LocationToSouth = null;
             Cave5.LocationToWest = Cave2;
             Cave5.Info.Add(Cave5.Description = "Torches on the wall light up the room.");
-            Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners");
+            Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners.");
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
             Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
             Cave5.Key = RustyKey;
@@ -150,7 +150,7 @@ namespace Engine
             Cave6.LocationToWest = Cave5;
             Cave6.Info.Add(Cave6.Description = "The temperature seems higher on this level of the cave than what it was before.");
             Cave6.Info.Add(Cave6.Description2 = "The walls of this room are warm to your touch.");
-            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room");
+            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room.");
             Cave6.Info.Add(Cave6.Description4 = "There is a pile of bones on the ground");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
@@ -197,7 +197,7 @@ namespace Engine
             Cave11.LocationToSouth = null;
             Cave11.LocationToWest = Cave12;
             Cave11.Info.Add(Cave11.Description = "Wooden shelves full of different shaped and sized vials occupy the south and north walls.");
-            Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it");
+            Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it.");
             Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals.");
             Cave11.Info.Add(Cave11.Description4 = "The path to the west is blocked by a star shaped stone. There's no way to go past it.");
             Cave11.LocationMonsters.Add(Sorcerer);

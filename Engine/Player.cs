@@ -20,15 +20,20 @@ namespace Engine
             this.Exp = Exp;
             this.Level = Level;
         }
-        internal void UpdatePlayerLevel()
+        public void UpdatePlayerLevel()
         {
             // player level calculator
             // check player experience
-            if (this.Exp > 100)
+            do
+            {
+            if (Exp > 100)
             {
                 Level += 1;
-                this.Exp -= 100;
+                Exp -= 100;
+                Window.lines[8] = "You take a deep breath. Somehow the recent experiences seems to have made you stronger.";
+                Window.line8 = "You feel like you've become stronger.";
             }
+            } while (Exp > 100);
             // method to update lvl on the screen
             // if player experience is above 100, increase player level, remove 100 points from player exp            
         }
