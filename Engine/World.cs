@@ -88,7 +88,7 @@ namespace Engine
             Cave1.LocationToSouth = null;
             Cave1.LocationToWest = null;
             Cave1.Info.Add(Cave1.Description = "The small cave you entered is very dark and moist.");
-            Cave1.Info.Add(Cave1.Description2 = "Walls of the cave are filled with mushrooms emitting a dim green light.");
+            Cave1.Info.Add(Cave1.Description2 = "The walls of the cave are filled with mushrooms emitting a dim green light.");
             Cave1.Info.Add(Cave1.Description3 = "The light from the mushrooms allows you to vaguely see your nearby surroundings");
 
             Cave2.LocationToNorth = Cave4;
@@ -128,7 +128,7 @@ namespace Engine
             Cave5.Info.Add(Cave5.Description = "Torches on the wall light up the room.");
             Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners");
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
-            Cave5.Info.Add(Cave5.Description4 = "on the west there is a large door with ominous carvings about hellish monsters");
+            Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
 
             Cave6.LocationToNorth = Cave7;
             Cave6.LocationToEast = null;
@@ -136,9 +136,9 @@ namespace Engine
             Cave6.LocationToWest = Cave5;
             Cave6.Info.Add(Cave6.Description = "The temperature seems higher on this level of the cave than what it was before.");
             Cave6.Info.Add(Cave6.Description2 = "The walls of this room are warm to your touch.");
-            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room");
-            Cave6.Info.Add(Cave6.Description4 = "On the ground a pile of bones starts to merge to a creature of somesort.");
-            Cave6.Info.Add(Cave6.Description5 = "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
+            Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room.");
+            Cave6.Info.Add(Cave6.Description4 = "On the ground a pile of bones starts to merge to a creature of some sort.");
+            Cave6.Info.Add(Cave6.Description5 = "The skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
             Cave7.LocationToNorth = Cave8;
@@ -147,8 +147,8 @@ namespace Engine
             Cave7.LocationToWest = null;
             Cave7.Info.Add(Cave7.Description = "You see an old man chained on the ground in the middle of this room.");
             Cave7.Info.Add(Cave7.Description2 = "The room is filled with dark symbols which seem to suck nearby light into them.");
-            Cave7.Info.Add(Cave7.Description3 = "In one of its corners is a weapon rack");
-            Cave7.Info.Add(Cave7.Description4 = "There are ways leading to south and north");
+            Cave7.Info.Add(Cave7.Description3 = "In one of its corners is a weapon rack.");
+            Cave7.Info.Add(Cave7.Description4 = "There are ways leading south and north.");
             Cave7.LocationItems.Add(ShortSword);
             Cave7.LocationQuests.Add(SorcererQuest);
             Cave7.LocationItems.Add(HealPot);
@@ -157,10 +157,10 @@ namespace Engine
             Cave8.LocationToEast = Cave9;
             Cave8.LocationToSouth = Cave7;
             Cave8.LocationToWest = null;
-            Cave8.Info.Add(Cave8.Description = "The walls are covered with paintings of Devils and tormented humans");
-            Cave8.Info.Add(Cave8.Description2 = "The painter seems to have loved color red");
-            Cave8.Info.Add(Cave8.Description3 = "The east wall has a broken door leading somewhere. There is also a door leading to north");
-            Cave8.Info.Add(Cave8.Description4 = "Way to south seems darker than it should be");
+            Cave8.Info.Add(Cave8.Description = "The walls are covered with paintings of Devils and tormented humans.");
+            Cave8.Info.Add(Cave8.Description2 = "The painter seems to have loved the color red.");
+            Cave8.Info.Add(Cave8.Description3 = "The east wall has a broken door leading somewhere. There is also a door leading north.");
+            Cave8.Info.Add(Cave8.Description4 = "The way south seems darker than it should be.");
 
             Cave9.LocationToNorth = null;
             Cave9.LocationToEast = null;
@@ -168,9 +168,9 @@ namespace Engine
             Cave9.LocationToWest = Cave8;
             Cave9.Info.Add(Cave9.Description = "You see an stone sarcophagus in the room.");
             Cave9.Info.Add(Cave9.Description2 = "The smell of rotting flesh is overwhelming.");
-            Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting outh of the sarcophagus");
-            Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it");
-            Cave4.LocationMonsters.Add(Zombie);
+            Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting out of the sarcophagus.");
+            Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it.");
+            Cave9.LocationMonsters.Add(Zombie);
 
 
             Cave10.LocationToNorth = null;
