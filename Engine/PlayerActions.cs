@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Engine
@@ -23,18 +24,22 @@ namespace Engine
                     PlayerInputHelp();
                     break;
                 case "go north":
+                case "north":
                 case "n":
                     MoveToLocation(p, p.CurrentLocation.LocationToNorth);
                     break;
                 case "go south":
+                case "south":
                 case "s":
                     MoveToLocation(p, p.CurrentLocation.LocationToSouth);
                     break;
                 case "go east":
+                case "east":
                 case "e":
                     MoveToLocation(p, p.CurrentLocation.LocationToEast);
                     break;
                 case "go west":
+                case "west":
                 case "w":
                     MoveToLocation(p, p.CurrentLocation.LocationToWest);
                     break;
@@ -79,7 +84,7 @@ namespace Engine
                     counter += 1;
                     p.Inventory.Add(item);
                 }
-                    Window.InsertGameTextToScreenArray();
+                Window.InsertGameTextToScreenArray();
             }
             else
             {
@@ -120,7 +125,7 @@ namespace Engine
             //check if the location has a monster to fight
             if (loc.LocationMonsters.Count > 0) //here there be monsters
             {
-                var mon = loc.LocationMonsters[loc.LocationMonsters.Count-1];
+                var mon = loc.LocationMonsters[loc.LocationMonsters.Count - 1];
                 FightMonster(p, mon);
                 p.CurrentLocation.LocationMonsters.Remove(mon);
             }
@@ -146,9 +151,9 @@ namespace Engine
                             bool hit = HitCalculator();
                             if (hit == true)
                             {
-                            Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p.EquippedWeapon.Damage + " damage.";
-                            Window.InsertGameTextToScreen();
-                            mon.Cur_Health -= p.EquippedWeapon.Damage;
+                                Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p.EquippedWeapon.Damage + " damage.";
+                                Window.InsertGameTextToScreen();
+                                mon.Cur_Health -= p.EquippedWeapon.Damage;
                             }
                             else
                             {
@@ -173,7 +178,7 @@ namespace Engine
                 {
                     Window.EmptyGameTextFromScreen();
                     Window.EmptyStringData();
-                    Window.lines[0] = "You have managed to kill the " +mon.Name + ".";
+                    Window.lines[0] = "You have managed to kill the " + mon.Name + ".";
                     Window.lines[1] = "You loot the corpse and find:";
                     Window.lines[2] = mon.QuestItem.Name;
                     int counter = 3;
@@ -267,7 +272,7 @@ namespace Engine
             Window.InsertGameTextToScreen();
         }
 
-        public static void InventoryManagement(Player p) 
+        public static void InventoryManagement(Player p)
         {
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
@@ -275,19 +280,54 @@ namespace Engine
             int counter = 1;
             foreach (var item in p.Inventory)
             {
-                Window.lines[counter] = item.Name;                
+                Window.lines[counter] = item.Name;
                 counter += 1;
             }
+            Window.lines[counter] = "To use an item from inventory, type the item name and press enter. Type Exit to close inventory.";
+            Window.lines[counter + 1] = "Using a weapon will equip the chosen weapon. Using a potion will consume the potion.";
+
             Window.InsertGameTextToScreenArray();
-            // add functino for showing multiple items counter
-            // add function for choosing item by name
-            // add method for using potion
-            // add method for equipping weapon
-            // add method for dropping item
+
+            p.Input = Console.ReadLine().ToLower();
+
+            if (p.Input == "exit")
+            {
+                return;
+            }
+            else
+            {
+                var selection = p.Inventory.Where(it => it.Name.ToLower().Contains(p.Input)).First();
+
+                if (selection is Weapon)
+                {
+                    p.EquippedWeapon = (Weapon)selection;
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You have equipped the " + p.EquippedWeapon.Name;
+                    Window.InsertGameTextToScreen();
+                }
+                else if (selection is Potion)
+                {
+                    p.Cur_Health += ((Potion)selection).Healing_Amount;
+                    Window.UpdateHp(p);
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You drink the potion, intantly feeling a lot better.";
+                    Window.InsertGameTextToScreen();
+                    p.Inventory.Remove(selection);
+                }
+                else
+                {
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "That is not the type of item you could actually use.";
+                    Window.InsertGameTextToScreen();
+                }
+            }
         }
 
-        public static bool HitCalculator() 
-        {            
+        public static bool HitCalculator()
+        {
             int variable = RandomNumber();
             bool hit;
             if (variable < 70)
