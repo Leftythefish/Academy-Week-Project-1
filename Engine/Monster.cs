@@ -34,13 +34,28 @@ namespace Engine
             get { return exp; }
             set { exp = value; }
         }
-        public Item RewardItem { get; set; }
+        public Item QuestItem { get; set; }
+        public List<Item> MonsterLoot = new List<Item>();
 
-        public Monster(string name, int maximum_health, Item rewardItem) : base(name, maximum_health)
+        public Monster(string name, int maximum_health, Item QuestItem) : base(name, maximum_health)
+        {
+            this.Damage = 10;
+            this.Exp = 50;
+            this.QuestItem = QuestItem;
+        }
+
+        public Monster(string name, int maximum_health, Item QuestItem, int damage) : base(name, maximum_health)
         {
             this.Damage = damage;
-            this.Exp = exp;
-            this.RewardItem = rewardItem;
+            this.Exp = 50;
+            this.QuestItem = QuestItem;
+        }
+
+        public Monster(string name, int maximum_health, Item QuestItem, int damage, int rewardExp) : base(name, maximum_health)
+        {
+            this.Damage = damage;
+            this.Exp = rewardExp;
+            this.QuestItem = QuestItem;
         }
     }
 }

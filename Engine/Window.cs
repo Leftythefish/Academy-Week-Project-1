@@ -9,7 +9,6 @@ namespace Engine
         public static string[] lines = new string[10];
         public static string line1, line2, line3, line4, line5, line6, line7, line8, line9, line10;
         public Window() { }
-
         public static void EmptyGameTextFromScreen()
         {
             for (int i = 4; i < 14; i++)
@@ -19,7 +18,6 @@ namespace Engine
             }
             Console.SetCursorPosition(0, 29);
             Console.Write("                                                                                                                        ");
-
         }
         public static void InsertGameTextToScreen()
         {
@@ -45,7 +43,6 @@ namespace Engine
             Console.WriteLine(line10);
             Console.SetCursorPosition(0, 29);
         }
-
         public static void InsertGameTextToScreenArray()
         {
             Console.SetCursorPosition(3, 4);
@@ -70,7 +67,6 @@ namespace Engine
             Console.WriteLine(lines[9]);
             Console.SetCursorPosition(0, 29);
         }
-
         public static void EmptyStringData()
         {
             line1 = "";
@@ -96,8 +92,6 @@ namespace Engine
 
 
         }
-
-
         public static void CheckWindowSize()
         {
             if (Console.WindowHeight != 30 || Console.WindowWidth != 120)
@@ -157,7 +151,6 @@ namespace Engine
             Console.SetCursorPosition(46, 25);
             Console.WriteLine("                                  ");
         }
-
         public static void CreateGameFinishedScreen(Player p)
         {
             CheckWindowSize();

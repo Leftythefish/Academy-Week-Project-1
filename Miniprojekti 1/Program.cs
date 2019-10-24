@@ -37,7 +37,7 @@ namespace Miniprojekti_1
             Window.EmptyStringData();
             do
             {
-                p.Input = Console.ReadLine().ToLower(); ;
+                p.Input = Console.ReadLine().ToLower();
                 PlayerActions.ReadInput(p);
             } while (p.Cur_Health > 0);
 
@@ -64,7 +64,7 @@ namespace Miniprojekti_1
             p.Name = name;
             p.Max_Health = 100;
             p.Cur_Health = 100;
-            Weapon Fists = new Weapon("Fist", "Fists", 2); // Jyri lisäsi, toivottavasti ei tuhoudu kaikki
+            Weapon Fists = new Weapon("Fist", "Fists", 2); // --Jyri
             p.EquippedWeapon = Fists;
         }
         public static string CheckInput(string input)
@@ -87,6 +87,13 @@ namespace Miniprojekti_1
                 return name;
             }
         }
+
+        public static int RandomNumber() 
+        {
+            int rndnumber;
+            Random rnd = new Random();
+            rndnumber = rnd.Next(0, 101);
+            return rndnumber; }
     }
 }
 

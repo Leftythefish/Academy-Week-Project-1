@@ -30,13 +30,26 @@ namespace Engine
         private static int nextId = 10000;
         public int ID { get { return id; } }
         public string Name { get; set; }
+
+        public List<string> Info = new List<string>();
         public string Description { get; set; }
+        public string Description2 { get; set; }
+        public string Description3 { get; set; }
+        public string Description4 { get; set; }
+        public string Description5 { get; set; }
+
+
         public Location LocationToNorth;
         public Location LocationToEast;
         public Location LocationToWest;
         public Location LocationToSouth;
         //   public string QuestCompletedDescription; //get settinä?
         //Constructors
+        public Location(string name)
+        {
+            id = ++nextId;
+            this.Name = name;
+        }
         public Location(string name, string description)
         {
             id = ++nextId;

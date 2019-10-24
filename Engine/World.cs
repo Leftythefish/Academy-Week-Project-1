@@ -6,74 +6,105 @@ namespace Engine
 {
     public class World
     {
+        ///<summary>
+        ///--Jyri
+        ///--Ria
+        ///World Creation
+        ///</summary>
+
         public List<Location> WorldList = new List<Location>();
-
         public Location WorldLocation { get; set; }
-
         public World() { }
-
-        //    public List<Quest> Cave3Quests = new List<Quest>();
-        //public List<Item> Cave3Items = new List<Item>();
-
-        //public List<Monster> Cave4Monster = new List<Monster>();
-
         public void CreateWorlds()
         {
-       
-        Location Cave1 = new Location("Dark Cave", "The small cave you entered is very dark and moist. Walls of the cave are filled with mushrooms emitting dim green light making you able to see your nearby surroundings");
-        Location Cave2 = new Location("Dark Cave Tunnels", "You came to a room which splits into multiple tunnels. There is a large door with ominous carvings about hellish monsters blocking the way to the east. From the north tunnel comes loud growling noises. The pathway to the west tunnel seems to be used a lot" );
-        Location Cave3 = new Location("Pleasant Cave Room", "There is a bonfire in the middle of the room creating warmth and light around it. A small humanoid creature sits in front of the bonfire. He tells you to go slay the nearby Ogre");
-        Location Cave4 = new Location("Ogre Cave", "An unpleasant smell welcomes you as you enter the room. The floor is filled with bones and rusty weapons. You see a big and bulky creature in the room");
-        Location Cave5 = new Location("Dungeon Entrance", "Torches on the wall light up the room. You see some cages hanging from the cave roof housing the remains of their last prisoners");
-            //"You came to a room which splits into multiple tunnels. There is a large door blocking the way to . The pathway to west tunnel seems to be used a lot"
-            Weapon Axe = new Weapon("axe", "axes", 5);
+            #region Location
+            Location Cave1 = new Location("Dark Cave");
+            Location Cave2 = new Location("Dark Cave Tunnels");
+            Location Cave3 = new Location("Pleasant Cave Room");
+            Location Cave4 = new Location("Ogre Cave");
+            Location Cave5 = new Location("Dungeon Entrance");
+            #endregion
+
+            #region Items
+            Weapon Axe = new Weapon("Axe", "Axes", 5);
             Potion HealPot = new Potion("healing potion", "healing potions", 20);
+            Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
+            #endregion
 
-            Item ogreReward = new Item("ogre head", "ogre heads");
+            #region Quests
+            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement)
+            {
+                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + "to the man. The monster has been slain!"
+            };
+            #endregion
 
+            #region Monsters
+            Monster Ogre = new Monster("Ogre", 10, OgreQuestCompleteRequirement)
+            {
+                Damage = 10
+            };
+            Ogre.MonsterLoot.Add(HealPot);
+            #endregion
+
+            #region LocationSpecifics
             Cave1.LocationToNorth = Cave2;
             Cave1.LocationToEast = null;
             Cave1.LocationToSouth = null;
             Cave1.LocationToWest = null;
+            Cave1.Description = "The small cave you entered is very dark and moist.";
+            Cave1.Description2 = "Walls of the cave are filled with mushrooms emitting a dim green light.";
+            Cave1.Description3 = "The light from the mushrooms allows you to vaguely see your nearby surroundings";
 
             Cave2.LocationToNorth = Cave4;
             Cave2.LocationToEast = Cave5;
             Cave2.LocationToSouth = Cave1;
             Cave2.LocationToWest = Cave3;
+            Cave2.Info.Add(Cave2.Description = "You are in a room which splits into multiple tunnels.");
+            Cave2.Info.Add(Cave2.Description2 = "To the east, there is a large door with ominous carvings about hellish monsters.");
+            Cave2.Info.Add(Cave2.Description3 = "From the north tunnel you can hear some distant growling noises.");
+            Cave2.Info.Add(Cave2.Description4 = "The pathway to the west tunnel is clean and seems to be used a lot.");
+            Cave2.Info.Add(Cave2.Description4 = "To the south lies a dark, quiet passage.");
 
             Cave3.LocationToNorth = null;
             Cave3.LocationToEast = Cave2;
             Cave3.LocationToSouth = null;
             Cave3.LocationToWest = null;
+            Cave3.Info.Add(Cave3.Description = "There is a bonfire in the middle of the room creating warmth and light around it.");
+            Cave3.Info.Add(Cave3.Description2 = "A small humanoid creature sits in front of the bonfire.");
 
             Cave3.LocationItems.Add(HealPot);
             Cave3.LocationItems.Add(Axe);
-
-            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, ogreReward);
             Cave3.LocationQuests.Add(OgreQuest);
 
             Cave4.LocationToNorth = null;
             Cave4.LocationToEast = null;
             Cave4.LocationToSouth = Cave2;
             Cave4.LocationToWest = null;
-
-            Monster Ogre = new Monster("Ogre", 10, ogreReward)
-            {
-                Damage = 10
-            };
-
+            Cave4.Info.Add(Cave4.Description = "An unpleasant smell welcomes you as you enter the room.");
+            Cave4.Info.Add(Cave4.Description2 = "The floor is filled with bones and rusty weapons.");
+            Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
             Cave4.LocationMonsters.Add(Ogre);
 
             Cave5.LocationToNorth = null;
             Cave5.LocationToEast = null;
             Cave5.LocationToSouth = null;
             Cave5.LocationToWest = Cave2;
+            Cave5.Description = "Torches on the wall light up the room. You see some cages hanging from the cave roof housing the remains of their last prisoners";
+            #endregion
 
+
+            #region AddToWorld
             WorldList.Add(Cave1);
             WorldList.Add(Cave2);
             WorldList.Add(Cave3);
             WorldList.Add(Cave4);
             WorldList.Add(Cave5);
+            #endregion
+
+
+
+
+
 
 
         }

@@ -17,21 +17,7 @@ namespace Engine
         private Weapon equippedWeapon;
         public Weapon EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
 
-        public enum MovementDirection
-        {
-            North,
-            East,
-            South,
-            West,
-        }
-        public enum Action
-        {
-            LookAround,
-            Fight,
 
-        }
-        public MovementDirection M_Direction;
-        public Action Act;
 
         public Player() { }
         public Player(string name, int maximum_health) : base(name, maximum_health)
