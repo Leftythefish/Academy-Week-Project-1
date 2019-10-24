@@ -124,8 +124,8 @@ namespace Engine
             Cave7.LocationToEast = null;
             Cave7.LocationToSouth = null;
             Cave7.LocationToWest = null;
-            Cave7.Info.Add(Cave7.Description = "You see an oldman chained on the ground in the middle of this room.");
-            Cave7.Info.Add(Cave7.Description2 = "The room is filled with dark symbols which seem to suck nearby light in them.");
+            Cave7.Info.Add(Cave7.Description = "You see an old man chained on the ground in the middle of this room.");
+            Cave7.Info.Add(Cave7.Description2 = "The room is filled with dark symbols which seem to suck nearby light into them.");
             Cave7.Info.Add(Cave7.Description2 = "In one of its corners are");
 
 

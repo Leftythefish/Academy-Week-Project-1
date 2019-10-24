@@ -181,6 +181,7 @@ namespace Engine
                     Window.lines[0] = "You have managed to kill the " + mon.Name + ".";
                     Window.lines[1] = "You loot the corpse and find:";
                     Window.lines[2] = mon.QuestItem.Name;
+                    p.Inventory.Add(mon.QuestItem);
                     int counter = 3;
                     foreach (var item in mon.MonsterLoot)
                     {
@@ -199,7 +200,7 @@ namespace Engine
         {
             var loc = p.CurrentLocation;
             //check if the there is a quest to offer
-            if (loc.LocationQuests != null) // location has a quest
+            if (loc.LocationQuests.Count > 0) // location has a quest
             {
                 foreach (var lquest in loc.LocationQuests)
                 {
@@ -208,7 +209,10 @@ namespace Engine
                     {
                         if (lquest.QuestCompleted == true) //player has the quest and it is completed
                         {
-                            // do nothing
+                            Window.EmptyGameTextFromScreen();
+                            Window.EmptyStringData();
+                            Window.line1 = "There really is nothing else to say. You stare at each other in awkwards silence. Maybe you should leave..";
+                            Window.InsertGameTextToScreen();
                         }
                         else //player has quest and it is not marked as complete
                         {
@@ -216,7 +220,6 @@ namespace Engine
                             {
                                 //set quest completion status as complete and remove quest inventory item
                                 lquest.QuestCompleted = true;
-                                p.Inventory.Remove(lquest.CompletionRequirement);
                                 //display completion message and give rewards
                                 Window.EmptyGameTextFromScreen();
                                 Window.EmptyStringData();
@@ -231,6 +234,7 @@ namespace Engine
                                 p.Exp += lquest.RewardXP;
                                 // update player level
                                 p.UpdatePlayerLevel();
+                                p.Inventory.Remove(lquest.CompletionRequirement);
                             }
                             else
                             {
@@ -248,7 +252,7 @@ namespace Engine
                         //Display message
                         Window.EmptyGameTextFromScreen();
                         Window.EmptyStringData();
-                        Window.line1 = "You are given a quest: ";
+                        Window.line1 = "They have an urgent task for you to do. You realize that the only way to leave is by complying.";
                         Window.line2 = lquest.Description;
                         Window.InsertGameTextToScreen();
                     }
@@ -292,6 +296,10 @@ namespace Engine
 
             if (p.Input == "exit")
             {
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                Window.line1 = "You are standing in the " + p.CurrentLocation.Name;
+                Window.InsertGameTextToScreen();
                 return;
             }
             else
