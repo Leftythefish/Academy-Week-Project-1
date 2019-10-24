@@ -199,10 +199,10 @@ namespace Engine
             Console.WriteLine(@"                        \,---_|    |_---./                                      ");
             Console.SetCursorPosition(5, 26);
             Console.WriteLine(@"Original artwork by Zeus          ooOO(_)    (_)OOoo                                      ");
-            Console.SetCursorPosition(70, 23);
-            Console.WriteLine("Press any key to start game.");
             Console.SetCursorPosition(80, 17);
-            Console.WriteLine("Part II: Escaping the Cave");
+            Print("Part II: Escaping the Cave", 70);
+            Console.SetCursorPosition(70, 23);
+            Print("Press any key to start game.", 70);
             Console.SetCursorPosition(0, 29);
             Console.ReadKey();
             Console.SetCursorPosition(60, 25);
@@ -410,6 +410,16 @@ namespace Engine
             Console.WriteLine("                         ");
             Console.SetCursorPosition(61, 1);
             Console.WriteLine($"LVL: {p.Level}");
+        }
+
+        public static void Print(string text, int speed)
+        {
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                System.Threading.Thread.Sleep(speed);
+            }
+            Console.WriteLine();
         }
     }
 }

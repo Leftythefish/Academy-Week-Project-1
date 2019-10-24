@@ -44,12 +44,12 @@ namespace Engine
             #region Quests
             Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement)
             {
-                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + "to the man. The monster has been slain!"
+                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monster has been slain!"
             };
 
             Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me", 150, SorcererQuestCompleteRequirement)
             {
-                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + "to the old man. He thanks you for setting him free of his curse and turns to fine dust"
+                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man. He thanks you for setting him free of his curse and turns to fine dust"
             };
             #endregion
 

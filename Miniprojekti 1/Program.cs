@@ -59,7 +59,9 @@ namespace Miniprojekti_1
         public static void CreatePlayer(Player p)
         {
             Console.SetCursorPosition(65, 25);
-            Console.WriteLine("Enter your name.");
+            Window.Print("Enter your name.", 70);
+            Console.SetCursorPosition(0, 29);
+            Console.WriteLine("                                                                                 ");
             Console.SetCursorPosition(0, 29);
             string input = Console.ReadLine();
             CheckInput(input);
@@ -80,7 +82,7 @@ namespace Miniprojekti_1
             else
             {
                 name = "";
-                Console.SetCursorPosition(45, 26);
+                Console.SetCursorPosition(60, 26);
                 Console.Write("Please enter a shorter name!");
                 Console.SetCursorPosition(0, 29);
                 Console.Write("                                                                                                                        ");

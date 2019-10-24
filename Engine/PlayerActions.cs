@@ -73,7 +73,7 @@ namespace Engine
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
             int counter = 2;
-            Window.lines[0] = "You search around for anything that looks like it has any value..";
+            Window.lines[0] = "You search around for anything that looks like it has any value...";
             Window.lines[1] = "You found:";
 
             if (p.CurrentLocation.LocationItems.Count > 0)
@@ -222,7 +222,7 @@ namespace Engine
                         {
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
-                            Window.line1 = "There really is nothing else to say. You stare at each other in awkwards silence. Maybe you should leave..";
+                            Window.line1 = "There really is nothing else to say. You stare at each other in awkward silence. Maybe you should leave..";
                             Window.InsertGameTextToScreen();
                         }
                         else //player has quest and it is not marked as complete
@@ -313,7 +313,7 @@ namespace Engine
                 Window.lines[counter] = item.Name;
                 counter += 1;
             }
-            Window.lines[counter] = "To use an item from inventory, type the item name and press enter. Type Exit to close inventory.";
+            Window.lines[counter] = "To use an item from inventory, type the item name and press enter. Type EXIT to close inventory.";
             Window.lines[counter + 1] = "Using a weapon will equip the chosen weapon. Using a potion will consume the potion.";
 
             Window.InsertGameTextToScreenArray();
