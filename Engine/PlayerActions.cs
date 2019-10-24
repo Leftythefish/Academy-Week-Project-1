@@ -96,8 +96,29 @@ namespace Engine
         {
             if (newLocation != null)
             {
+                if (newLocation.Key == null)
+                {
                 p.CurrentLocation = newLocation;
                 EnterNewLocation(p);
+                }
+                else
+                {
+                    string keyname = newLocation.Key.Name;
+                    bool playerhaskey = PlayerHasItem(p, keyname);
+                    if (playerhaskey == true) // player has the key
+                    {
+                        // add description of using the key
+                        p.CurrentLocation = newLocation;
+                        EnterNewLocation(p);
+                    }
+                    else //player no has the key
+                    {
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You cannot go that way. The way is blocked."; 
+                        Window.InsertGameTextToScreen();
+                    }
+                }
             }
             else
             {
@@ -231,17 +252,7 @@ namespace Engine
                             Window.InsertGameTextToScreen();
                         }
                         else //player has quest and it is not marked as complete
-                        {
-                            //bool playerhasitem = false;
-                            //foreach (var item in p.Inventory)
-                            //{
-                            //    if (item.Name == lquest.CompletionRequirement.Name)
-                            //    {
-                            //        playerhasitem = true;
-                            //        p.Inventory.Remove(item);
-                            //        break;
-                            //    }
-                            //}
+                        {                         
                             bool playerhasitem = PlayerHasItem(p, lquest.CompletionRequirement.Name);
 
                             if (playerhasitem == true) //does player inventory contain the required completion item?
@@ -303,6 +314,8 @@ namespace Engine
             {
                 p.Inventory.Add(item);
                 Window.lines[counter] = "Added " + item.Name + " to inventory.";
+                Window.lines[counter + 1] = item.Description;
+                counter += 1;
             }
             p.Exp += lquest.RewardXP;
             // update player level

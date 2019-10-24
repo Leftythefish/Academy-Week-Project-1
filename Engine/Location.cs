@@ -25,7 +25,6 @@ namespace Engine
         public List<Quest> LocationQuests = new List<Quest>();
         public List<Item> LocationItems = new List<Item>();
         public List<Monster> LocationMonsters = new List<Monster>();
-
         private readonly int id;
         private static int nextId = 10000;
         public int ID { get { return id; } }
@@ -38,7 +37,7 @@ namespace Engine
         public string Description4 { get; set; }
         public string Description5 { get; set; }
         public string Description6 { get; set; }
-
+        public Item Key { get; set; } //Requirement to enter
 
         public Location LocationToNorth;
         public Location LocationToEast;

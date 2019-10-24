@@ -40,6 +40,10 @@ namespace Engine
             Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
+            Item RustyKey = new Item("Rusty key", "Rusty keys");
+            RustyKey.Description = "The key is old and heavy. You wonder what it might open.";
+            Item WeirdLookingStone = new Item("Weird glowing stone");
+            WeirdLookingStone.Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?";
             #endregion
 
             #region Quests
@@ -47,11 +51,13 @@ namespace Engine
             {
                 CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monster has been slain!"
             };
+            OgreQuest.Reward_Items.Add(RustyKey);
 
             Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me", 150, SorcererQuestCompleteRequirement)
             {
-                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man. He thanks you for setting him free of his curse and turns to fine dust"
+                CompletionMessage = "You give the" + SorcererQuestCompleteRequirement.Name + " to the old man."
             };
+            SorcererQuest.Reward_Items.Add(WeirdLookingStone);
             #endregion
 
             #region Monsters
@@ -130,6 +136,7 @@ namespace Engine
             Cave5.Info.Add(Cave5.Description2 = "You see some cages hanging from the cave roof housing the remains of their last prisoners");
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
             Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
+            Cave5.Key = RustyKey;
 
             Cave6.LocationToNorth = Cave7;
             Cave6.LocationToEast = null;
@@ -190,6 +197,7 @@ namespace Engine
             Cave11.Info.Add(Cave11.Description = "Wooden shelves full of different shaped and sized vials occupy the south and north walls");
             Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it");
             Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals");
+            Cave11.Info.Add(Cave11.Description4 = "The path to the west is blockd by a star shaped stone. There's no way to go past it.");
             //Cave9.Info.Add(Cave11.Description4 = "Suddenly in front of you materializes a humanlike creature dressed in a dark veil");
             //Cave9.Info.Add(Cave11.Description5 = "It sets out inhuman screech and starts to mutter some words.");
 
@@ -204,6 +212,7 @@ namespace Engine
             Cave12.Info.Add(Cave12.Description = "You enter to a stairwell which seem to continue endlessly upwards");
             Cave12.Info.Add(Cave12.Description2 = "As you climb up you start to see some light.");
             Cave12.Info.Add(Cave12.Description3 = "Could this be the entrance out of this hellhole...?");
+            Cave12.Key = WeirdLookingStone;
 
             #endregion
 
