@@ -18,38 +18,38 @@ namespace Engine
         public void CreateWorlds()
         {
             #region Location
-            Location Cave1 = new Location("Dark Cave");
-            Location Cave2 = new Location("Dark Cave Tunnels");
-            Location Cave3 = new Location("Pleasant Cave Room");
-            Location Cave4 = new Location("Ogre Cave");
+            Location Cave1 = new Location("dark cave");
+            Location Cave2 = new Location("dark cave tunnels");
+            Location Cave3 = new Location("pleasant cave room");
+            Location Cave4 = new Location("ogre cave");
 
-            Location Cave5 = new Location("Dungeon Entrance");
-            Location Cave6 = new Location("Start of Dungeon");
-            Location Cave7 = new Location("Magic Prison");
-            Location Cave8 = new Location("Painted Room");
-            Location Cave9 = new Location("Breakroom From Life");
+            Location Cave5 = new Location("dungeon entrance");
+            Location Cave6 = new Location("bone grave");
+            Location Cave7 = new Location("magic prison");
+            Location Cave8 = new Location("painted room");
+            Location Cave9 = new Location("breakroom from life");
 
-            Location Cave10 = new Location("Misty Steps");
-            Location Cave11 = new Location("Room of Dark Magic");
-            Location Cave12 = new Location("Long stairway");
+            Location Cave10 = new Location("mist filled room");
+            Location Cave11 = new Location("room of dark magic");
+            Location Cave12 = new Location("long stairway");
             #endregion
 
             #region Items
             Weapon Axe = new Weapon("Axe", "Axes", 15);
-            Weapon ShortSword = new Weapon("Short sword", "Short Swords", 25);
+            Weapon ShortSword = new Weapon("Short sword", "Short swords", 25);
             Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
-            Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
-            Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
-            Item RustyKey = new Item("Rusty key", "Rusty keys");
+            Item OgreQuestCompleteRequirement = new Item("bloody ogre head", "bloody ogre heads");
+            Item SorcererQuestCompleteRequirement = new Item("sorcerer's wand", "Sorcerer's wands");
+            Item RustyKey = new Item("rusty key", "rusty keys");
             RustyKey.Description = "The key is old and heavy. You wonder what it might open.";
-            Item WeirdLookingStone = new Item("Weird glowing stone");
+            Item WeirdLookingStone = new Item("weird glowing stone");
             WeirdLookingStone.Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?";
             #endregion
 
             #region Quests
-            Quest OgreQuest = new Quest("Slay the Ogre", "Slay the nasty Ogre located north of the Dark Cave Tunnels", 100, OgreQuestCompleteRequirement)
+            Quest OgreQuest = new Quest("Slay the ogre", "Slay the nasty ogre located north of the dark cave tunnels", 100, OgreQuestCompleteRequirement)
             {
-                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monster has been slain!"
+                CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monstrous ogre has been slain!"
             };
             OgreQuest.Reward_Items.Add(RustyKey);
 
@@ -68,7 +68,7 @@ namespace Engine
             };
             Ogre.MonsterLoot.Add(HealPot);
 
-            Monster SkeletonWarrior = new Monster("Skeleton Warrior", 75)
+            Monster SkeletonWarrior = new Monster("Skeleton warrior", 75)
             {
                 Damage = 12
             };
@@ -79,7 +79,7 @@ namespace Engine
 
             };
 
-            Monster Sorcerer = new Monster("Dark Sorcerer", 250, SorcererQuestCompleteRequirement)
+            Monster Sorcerer = new Monster("Dark sorcerer", 250, SorcererQuestCompleteRequirement)
             {
                 Damage = 40
             };
@@ -88,15 +88,13 @@ namespace Engine
 
             #region LocationSpecifics
 
-            //You can not go from Cave 2 to 5 before you have slain the Ogre, OgreQuest must be done
-            //
             Cave1.LocationToNorth = Cave2;
             Cave1.LocationToEast = null;
             Cave1.LocationToSouth = null;
             Cave1.LocationToWest = null;
             Cave1.Info.Add(Cave1.Description = "The small cave you entered is very dark and moist.");
             Cave1.Info.Add(Cave1.Description2 = "The walls of the cave are filled with mushrooms emitting a dim green light.");
-            Cave1.Info.Add(Cave1.Description3 = "The light from the mushrooms allows you to vaguely see your nearby surroundings");
+            Cave1.Info.Add(Cave1.Description3 = "The light from the mushrooms allows you to vaguely see your nearby surroundings.");
 
             Cave2.LocationToNorth = Cave4;
             Cave2.LocationToEast = Cave5;
@@ -113,7 +111,7 @@ namespace Engine
             Cave3.LocationToSouth = null;
             Cave3.LocationToWest = null;
             Cave3.Info.Add(Cave3.Description = "There is a bonfire in the middle of the room creating warmth and light around it.");
-            Cave3.Info.Add(Cave3.Description2 = "A small humanoid creature sits in front of the bonfire.");
+            Cave3.Info.Add(Cave3.Description2 = "Small humanoid creature sits in front of the bonfire.");
 
             Cave3.LocationItems.Add(HealPot);
             Cave3.LocationItems.Add(Axe);
@@ -166,7 +164,7 @@ namespace Engine
             Cave8.LocationToEast = Cave9;
             Cave8.LocationToSouth = Cave7;
             Cave8.LocationToWest = null;
-            Cave8.Info.Add(Cave8.Description = "The walls are covered with paintings of Devils and tormented humans.");
+            Cave8.Info.Add(Cave8.Description = "The walls are covered with paintings of devils and tormented humans.");
             Cave8.Info.Add(Cave8.Description2 = "The painter seems to have loved the color red.");
             Cave8.Info.Add(Cave8.Description3 = "The east wall has a broken door leading somewhere. There is also a door leading north.");
             Cave8.Info.Add(Cave8.Description4 = "The way south seems darker than it should be.");
@@ -184,20 +182,20 @@ namespace Engine
 
             Cave10.LocationToNorth = null;
             Cave10.LocationToEast = null;
-            Cave10.LocationToSouth = Cave10;
+            Cave10.LocationToSouth = Cave8;
             Cave10.LocationToWest = Cave11;
-            Cave10.Info.Add(Cave10.Description = "Room you entered is filled with thick mist making it hard to see anything");
-            Cave10.Info.Add(Cave10.Description2 = "It pains you to keep your eyes open but you are able to see that there is a door leading to west and south");
-            Cave10.Info.Add(Cave10.Description3 = "Not being able to see well makes you feel uneasy");
+            Cave10.Info.Add(Cave10.Description = "Room you entered is filled with thick mist making it hard to see anything.");
+            Cave10.Info.Add(Cave10.Description2 = "It pains you to keep your eyes open but you are able to see that there is a door leading to west and south.");
+            Cave10.Info.Add(Cave10.Description3 = "Not being able to see well makes you feel uneasy.");
 
             Cave11.LocationToNorth = null;
             Cave11.LocationToEast = Cave10;
             Cave11.LocationToSouth = null;
             Cave11.LocationToWest = Cave12;
-            Cave11.Info.Add(Cave11.Description = "Wooden shelves full of different shaped and sized vials occupy the south and north walls");
+            Cave11.Info.Add(Cave11.Description = "Wooden shelves full of different shaped and sized vials occupy the south and north walls.");
             Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it");
-            Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals");
-            Cave11.Info.Add(Cave11.Description4 = "The path to the west is blockd by a star shaped stone. There's no way to go past it.");
+            Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals.");
+            Cave11.Info.Add(Cave11.Description4 = "The path to the west is blocked by a star shaped stone. There's no way to go past it.");
             //Cave9.Info.Add(Cave11.Description4 = "Suddenly in front of you materializes a humanlike creature dressed in a dark veil");
             //Cave9.Info.Add(Cave11.Description5 = "It sets out inhuman screech and starts to mutter some words.");
 
@@ -209,7 +207,7 @@ namespace Engine
             Cave12.LocationToEast = null;
             Cave12.LocationToSouth = null;
             Cave12.LocationToWest = null;
-            Cave12.Info.Add(Cave12.Description = "You enter to a stairwell which seem to continue endlessly upwards");
+            Cave12.Info.Add(Cave12.Description = "You enter to a stairwell which seem to continue endlessly upwards.");
             Cave12.Info.Add(Cave12.Description2 = "As you climb up you start to see some light.");
             Cave12.Info.Add(Cave12.Description3 = "Could this be the entrance out of this hellhole...?");
             Cave12.Key = WeirdLookingStone;
