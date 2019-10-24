@@ -176,14 +176,22 @@ namespace Engine
                     Window.EmptyStringData();
                     Window.lines[0] = "You have managed to kill the " +mon.Name + ".";
                     Window.lines[1] = "You loot the corpse and find:";
-                    Window.lines[2] = mon.QuestItem.Name;
-                    int counter = 3;
-                    foreach (var item in mon.MonsterLoot)
+                    if (mon.QuestItem != null) //--Jyri, Ria--
                     {
-                        Window.lines[counter] = item.Name;
-                        p.Inventory.Add(item);
-                        counter += 1;
+                        Window.lines[2] = mon.QuestItem.Name;
+                        int counter = 3;
+                        foreach (var item in mon.MonsterLoot)
+                        {
+                            Window.lines[counter] = item.Name;
+                            p.Inventory.Add(item);
+                            counter += 1;
+                        }
                     }
+                    else
+                    {
+                        Window.lines[2] = "absolutely nothing";
+                    }
+                   
                     Window.InsertGameTextToScreenArray();
                     return;
                 }
