@@ -217,13 +217,11 @@ namespace Engine
             Console.WriteLine("________________________________________________________________________________________________________________________");
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("________________________________________________________________________________________________________________________");
-
             for (int i = 2; i <= 27; i++)
             {
                 Console.SetCursorPosition(0, i);
                 Console.WriteLine("|");
             }
-
             for (int i = 2; i <= 27; i++)
             {
                 Console.SetCursorPosition(119, i);
@@ -234,7 +232,6 @@ namespace Engine
                 Console.SetCursorPosition(1, i);
                 Console.WriteLine("|");
             }
-
             for (int i = 2; i <= 27; i++)
             {
                 Console.SetCursorPosition(118, i);
@@ -242,16 +239,34 @@ namespace Engine
             }
             Console.SetCursorPosition(17, 7);
             Console.WriteLine($"Congratulations {p.Name}! You have");
-            
-            Console.WriteLine("Press any key to exit.");
+            Console.SetCursorPosition(15, 10);
+            Console.WriteLine(@" __   .__.__  .__             .___   __  .__             ________                       ._.");
+            Console.SetCursorPosition(15, 11);
+            Console.WriteLine(@"|  | _|__|  | |  |   ____   __| _/ _/  |_|  |__   ____   \_____  \    ___________   ____| |");
+            Console.SetCursorPosition(15, 12);
+            Console.WriteLine(@"|  |/ /  |  | |  | _/ __ \ / __ |  \   __\  |  \_/ __ \   /   |   \  / ___\_  __ \_/ __ \ |");
+            Console.SetCursorPosition(15, 13);
+            Console.WriteLine(@"|    <|  |  |_|  |_\  ___// /_/ |   |  | |   Y  \  ___/  /    |    \/ /_/  >  | \/\  ___/\|");
+            Console.SetCursorPosition(15, 14);
+            Console.WriteLine(@"|__|_ \__|____/____/\___  >____ |   |__| |___|  /\___  > \_______  /\___  /|__|    \___  >_");
+            Console.SetCursorPosition(15, 15);
+            Console.WriteLine(@"     \/                 \/     \/             \/     \/          \//_____/             \/\/");
+            Console.SetCursorPosition(38, 25);
+            Console.WriteLine("Press any key to play again or ESC to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input)
+            switch (input.Key)
             {
-                default:
+                case ConsoleKey.Escape:
                     Environment.Exit(0);
                     break;
+                default:
+                    Console.Clear();
+                    CreateOpeningScreen();
+                    //this must be replaced with a method that includes the entire game 
+                    break;
             }
+            Console.ReadLine();
         }
         public static void CreateGameOverScreen()
         {
