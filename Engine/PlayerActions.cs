@@ -19,6 +19,7 @@ namespace Engine
             switch (p.Input)
             {
                 case "help":
+                case "h":
                     PlayerInputHelp();
                     break;
                 case "go north":
@@ -143,8 +144,6 @@ namespace Engine
                     {
                         case "attack":
                         case "a":
-                        case "hit":
-                        case "h":
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
                             Window.line1 = "You slash the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
@@ -154,7 +153,7 @@ namespace Engine
                         default:
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
-                            Window.line1 = "You were too slow. Next round try one of the following commands: ATTACK or HIT.";
+                            Window.line1 = "You were too slow. Next round try to attack by typing the command ATTACK or A.";
                             Window.InsertGameTextToScreen();
                             break;
                     }
@@ -238,7 +237,7 @@ namespace Engine
             }
 
         }
-        public static void PlayerInputHelp() //case help or case h
+        public static void PlayerInputHelp() //--Jesse
         {
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
@@ -249,7 +248,7 @@ namespace Engine
             Window.line5 = "GO SOUTH or S to move south";
             Window.line6 = "GO WEST or W to move west";
             Window.line7 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
-            Window.line8 = "ATTACK, HIT, A or H to attack";
+            Window.line8 = "ATTACK or A to attack";
             Window.line9 = "HELP or H to open Help Menu";
             Window.InsertGameTextToScreen();
         }
