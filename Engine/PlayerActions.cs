@@ -309,8 +309,7 @@ namespace Engine
                 }
                 else if (selection is Potion)
                 {
-                    var pot = (Potion)selection;
-                    p.Cur_Health += pot.Healing_Amount;
+                    p.Cur_Health += ((Potion)selection).Healing_Amount;
                     Window.UpdateHp(p);
                     Window.EmptyGameTextFromScreen();
                     Window.EmptyStringData();
@@ -326,7 +325,6 @@ namespace Engine
                     Window.InsertGameTextToScreen();
                 }
             }
-6
         }
 
         public static bool HitCalculator()
