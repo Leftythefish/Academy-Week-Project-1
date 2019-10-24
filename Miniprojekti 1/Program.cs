@@ -78,6 +78,7 @@ namespace Miniprojekti_1
             p.Name = name;
             p.Max_Health = 500;
             p.Cur_Health = 500;
+            p.Level = 1;
             Weapon Fists = new Weapon("Fist", "Fists", 10); // --Jyri
             p.EquippedWeapon = Fists;
             p.Inventory.Add(Fists);

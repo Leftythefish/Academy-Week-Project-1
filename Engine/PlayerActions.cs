@@ -204,14 +204,15 @@ namespace Engine
                     { //create damage variables to change 
                         case "attack":
                         case "a":
+                            int damage = p.EquippedWeapon.Damage + (p.Level * 5); 
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
                             bool hit = HitCalculator();
                             if (hit == true)
                             {
-                                Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + p.EquippedWeapon.Damage + " damage.";
+                                Window.line1 = "You hit the " + mon.Name + " with your " + p_weapon.Name + " doing " + damage + " damage.";
                                 Window.InsertGameTextToScreen();
-                                mon.Cur_Health -= p.EquippedWeapon.Damage;
+                                mon.Cur_Health -= damage;
                             }
                             else
                             {

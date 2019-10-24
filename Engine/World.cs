@@ -35,17 +35,21 @@ namespace Engine
             #endregion
 
             #region Items
-            Weapon Axe = new Weapon("Axe", "Axes", 15);
-            Weapon ShortSword = new Weapon("Short sword", "Short swords", 25);
-            Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
+            Weapon Axe = new Weapon("Axe", "Axes", 20);
+            Weapon ShortSword = new Weapon("Short sword", "Short swords", 30);
+            Potion HealPot = new Potion("Healing potion", "Healing potions", 100);
             Item OgreQuestCompleteRequirement = new Item("bloody ogre head", "bloody ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("sorcerer's wand", "Sorcerer's wands");
-            Item RustyKey = new Item("rusty key", "rusty keys");
-            RustyKey.EntranceDescription = "You try it on the door. The lock turns heavily and the door opens.";
-            RustyKey.Description = "The key is old and heavy. You wonder what it might open.";
-            Item WeirdLookingStone = new Item("weird glowing stone");
-            WeirdLookingStone.Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?";
-            WeirdLookingStone.EntranceDescription = "You lift the stone towards the star shaped rock, which fades from existance.";
+            Item RustyKey = new Item("rusty key", "rusty keys")
+            {
+                EntranceDescription = "You try it on the door. The lock turns heavily and the door opens.",
+                Description = "The key is old and heavy. You wonder what it might open."
+            };
+            Item WeirdLookingStone = new Item("weird glowing stone")
+            {
+                Description = "There is a faint glow eminating from the stone. Almost as if it was of celestial origin. What could it be for?",
+                EntranceDescription = "You lift the stone towards the star shaped rock, which fades from existance."
+            };
             #endregion
 
             #region Quests
@@ -65,25 +69,28 @@ namespace Engine
             #region Monsters
             Monster Ogre = new Monster("Ogre", 100, OgreQuestCompleteRequirement)
             {
-                Damage = 10
+                Damage = 10,
+                Exp = 120
 
             };
             Ogre.MonsterLoot.Add(HealPot);
 
-            Monster SkeletonWarrior = new Monster("Skeleton warrior", 75)
+            Monster SkeletonWarrior = new Monster("Skeleton warrior", 175)
             {
-                Damage = 12
+                Damage = 20,
+                Exp = 150
             };
 
-            Monster Zombie = new Monster("Zombie", 125, HealPot)
+            Monster Zombie = new Monster("Zombie", 225, HealPot)
             {
-                Damage = 20
-
+                Damage = 30,
+                Exp = 200
             };
 
-            Monster Sorcerer = new Monster("Dark sorcerer", 250, SorcererQuestCompleteRequirement)
+            Monster Sorcerer = new Monster("Dark sorcerer", 350, SorcererQuestCompleteRequirement)
             {
-                Damage = 10
+                Damage = 40,
+                Exp = 200
             };
 
             #endregion

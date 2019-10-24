@@ -31,7 +31,7 @@ namespace Engine
             // check player experience
             if (this.Exp > 100)
             {
-                this.Level = this.Level++;
+                Level += 1;
                 this.Exp -= 100;
             }
             // method to update lvl on the screen
