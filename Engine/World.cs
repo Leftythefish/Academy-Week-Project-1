@@ -26,8 +26,8 @@ namespace Engine
             #endregion
 
             #region Items
-            Weapon Axe = new Weapon("Axe", "Axes", 5);
-            Potion HealPot = new Potion("healing potion", "healing potions", 20);
+            Weapon Axe = new Weapon("Axe", "Axes", 15);
+            Potion HealPot = new Potion("healing potion", "healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             #endregion
 
@@ -39,7 +39,7 @@ namespace Engine
             #endregion
 
             #region Monsters
-            Monster Ogre = new Monster("Ogre", 10, OgreQuestCompleteRequirement)
+            Monster Ogre = new Monster("Ogre", 100, OgreQuestCompleteRequirement)
             {
                 Damage = 10
             };
