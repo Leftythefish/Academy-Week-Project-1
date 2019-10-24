@@ -90,6 +90,7 @@ namespace Engine
                     counter += 1;
                     p.Inventory.Add(item);
                 }
+                p.CurrentLocation.LocationItems.Clear();
                 Window.InsertGameTextToScreenArray();
             }
             else
@@ -404,56 +405,64 @@ namespace Engine
             Window.InsertGameTextToScreenArray();
 
             p.Input = Console.ReadLine().ToLower();
-            //pressing enter equips fists... test
+            if (!string.IsNullOrEmpty(p.Input))
+            {
+                if (p.Input == "exit")
+                {
+                    Window.EmptyGameTextFromScreen();
+                    Window.EmptyStringData();
+                    Window.line1 = "You are standing in the " + p.CurrentLocation.Name;
+                    Window.InsertGameTextToScreen();
+                    return;
+                }
+                else
+                {
+                    try
+                    {
 
-            if (p.Input == "exit")
+                        var selection = p.Inventory.Where(it => it.Name.ToLower().Contains(p.Input)).First();
+
+                        if (selection is Weapon)
+                        {
+                            p.EquippedWeapon = (Weapon)selection;
+                            Window.EmptyGameTextFromScreen();
+                            Window.EmptyStringData();
+                            Window.line1 = "You have equipped the " + p.EquippedWeapon.Name;
+                            Window.InsertGameTextToScreen();
+                        }
+                        else if (selection is Potion)
+                        {
+                            p.Cur_Health += ((Potion)selection).Healing_Amount;
+                            Window.UpdateHp(p);
+                            Window.EmptyGameTextFromScreen();
+                            Window.EmptyStringData();
+                            Window.line1 = "You drink the potion, instantly feeling a lot better.";
+                            Window.InsertGameTextToScreen();
+                            p.Inventory.Remove(selection);
+                        }
+                        else
+                        {
+                            Window.EmptyGameTextFromScreen();
+                            Window.EmptyStringData();
+                            Window.line1 = "That is not the type of item you could actually use.";
+                            Window.InsertGameTextToScreen();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Window.EmptyGameTextFromScreen();
+                        Window.EmptyStringData();
+                        Window.line1 = "You tumble around clumsily.";
+                        Window.InsertGameTextToScreen();
+                    }
+                }
+            }
+            else
             {
                 Window.EmptyGameTextFromScreen();
                 Window.EmptyStringData();
                 Window.line1 = "You are standing in the " + p.CurrentLocation.Name;
                 Window.InsertGameTextToScreen();
-                return;
-            }
-            else
-            {
-                try
-                {
-
-                    var selection = p.Inventory.Where(it => it.Name.ToLower().Contains(p.Input)).First();
-
-                    if (selection is Weapon)
-                    {
-                        p.EquippedWeapon = (Weapon)selection;
-                        Window.EmptyGameTextFromScreen();
-                        Window.EmptyStringData();
-                        Window.line1 = "You have equipped the " + p.EquippedWeapon.Name;
-                        Window.InsertGameTextToScreen();
-                    }
-                    else if (selection is Potion)
-                    {
-                        p.Cur_Health += ((Potion)selection).Healing_Amount;
-                        Window.UpdateHp(p);
-                        Window.EmptyGameTextFromScreen();
-                        Window.EmptyStringData();
-                        Window.line1 = "You drink the potion, intantly feeling a lot better.";
-                        Window.InsertGameTextToScreen();
-                        p.Inventory.Remove(selection);
-                    }
-                    else
-                    {
-                        Window.EmptyGameTextFromScreen();
-                        Window.EmptyStringData();
-                        Window.line1 = "That is not the type of item you could actually use.";
-                        Window.InsertGameTextToScreen();
-                    }
-                }
-                catch (Exception)
-                {
-                    Window.EmptyGameTextFromScreen();
-                    Window.EmptyStringData();
-                    Window.line1 = "You tumble around clumsily.";
-                    Window.InsertGameTextToScreen();
-                }
             }
         }
         public static bool HitCalculator()
