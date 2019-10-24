@@ -34,7 +34,7 @@ namespace Miniprojekti_1
         public static void PlayTheGame(Player p) //--Ria
         {
             //set the player in start position
-            var startlocation = LocationByName("Dark Cave");
+            var startlocation = LocationByName("dark cave");
             p.CurrentLocation = startlocation;
             Window.EmptyStringData();
             do
