@@ -170,7 +170,7 @@ namespace Engine
             Cave9.Info.Add(Cave9.Description2 = "The smell of rotting flesh is overwhelming.");
             Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting outh of the sarcophagus");
             Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it");
-            Cave4.LocationMonsters.Add(Zombie);
+            Cave9.LocationMonsters.Add(Zombie);
 
 
             Cave10.LocationToNorth = null;

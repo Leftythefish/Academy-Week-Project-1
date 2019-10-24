@@ -121,13 +121,18 @@ namespace Engine
                 Window.lines[counter] = desc;
                 counter += 1;
             }
-            Window.InsertGameTextToScreenArray();
             //check if the location has a monster to fight
             if (loc.LocationMonsters.Count > 0) //here there be monsters
             {
                 var mon = loc.LocationMonsters[loc.LocationMonsters.Count - 1];
+                Window.lines[counter] = "You quickly realize you are not alone. An evil looking " + mon.Name + " rushes at you! Prepare to fight!";
+                Window.InsertGameTextToScreenArray();
                 FightMonster(p, mon);
                 p.CurrentLocation.LocationMonsters.Remove(mon);
+            }
+            else
+            {
+            Window.InsertGameTextToScreenArray();
             }
         }
         private static void FightMonster(Player p, Monster mon)
