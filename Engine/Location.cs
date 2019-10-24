@@ -37,6 +37,7 @@ namespace Engine
         public string Description3 { get; set; }
         public string Description4 { get; set; }
         public string Description5 { get; set; }
+        public string Description6 { get; set; }
 
 
         public Location LocationToNorth;
