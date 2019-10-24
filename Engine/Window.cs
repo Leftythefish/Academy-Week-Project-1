@@ -6,6 +6,9 @@ namespace Engine
 {
     public class Window
     {
+        ///<summary>
+        ///--Jesse
+        ///</summary>
         public static string[] lines = new string[10];
         public static string line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, line13, line14, line15, line16, line17;
         public Window() { }
@@ -384,15 +387,13 @@ namespace Engine
             Console.WriteLine("________________________________________________________________________________________________________________________");
             Console.SetCursorPosition(0, 29);
         }
-
         public static void InsertOpeningTexts()
         {
             EmptyGameTextFromScreen();
             line1 = "You slowly drift back to consciousness. You are cold and your head hurts.";
             line2 = "You look around and realize you are in a cave of some sort.";
-            line3 = "You have your bag with you, but all your equipment is gone.";
+            line3 = "You have your bag with you, but all your equipment is gone. You pick up a rock to be able to defend yourself.";
             line4 = "";
-
             line6 = "Type what you want to do and press ENTER:";
             line7 = "";
             line8 = "GO NORTH or N to move north";
@@ -427,7 +428,6 @@ namespace Engine
             Console.SetCursorPosition(61, 1);
             Console.WriteLine($"LVL: {p.Level}");
         }
-
         public static void Print(string text, int speed)
         {
             foreach (char c in text)

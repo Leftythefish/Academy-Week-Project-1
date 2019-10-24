@@ -23,7 +23,7 @@ namespace Engine
             Location Cave3 = new Location("pleasant cave room.");
             Location Cave4 = new Location("ogre cave.");
 
-            Location Cave5 = new Location("dungeon entrance.");
+            Location Cave5 = new Location("hallway.");
             Location Cave6 = new Location("bone grave.");
             Location Cave7 = new Location("magic prison.");
             Location Cave8 = new Location("painted room.");
@@ -53,13 +53,13 @@ namespace Engine
             #endregion
 
             #region Quests
-            Quest OgreQuest = new Quest("Slay the ogre", "Slay the nasty ogre located north of the dark cave tunnels", 100, OgreQuestCompleteRequirement)
+            Quest OgreQuest = new Quest("Slay the ogre", "Slay the nasty ogre located north of the dark cave tunnels.", 100, OgreQuestCompleteRequirement)
             {
                 CompletionMessage = "You return the " + OgreQuestCompleteRequirement.Name + " to the man. The monstrous ogre has been slain!"
             };
             OgreQuest.Reward_Items.Add(RustyKey);
 
-            Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me", 150, SorcererQuestCompleteRequirement)
+            Quest SorcererQuest = new Quest("Kill the sorcerer", "Kill the sorcerer located somewhere in the dungeon and bring back its wand to me.", 150, SorcererQuestCompleteRequirement)
             {
                 CompletionMessage = "You give the " + SorcererQuestCompleteRequirement.Name + " to the old man."
             };
@@ -96,7 +96,6 @@ namespace Engine
             #endregion
 
             #region LocationSpecifics
-
             Cave1.LocationToNorth = Cave2;
             Cave1.LocationToEast = null;
             Cave1.LocationToSouth = null;
@@ -111,7 +110,7 @@ namespace Engine
             Cave2.LocationToWest = Cave3;
             Cave2.Info.Add(Cave2.Description = "You are in a room which splits into multiple tunnels.");
             Cave2.Info.Add(Cave2.Description2 = "To the east, there is a large door with ominous carvings about hellish monsters.");
-            Cave2.Info.Add(Cave2.Description3 = "From the north tunnel you can hear some distant growling noises.");
+            Cave2.Info.Add(Cave2.Description3 = "The tunnel to the north looks dark and uninviting.");
             Cave2.Info.Add(Cave2.Description4 = "The pathway to the west tunnel is clean and seems to be used a lot.");
             Cave2.Info.Add(Cave2.Description5 = "To the south lies a dark, quiet passage.");
 
@@ -132,7 +131,6 @@ namespace Engine
             Cave4.LocationToWest = null;
             Cave4.Info.Add(Cave4.Description = "An unpleasant smell welcomes you as you enter the room.");
             Cave4.Info.Add(Cave4.Description2 = "The floor is filled with bones and rusty weapons.");
-            // Cave4.Info.Add(Cave4.Description3 = "You see a big and bulky creature in the room. It lunges at you in rage! Time to fight!");
             Cave4.LocationMonsters.Add(Ogre);
 
             Cave5.LocationToNorth = null;
@@ -144,7 +142,7 @@ namespace Engine
             Cave5.Info.Add(Cave5.Description3 = "On the east end of the room are stairs which seem to lead somewhere up.");
             Cave5.Info.Add(Cave5.Description4 = "To the west there is a large door with ominous carvings about hellish monsters");
             Cave5.Key = RustyKey;
-            Cave5.NoEntranceDescription = "The way is blockd by a large door. It is locked.";
+            Cave5.NoEntranceDescription = "The way is blocked by a large door. It is locked.";
 
             Cave6.LocationToNorth = Cave7;
             Cave6.LocationToEast = null;
@@ -154,8 +152,6 @@ namespace Engine
             Cave6.Info.Add(Cave6.Description2 = "The walls of this room are warm to your touch.");
             Cave6.Info.Add(Cave6.Description3 = "You see a pathway leading to north and stairs going further down to the cave on the west side of the room");
             Cave6.Info.Add(Cave6.Description4 = "There is a pile of bones on the ground");
-            //Cave6.Info.Add(Cave6.Description5 = "On the ground a pile of bones starts to merge to a creature of somesort.");
-            //Cave6.Info.Add(Cave6.Description6= "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
             Cave7.LocationToNorth = Cave8;
@@ -185,8 +181,6 @@ namespace Engine
             Cave9.LocationToWest = Cave8;
             Cave9.Info.Add(Cave9.Description = "You see an stone sarcophagus in the room.");
             Cave9.Info.Add(Cave9.Description2 = "The smell of rotting flesh is overwhelming.");
-            //Cave9.Info.Add(Cave9.Description3 = "You hear a sad sounding moan and see a corpse getting outh of the sarcophagus");
-            //Cave9.Info.Add(Cave9.Description4 = "It shambles towards you reaching out its hands in front of it");
             Cave9.LocationMonsters.Add(Zombie);
 
 
@@ -206,12 +200,7 @@ namespace Engine
             Cave11.Info.Add(Cave11.Description2 = "You see a stone table on the south wall side. It has some bones and a chalice filled with black liquid on it");
             Cave11.Info.Add(Cave11.Description3 = "It seems that the room is used to perform somesort of dark magic rituals.");
             Cave11.Info.Add(Cave11.Description4 = "The path to the west is blocked by a star shaped stone. There's no way to go past it.");
-            //Cave9.Info.Add(Cave11.Description4 = "Suddenly in front of you materializes a humanlike creature dressed in a dark veil");
-            //Cave9.Info.Add(Cave11.Description5 = "It sets out inhuman screech and starts to mutter some words.");
-
-
             Cave11.LocationMonsters.Add(Sorcerer);
-
 
             Cave12.LocationToNorth = null;
             Cave12.LocationToEast = null;
@@ -222,9 +211,7 @@ namespace Engine
             Cave12.Info.Add(Cave12.Description3 = "In the distance, you can hear birds chirping.");
             Cave12.Key = WeirdLookingStone;
             Cave12.NoEntranceDescription = "The star shaped rock is too heavy for you to lift. You can't pass.";
-
             #endregion
-
 
             #region AddToWorld
             WorldList.Add(Cave1);
@@ -240,11 +227,6 @@ namespace Engine
             WorldList.Add(Cave11);
             WorldList.Add(Cave12);
             #endregion
-
-
-
         }
-
     }
-
 }

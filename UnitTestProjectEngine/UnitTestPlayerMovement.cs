@@ -14,7 +14,6 @@ namespace UnitTestProjectEngine
         /// Unit tests for player movement methods
         ///</summary>
 
-
         [TestMethod]
         public void SimplePlayerMovement_UpdatesPlayerPosition_NoErrors()
         {
@@ -29,7 +28,5 @@ namespace UnitTestProjectEngine
             string result = player1.CurrentLocation.Name + " " + player1.CurrentLocation.Description;
             Assert.AreEqual(expected, result);
         }
-
-
     }
 }

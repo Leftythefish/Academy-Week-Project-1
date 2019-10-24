@@ -9,17 +9,9 @@ namespace Engine
         private readonly int id;
         private static int nextId = 10000;
         public int ID { get { return id; } }
-
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
+        public string Name { get; set; }
         public string Description { get; set; }
         public string EntranceDescription { get; set; }
-
         //Constructors
         public Item(string name)
         {

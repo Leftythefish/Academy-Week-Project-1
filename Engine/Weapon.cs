@@ -21,7 +21,6 @@ namespace Engine
             get { return damage; }
             set { damage = value; }
         }
-
         //Constructors
         public Weapon(string name, int damage) : base(name)
         {

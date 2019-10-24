@@ -72,7 +72,7 @@ namespace Engine
                     break;
             }
         }
-        private static void Search(Player p)
+        public static void Search(Player p)
         {
             //show detailed description
             //give player hidden items
@@ -110,7 +110,7 @@ namespace Engine
                 else
                 {
                     string keyname = newLocation.Key.Name;
-                    bool playerhaskey = PlayerHasItem(p, keyname);
+                    bool playerhaskey = PlayerHasItemNoRemove(p, keyname);
                     if (playerhaskey == true) // player has the key
                     {
                         // add description of using the key
@@ -176,7 +176,6 @@ namespace Engine
                 Window.InsertGameTextToScreenArray();
             }
         }
-
         public static void EnterFinalLocation(Player p)
         {
             var loc = p.CurrentLocation;
@@ -195,8 +194,7 @@ namespace Engine
             Console.ReadKey();
             Window.CreateGameFinishedScreen(p);
         }
-
-        private static void FightMonster(Player p, Monster mon)
+        public static void FightMonster(Player p, Monster mon)
         {//--Ria, Jesse
 
             var p_weapon = p.EquippedWeapon;
@@ -274,7 +272,7 @@ namespace Engine
             //player health below 0
             Window.CreateGameOverScreen();
         }
-        private static void TalkToQuestGiver(Player p)
+        public static void TalkToQuestGiver(Player p)
         {
             var loc = p.CurrentLocation;
             //check if the there is a quest to offer
@@ -339,10 +337,16 @@ namespace Engine
                     }
                 }
             }
+            else // no quest
+            {
+                Window.EmptyGameTextFromScreen();
+                Window.EmptyStringData();
+                Window.line1 = "There's nobody to talk to. ";
+                Window.InsertGameTextToScreen();
+            }
 
         }
-
-        private static void CompleteQuest(Player p, Quest lquest)
+        public static void CompleteQuest(Player p, Quest lquest)
         {
             //set quest completion status as complete and remove quest inventory item
             lquest.QuestCompleted = true;
@@ -366,7 +370,6 @@ namespace Engine
             Window.InsertGameTextToScreenArray();
             // p.Inventory.Remove(lquest.CompletionRequirement);
         }
-
         public static void PlayerInputHelp() //--Jesse
         {
             Window.EmptyGameTextFromScreen();
@@ -384,7 +387,6 @@ namespace Engine
             Window.line11 = "HELP or H to open Help Menu";
             Window.InsertGameTextToScreen();
         }
-
         public static void InventoryManagement(Player p)
         {
             Window.EmptyGameTextFromScreen();
@@ -454,7 +456,6 @@ namespace Engine
                 }
             }
         }
-
         public static bool HitCalculator()
         {
             int variable = RandomNumber();
@@ -489,6 +490,18 @@ namespace Engine
             }
             return playerhasitem;
         }
-
+        public static bool PlayerHasItemNoRemove(Player p, string itemname)
+        {
+            bool playerhasitem = false;
+            foreach (var item in p.Inventory)
+            {
+                if (item.Name == itemname)
+                {
+                    playerhasitem = true;
+                    break;
+                }
+            }
+            return playerhasitem;
+        }
     }
 }

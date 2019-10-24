@@ -10,15 +10,10 @@ namespace Engine
         public int Level { get; set; }
         public int Exp { get; set; }
         public string Input { get; set; }
-
         private Location currentLocation;
         public Location CurrentLocation { get => currentLocation; set => currentLocation = value; }
-
         private Weapon equippedWeapon;
         public Weapon EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
-
-
-
         public Player() { }
         public Player(string name, int maximum_health) : base(name, maximum_health)
         {

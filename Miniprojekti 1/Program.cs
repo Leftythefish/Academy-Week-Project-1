@@ -6,7 +6,6 @@ namespace Miniprojekti_1
 {
     public class Program
     {
-
         public static World Cave = new World();
         public static string name;
         static void Main()
@@ -27,7 +26,6 @@ namespace Miniprojekti_1
             Cave.CreateWorlds();
             PlayTheGame(p);
         }
-
         public static void PlayTheGame(Player p) //--Ria
         {
             //set the player in start position
@@ -51,7 +49,6 @@ namespace Miniprojekti_1
             } while (p.Cur_Health > 0);
 
         }
-
         public static Location LocationByName(string name)
         {
             foreach (Location location in Cave.WorldList)
@@ -76,7 +73,7 @@ namespace Miniprojekti_1
             p.Max_Health = 500;
             p.Cur_Health = 500;
             p.Level = 1;
-            Weapon Fists = new Weapon("Fist", 10); // --Jyri
+            Weapon Fists = new Weapon("Rock", 10); // --Jyri
             p.EquippedWeapon = Fists;
             p.Inventory.Add(Fists);
         }
@@ -100,8 +97,6 @@ namespace Miniprojekti_1
                 return name;
             }
         }
-
-
     }
 }
 
