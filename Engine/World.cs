@@ -32,7 +32,7 @@ namespace Engine
             #region Items
             Weapon Axe = new Weapon("Axe", "Axes", 15);
             Weapon ShortSword = new Weapon("Short sword", "Short Swords", 25);
-            Potion HealPot = new Potion("healing potion", "healing potions", 50);
+            Potion HealPot = new Potion("Healing potion", "Healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("Sorcerer's wand", "Sorcerer's wands");
             #endregion

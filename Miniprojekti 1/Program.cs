@@ -58,7 +58,7 @@ namespace Miniprojekti_1
         }
         public static void CreatePlayer(Player p)
         {
-            Console.SetCursorPosition(51, 25);
+            Console.SetCursorPosition(65, 25);
             Console.WriteLine("Enter your name.");
             Console.SetCursorPosition(0, 29);
             string input = Console.ReadLine();
