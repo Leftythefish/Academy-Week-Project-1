@@ -243,6 +243,21 @@ namespace Engine
             }
 
         }
+        public static void PlayerInputHelp() //case help or case h
+        {
+            Window.EmptyGameTextFromScreen();
+            Window.EmptyStringData();
+            Window.line1 = "Help menu. Type what you want to do and press enter:";
+            Window.line2 = "Movement:";
+            Window.line3 = "'go north' or 'n' to move north";
+            Window.line4 = "'go east' or 'e' to move east";
+            Window.line5 = "'go south' or 's' to move south";
+            Window.line6 = "'go west' or 'w' to move west";
+            Window.line7 = "Actions:";
+            Window.line8 = "'look around' or 'search' to take a closer look at your surroundings";
+            Window.line9 = "'help' or 'h' to open Help Menu";
+            Window.InsertGameTextToScreen();
+        }
 
         private static void InventoryManagement(Player p) 
         {
@@ -264,15 +279,3 @@ namespace Engine
         }
     }
 }
-//public static void PlayerInputHelp() //case help or case h
-//{
-//    Console.WriteLine("Help menu. Type what you want to do and press enter:");
-//    Console.WriteLine("Movement:");
-//    Console.WriteLine("\"go north\" or \"n\" = Move to north");
-//    Console.WriteLine("\"go east\" or \"e\" = Move to east");
-//    Console.WriteLine("\"go south\" or \"s\" = Move to south");
-//    Console.WriteLine("\"go west\" or \"w\" = Move to west");
-//    Console.WriteLine("Actions:");
-//    Console.WriteLine("\"look around\" or \"search\" = Take a closer look at your surroundings");
-//    Console.WriteLine("\"help\" or \"h\" = Open Help menu");
-//}
