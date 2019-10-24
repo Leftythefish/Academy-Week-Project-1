@@ -164,9 +164,9 @@ namespace Engine
             Console.SetCursorPosition(15, 8);
             Console.WriteLine(@" ____  __.__.__  .__ /    __  .__           \ ____\____  \                      ");
             Console.SetCursorPosition(15, 9);
-            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |__   ____   \_____  \   \                     ");
+            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |            \      \    \                     ");
             Console.SetCursorPosition(15, 10);
-            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |__   ____   \_____  \   \___________   ____   ");
+            Console.WriteLine(@"|    |/ _|__|  | |  |   _/  |_|  |__   ____   \_____  \    \__________   ____   ");
             Console.SetCursorPosition(15, 11);
             Console.WriteLine(@"|      < |  |  | |  |   \   __\  |  \_/ __ \   /   |   \  / ___\_  __ \_/ __ \  ");
             Console.SetCursorPosition(15, 12);
@@ -174,11 +174,11 @@ namespace Engine
             Console.SetCursorPosition(15, 13);
             Console.WriteLine(@"|____|__ \__|____/____/  |__| |___|  /\___  >,\_______  /\___  /|__|    \___  > ");
             Console.SetCursorPosition(15, 14);
-            Console.WriteLine(@"        \/         (               \/     \/>` _,`   \\//_____/             \/  ");
+            Console.WriteLine(@"        \/         (               \/     \/>` _,`    \//_____/             \/  ");
             Console.SetCursorPosition(15, 15);
-            Console.WriteLine(@"                  ,`    ,/,              ,>,_,`)      \--`````\                 ");
+            Console.WriteLine(@"                  ,`    ,/,              ,>,_,`)       \--`````\                ");
             Console.SetCursorPosition(15, 16);
-            Console.WriteLine(@"                  (      `\`---'`  `-,-'`_,<   \       \_,.--'`                 ");
+            Console.WriteLine(@"                  (      `\`---'`  `-,-'`_,<   \        \_,.--'`                ");
             Console.SetCursorPosition(15, 17);
             Console.WriteLine(@"                   `.      `--. _,-'`_,-`  |    \                               ");
             Console.SetCursorPosition(15, 18);
@@ -197,13 +197,15 @@ namespace Engine
             Console.WriteLine(@"                       |      |    |      |                                     ");
             Console.SetCursorPosition(15, 25);
             Console.WriteLine(@"                        \,---_|    |_---./                                      ");
-            Console.SetCursorPosition(15, 26);
-            Console.WriteLine(@"                        ooOO(_)    (_)OOoo                                      ");
-            Console.SetCursorPosition(70, 20);
+            Console.SetCursorPosition(5, 26);
+            Console.WriteLine(@"Original artwork by Zeus          ooOO(_)    (_)OOoo                                      ");
+            Console.SetCursorPosition(70, 23);
             Console.WriteLine("Press any key to start game.");
+            Console.SetCursorPosition(80, 17);
+            Console.WriteLine("Part II: Escaping the Cave");
             Console.SetCursorPosition(0, 29);
             Console.ReadKey();
-            Console.SetCursorPosition(46, 25);
+            Console.SetCursorPosition(60, 25);
             Console.WriteLine("                                  ");
         }
         public static void CreateGameFinishedScreen(Player p)
