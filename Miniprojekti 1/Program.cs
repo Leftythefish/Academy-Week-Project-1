@@ -21,6 +21,8 @@ namespace Miniprojekti_1
             CreatePlayer(p);
             Console.SetCursorPosition(0, 29);
             Window.CreateMainScreen(p);
+            Window.InsertOpeningTexts();
+            //PlayerActions.PlayerInputHelp();
             //Create the world
             Cave.CreateWorlds();
             PlayTheGame(p);

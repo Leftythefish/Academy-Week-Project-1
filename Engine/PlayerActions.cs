@@ -18,6 +18,9 @@ namespace Engine
         {
             switch (p.Input)
             {
+                case "help":
+                    PlayerInputHelp();
+                    break;
                 case "go north":
                 case "n":
                     MoveToLocation(p, p.CurrentLocation.LocationToNorth);
@@ -47,7 +50,7 @@ namespace Engine
                     Window.EmptyStringData();
                     Window.line1 = "You can hear the wind rustling as you stare emptily ahead and wonder what your place in the world is.";
                     Window.line2 = "Were you about to do something?";
-                    Window.line6 = "((hint: given input was not appropriate))";
+                    Window.line6 = "((hint: given input was not appropriate, type HELP for command info))";
                     Window.InsertGameTextToScreen();
                     break;
             }
@@ -142,7 +145,6 @@ namespace Engine
                         case "a":
                         case "hit":
                         case "h":
-                        case "slash":
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
                             Window.line1 = "You slash the " + mon.Name + " with your " + p_weapon.Name + " doing " + p_weapon.Damage + " damage.";
@@ -152,7 +154,7 @@ namespace Engine
                         default:
                             Window.EmptyGameTextFromScreen();
                             Window.EmptyStringData();
-                            Window.line1 = "You were too slow. Next round try one of the following commands: 'slash', 'attack' or 'hit'";
+                            Window.line1 = "You were too slow. Next round try one of the following commands: ATTACK or HIT.";
                             Window.InsertGameTextToScreen();
                             break;
                     }
@@ -240,15 +242,15 @@ namespace Engine
         {
             Window.EmptyGameTextFromScreen();
             Window.EmptyStringData();
-            Window.line1 = "Help menu. Type what you want to do and press enter:";
-            Window.line2 = "Movement:";
-            Window.line3 = "'go north' or 'n' to move north";
-            Window.line4 = "'go east' or 'e' to move east";
-            Window.line5 = "'go south' or 's' to move south";
-            Window.line6 = "'go west' or 'w' to move west";
-            Window.line7 = "Actions:";
-            Window.line8 = "'look around' or 'search' to take a closer look at your surroundings";
-            Window.line9 = "'help' or 'h' to open Help Menu";
+            Window.line1 = "Type what you want to do and press ENTER:";
+            Window.line2 = "";
+            Window.line3 = "GO NORTH or N to move north";
+            Window.line4 = "GO EAST or E to move east";
+            Window.line5 = "GO SOUTH or S to move south";
+            Window.line6 = "GO WEST or W to move west";
+            Window.line7 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
+            Window.line8 = "ATTACK, HIT, A or H to attack";
+            Window.line9 = "HELP or H to open Help Menu";
             Window.InsertGameTextToScreen();
         }
 

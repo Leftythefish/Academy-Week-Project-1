@@ -7,12 +7,12 @@ namespace Engine
     public class Window
     {
         public static string[] lines = new string[10];
-        public static string line1, line2, line3, line4, line5, line6, line7, line8, line9, line10;
+        public static string line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, line13, line14, line15, line16, line17;
         public Window() { }
 
         public static void EmptyGameTextFromScreen()
         {
-            for (int i = 4; i < 14; i++)
+            for (int i = 4; i < 21; i++)
             {
                 Console.SetCursorPosition(3, i);
                 Console.WriteLine("                                                                                                                    ");
@@ -43,6 +43,20 @@ namespace Engine
             Console.WriteLine(line9);
             Console.SetCursorPosition(3, 13);
             Console.WriteLine(line10);
+            Console.SetCursorPosition(3, 14);
+            Console.WriteLine(line11);
+            Console.SetCursorPosition(3, 15);
+            Console.WriteLine(line12);
+            Console.SetCursorPosition(3, 16);
+            Console.WriteLine(line13);
+            Console.SetCursorPosition(3, 17);
+            Console.WriteLine(line14);
+            Console.SetCursorPosition(3, 18);
+            Console.WriteLine(line15);
+            Console.SetCursorPosition(3, 19);
+            Console.WriteLine(line16);
+            Console.SetCursorPosition(3, 20);
+            Console.WriteLine(line17);
             Console.SetCursorPosition(0, 29);
         }
 
@@ -83,6 +97,13 @@ namespace Engine
             line8 = "";
             line9 = "";
             line10 = "";
+            line11 = "";
+            line12 = "";
+            line13 = "";
+            line14 = "";
+            line15 = "";
+            line16 = "";
+            line17 = "";
             lines[0] = "";
             lines[1] = "";
             lines[2] = "";
@@ -93,8 +114,6 @@ namespace Engine
             lines[7] = "";
             lines[8] = "";
             lines[9] = "";
-
-
         }
 
 
@@ -331,10 +350,25 @@ namespace Engine
             Console.WriteLine("________________________________________________________________________________________________________________________");
             Console.SetCursorPosition(0, 29);
         }
+
+        public static void InsertOpeningTexts()
+        {
+            EmptyGameTextFromScreen();
+            line9 = "Type what you want to do and press ENTER:";
+            line10 = "";
+            line11 = "GO NORTH or N to move north";
+            line12 = "GO EAST or E to move east";
+            line13 = "GO SOUTH or S to move south";
+            line14 = "GO WEST or W to move west";
+            line15 = "LOOK AROUND or SEARCH to take a closer look at your surroundings";
+            line16 = "ATTACK, HIT, A or H to attack";
+            line17 = "HELP or H to open Help Menu";
+            InsertGameTextToScreen();
+        }
         public static void UpdateHp(Player p)
         {
             Console.SetCursorPosition(36, 1);
-            Console.WriteLine("        ");
+            Console.WriteLine("            ");
             Console.SetCursorPosition(36, 1);
             Console.WriteLine($"HP: {p.Cur_Health}/{p.Max_Health}");
         }
