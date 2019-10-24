@@ -38,6 +38,7 @@ namespace Engine
         public string Description5 { get; set; }
         public string Description6 { get; set; }
         public Item Key { get; set; } //Requirement to enter
+        public string NoEntranceDescription { get; set; }
 
         public Location LocationToNorth;
         public Location LocationToEast;

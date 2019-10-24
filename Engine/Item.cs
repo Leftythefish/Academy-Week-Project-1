@@ -25,6 +25,7 @@ namespace Engine
         }
 
         public string Description { get; set; }
+        public string EntranceDescription { get; set; }
 
         //Constructors
         public Item(string name, string name_plural)
