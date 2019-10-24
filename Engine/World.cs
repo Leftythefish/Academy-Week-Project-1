@@ -22,15 +22,16 @@ namespace Engine
             Location Cave2 = new Location("Dark Cave Tunnels");
             Location Cave3 = new Location("Pleasant Cave Room");
             Location Cave4 = new Location("Ogre Cave");
+
             Location Cave5 = new Location("Dungeon Entrance");
             Location Cave6 = new Location("Start of Dungeon");
             Location Cave7 = new Location("Man in the chains");
-            //Location Cave7 = new Location("Dungeon Entrance");
-            //Location Cave8 = new Location("Dungeon Entrance");
+            Location Cave8 = new Location("");
             #endregion
 
             #region Items
             Weapon Axe = new Weapon("Axe", "Axes", 15);
+            Weapon ShortSword = new Weapon("Short sword", "Short Swords", 25);
             Potion HealPot = new Potion("healing potion", "healing potions", 50);
             Item OgreQuestCompleteRequirement = new Item("Bloody Ogre head", "Bloody Ogre heads");
             Item SorcererQuestCompleteRequirement = new Item("Sorcerers wand", "Sorcerers wands");
@@ -56,7 +57,7 @@ namespace Engine
             };
             Ogre.MonsterLoot.Add(HealPot);
 
-            Monster SkeletonWarrior = new Monster("Skeleton Warrior", 15)
+            Monster SkeletonWarrior = new Monster("Skeleton Warrior", 75)
             {
                 Damage = 12
             };
@@ -120,7 +121,7 @@ namespace Engine
             Cave6.Info.Add(Cave6.Description5 = "Skeleton warrior picks up a rusty sword from the ground and starts to move towards you!");
             Cave6.LocationMonsters.Add(SkeletonWarrior);
 
-            Cave7.LocationToNorth = null;
+            Cave7.LocationToNorth = Cave8;
             Cave7.LocationToEast = null;
             Cave7.LocationToSouth = null;
             Cave7.LocationToWest = null;
@@ -139,7 +140,8 @@ namespace Engine
             WorldList.Add(Cave4);
             WorldList.Add(Cave5);
             WorldList.Add(Cave6);
-            //WorldList.Add(Cave7);
+            WorldList.Add(Cave7);
+            WorldList.Add(Cave8);
             //WorldList.Add(Cave8);
             #endregion
 
