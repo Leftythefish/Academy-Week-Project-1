@@ -219,21 +219,15 @@ namespace Engine
             Console.SetCursorPosition(15, 15);
             Console.WriteLine(@"     \/                 \/     \/             \/     \/          \//_____/             \/\/");
             Console.SetCursorPosition(38, 25);
-            Console.WriteLine("Press any key to play again or ESC to exit.");
+            Console.WriteLine("Press any key to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input.Key)
+            switch (input)
             {
-                case ConsoleKey.Escape:
+                default:
                     Environment.Exit(0);
                     break;
-                default:
-                    Console.Clear();
-                    CreateOpeningScreen();
-                    //this must be replaced with a method that includes the entire game 
-                    break;
             }
-            Console.ReadLine();
         }
         public static void CreateGameOverScreen()
         {
@@ -285,18 +279,12 @@ namespace Engine
             Console.WriteLine("Press any key to start again or ESC to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input.Key)
+            switch (input)
             {
-                case ConsoleKey.Escape:
+                default:
                     Environment.Exit(0);
                     break;
-                default:
-                    Console.Clear();
-                    CreateOpeningScreen();
-                    //this must be replaced with a method that includes the entire game 
-                    break;
             }
-            Console.ReadLine();
         }
         public static void CreateMainScreen(Player p)
         {

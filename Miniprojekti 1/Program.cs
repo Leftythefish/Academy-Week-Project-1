@@ -26,12 +26,12 @@ namespace Miniprojekti_1
             //Create the world
             Cave.CreateWorlds();
             PlayTheGame(p);
-            Console.ReadKey();
-            Window.CreateGameFinishedScreen(p);
+            //Console.ReadKey();
+            //Window.CreateGameFinishedScreen(p);
             //Window.CreateGameOverScreen();
         }
 
-        private static void PlayTheGame(Player p) //--Ria
+        public static void PlayTheGame(Player p) //--Ria
         {
             //set the player in start position
             var startlocation = LocationByName("Dark Cave");
