@@ -27,7 +27,7 @@ namespace Engine
             Location Cave6 = new Location("bone grave.");
             Location Cave7 = new Location("magic prison.");
             Location Cave8 = new Location("painted room.");
-            Location Cave9 = new Location("breakroom from life.");
+            Location Cave9 = new Location("tomb.");
 
             Location Cave10 = new Location("mist filled room.");
             Location Cave11 = new Location("room of dark magic.");

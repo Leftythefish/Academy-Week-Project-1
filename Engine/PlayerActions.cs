@@ -234,7 +234,16 @@ namespace Engine
                             Window.InsertGameTextToScreen();
                             break;
                     }
+                    bool crit = CritCalculator();
+                    if (crit == false)
+                    {                        
                     Window.line2 = "The " + mon.Name + " hits you, doing " + mon.Damage + " damage.";
+                    }
+                    else
+                    {
+                       int critdamage = mon.Damage + 40;
+                       Window.line2 = "The " + mon.Name + " hits you with unfathomable force, doing " + critdamage + " damage.";
+                    }
                     Window.line3 = "The monster health is at: " + mon.Cur_Health + "/" + mon.Max_Health;
                     Window.InsertGameTextToScreen();
                     p.Cur_Health -= mon.Damage;
@@ -479,6 +488,20 @@ namespace Engine
                 hit = false;
             }
             return hit;
+        }
+        public static bool CritCalculator()
+        {
+            int variable = RandomNumber();
+            bool crit;
+            if (variable < 10)
+            {
+                crit = true;
+            }
+            else
+            {
+                crit = false;
+            }
+            return crit;
         }
         public static int RandomNumber()
         {
