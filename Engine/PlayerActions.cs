@@ -167,7 +167,7 @@ namespace Engine
             if (loc.LocationMonsters.Count > 0) //here there be monsters
             {
                 var mon = loc.LocationMonsters[loc.LocationMonsters.Count - 1];
-                Window.lines[counter] = "You quickly realize you are not alone. An evil looking " + mon.Name + " rushes at you! Prepare to fight!";
+                Window.lines[counter +1] = "You quickly realize you are not alone. An evil looking " + mon.Name + " rushes at you! Prepare to fight!";
                 Window.InsertGameTextToScreenArray();
                 FightMonster(p, mon);
                 p.CurrentLocation.LocationMonsters.Remove(mon);
@@ -190,7 +190,7 @@ namespace Engine
                 Window.lines[counter] = desc;
                 counter += 1;
             }
-            Window.lines[counter] = "Press any key to walk out";
+            Window.lines[counter + 2] = "Press any key to walk out.";
             Window.InsertGameTextToScreenArray();
             Console.ReadKey();
             Window.CreateGameFinishedScreen(p);
