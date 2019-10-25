@@ -477,17 +477,18 @@ namespace Engine
         }
         public static bool HitCalculator()
         {
-            int variable = RandomNumber();
-            bool hit;
-            if (variable < 70)
-            {
-                hit = true;
-            }
-            else
-            {
-                hit = false;
-            }
-            return hit;
+            return RandomNumber() < 70; 
+            //int variable = RandomNumber();
+            //bool hit;
+            //if (variable < 70)
+            //{
+            //    hit = true;
+            //}
+            //else
+            //{
+            //    hit = false;
+            //}
+            //return hit;
         }
         public static bool CritCalculator()
         {
@@ -525,16 +526,17 @@ namespace Engine
         }
         public static bool PlayerHasItemNoRemove(Player p, string itemname)
         {
-            bool playerhasitem = false;
-            foreach (var item in p.Inventory)
-            {
-                if (item.Name == itemname)
-                {
-                    playerhasitem = true;
-                    break;
-                }
-            }
-            return playerhasitem;
+            return p.Inventory.Count(p => p.Name == itemname) > 0;
+            //bool playerhasitem = false;
+            //foreach (var item in p.Inventory)
+            //{
+            //    if (item.Name == itemname)
+            //    {
+            //        playerhasitem = true;
+            //        break;
+            //    }
+            //}
+            //return playerhasitem;
         }
     }
 }

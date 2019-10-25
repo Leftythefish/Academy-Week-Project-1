@@ -269,18 +269,13 @@ namespace Engine
             Console.SetCursorPosition(5, 21);
             Console.WriteLine(@"           \/     \/          \/         \/                 \/                                        ");
             Console.SetCursorPosition(38, 25);
-            Console.WriteLine("Press any key to play again or ESC to exit.");
+            Console.WriteLine("Press any key to exit.");
             Console.SetCursorPosition(0, 29);
             var input = Console.ReadKey(true);
-            switch (input.Key)
+            switch (input)
             {
-                case ConsoleKey.Escape:
-                    Environment.Exit(0);
-                    break;
                 default:
-                    Console.Clear();
-                    CreateOpeningScreen();
-                    //this must be replaced with a method that includes the entire game 
+                    Environment.Exit(0);
                     break;
             }
             Console.ReadLine();
